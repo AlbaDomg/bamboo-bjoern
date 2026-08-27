@@ -108,7 +108,16 @@
       box-shadow: 0 25px 70px -15px rgba(20, 46, 35, 0.08),
                   0 0 35px 5px rgba(114, 152, 96, 0.22),
                   inset 0 1px 1px 0 rgba(255, 255, 255, 0.85) !important;
-      transition: box-shadow 0.5s ease-in-out;
+    }
+
+    /* Animación sutil flotante para el avatar del Panda */
+    @keyframes pandaFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-3px) rotate(1deg); }
+    }
+    .panda-avatar {
+      animation: pandaFloat 3.5s ease-in-out infinite;
+    }  transition: box-shadow 0.5s ease-in-out;
     }
   </style>
 </head>
@@ -164,9 +173,12 @@
       <!-- Cabecera Interior Minimalista del Chat -->
       <div class="px-8 py-5 border-b border-white/40 flex items-center justify-between bg-white/25 backdrop-blur-md">
         <div class="flex items-center space-x-3">
-          <div class="w-2.5 h-2.5 rounded-full bg-bamboo"></div>
+          <div class="relative flex items-center">
+            <img src="./assets/panda-avatar.png" alt="Bjoern Panda" class="w-12 h-12 object-contain panda-avatar">
+            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-400 border-2 border-white rounded-full"></span>
+          </div>
           <div>
-            <h2 class="text-sm font-medium text-forest leading-tight">Bjoern KI-Assistent</h2>
+            <h2 class="text-sm font-semibold text-forest leading-tight">Bjoern KI-Assistent</h2>
             <p class="text-[11px] text-charcoal-muted font-normal">Ökologische Architektur &amp; Mistral KI Server (EU)</p>
           </div>
         </div>
@@ -188,15 +200,8 @@
 
         <!-- Mensaje de Bienvenida -->
         <div class="flex items-start space-x-4 max-w-2xl">
-          <div
-            class="w-8 h-8 rounded-xl bg-forest text-bamboo-light flex-shrink-0 flex items-center justify-center mt-1 shadow-xs">
-            <svg class="w-4 h-4 text-bamboo-gold" fill="none" stroke="currentColor" stroke-width="1.6"
-              viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z">
-              </path>
-            </svg>
-          </div>
+          <img src="./assets/panda-avatar.png" alt="Bjoern Panda Avatar"
+            class="w-14 h-14 object-contain flex-shrink-0 -mt-2 panda-avatar filter drop-shadow-md">
           <div class="space-y-4">
             <div
               class="bg-white/45 backdrop-blur-md border border-white/70 text-forest p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs">
@@ -422,16 +427,13 @@
     function showTypingIndicator() {
       const typingHtml = `
         <div id="typing-indicator" class="flex items-center space-x-3 max-w-xs">
-          <div class="w-8 h-8 rounded-xl bg-forest text-bamboo-light flex-shrink-0 flex items-center justify-center shadow-xs">
-            <svg class="w-4 h-4 text-bamboo-gold" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
-            </svg>
-          </div>
+          <img src="./assets/panda-avatar.png" alt="Bjoern Panda Avatar"
+            class="w-12 h-12 object-contain flex-shrink-0 panda-avatar filter drop-shadow-md">
           <div class="bg-bamboo-soft/60 px-4 py-3 rounded-2xl text-xs text-forest flex items-center space-x-1.5 border border-bamboo/20">
             <span class="w-1.5 h-1.5 bg-bamboo rounded-full animate-bounce" style="animation-delay: 0ms"></span>
             <span class="w-1.5 h-1.5 bg-bamboo rounded-full animate-bounce" style="animation-delay: 150ms"></span>
             <span class="w-1.5 h-1.5 bg-bamboo rounded-full animate-bounce" style="animation-delay: 300ms"></span>
-            <span class="ml-2 text-charcoal-muted font-normal">Mistral AI analysiert Anforderungen...</span>
+            <span class="ml-2 text-charcoal-muted font-normal">Bjoern analysiert Anforderungen...</span>
           </div>
         </div>
       `;
@@ -522,11 +524,8 @@
 
       const aiBubbleHtml = `
         <div class="flex items-start space-x-4 max-w-2xl">
-          <div class="w-8 h-8 rounded-xl bg-forest text-bamboo-light flex-shrink-0 flex items-center justify-center mt-1 shadow-xs">
-            <svg class="w-4 h-4 text-bamboo-gold" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
-            </svg>
-          </div>
+          <img src="./assets/panda-avatar.png" alt="Bjoern Panda Avatar"
+            class="w-14 h-14 object-contain flex-shrink-0 -mt-2 panda-avatar filter drop-shadow-md">
           <div class="bg-bamboo-soft/60 border border-bamboo/20 text-forest p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed">
             ${aiText}
           </div>
