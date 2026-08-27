@@ -52,12 +52,12 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png', apiPath =
             <img
               src={avatarPath}
               alt="Panda Avatar"
-              className="w-12 h-12 object-contain panda-avatar-animated filter drop-shadow-md"
+              className="w-16 h-16 object-contain panda-avatar-animated filter drop-shadow-md"
               onError={(e) => {
                 e.currentTarget.src = 'https://api.dicebear.com/7.x/bottts/svg?seed=BambooPanda';
               }}
             />
-            <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-400 border-2 border-[#142E23] rounded-full"></span>
+            <span className="absolute bottom-1 right-1 w-3 h-3 bg-emerald-400 border-2 border-[#142E23] rounded-full"></span>
           </div>
           <div>
             <h3 className="font-semibold text-base leading-tight tracking-wide flex items-center gap-1.5">
@@ -84,19 +84,7 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png', apiPath =
                 isAssistant ? 'justify-start' : 'justify-end'
               }`}
             >
-              {/* Avatar del panda para mensajes del asistente */}
-              {isAssistant && (
-                <div className="flex-shrink-0 mb-1">
-                  <img
-                    src={avatarPath}
-                    alt="Björn Panda"
-                    className="w-14 h-14 object-contain panda-avatar-animated filter drop-shadow-md"
-                    onError={(e) => {
-                      e.currentTarget.src = 'https://api.dicebear.com/7.x/bottts/svg?seed=BambooPanda';
-                    }}
-                  />
-                </div>
-              )}
+
 
               {/* Burbuja del mensaje */}
               <div
@@ -123,16 +111,7 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png', apiPath =
         {/* Indicador visual de "pensando..." */}
         {isLoading && (
           <div className="flex items-end gap-3 justify-start">
-            <div className="flex-shrink-0 mb-1">
-              <img
-                src={avatarPath}
-                alt="Björn Panda Pensando"
-                className="w-12 h-12 object-contain panda-avatar-animated filter drop-shadow-md"
-                onError={(e) => {
-                  e.currentTarget.src = 'https://api.dicebear.com/7.x/bottts/svg?seed=BambooPanda';
-                }}
-              />
-            </div>
+
             <div className="bg-white border border-[#EBECE5] px-4 py-3 rounded-2xl rounded-bl-none shadow-sm flex items-center gap-1.5">
               <span className="text-xs text-[#69756F] font-medium mr-1">Björn está pensando</span>
               <span className="w-1.5 h-1.5 bg-[#729860] rounded-full animate-bounce [animation-delay:-0.3s]"></span>

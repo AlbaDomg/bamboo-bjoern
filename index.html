@@ -108,6 +108,7 @@
       box-shadow: 0 25px 70px -15px rgba(20, 46, 35, 0.08),
                   0 0 35px 5px rgba(114, 152, 96, 0.22),
                   inset 0 1px 1px 0 rgba(255, 255, 255, 0.85) !important;
+      transition: box-shadow 0.5s ease-in-out;
     }
 
     /* Animación sutil flotante para el avatar del Panda */
@@ -117,7 +118,6 @@
     }
     .panda-avatar {
       animation: pandaFloat 3.5s ease-in-out infinite;
-    }  transition: box-shadow 0.5s ease-in-out;
     }
   </style>
 </head>
@@ -174,8 +174,8 @@
       <div class="px-8 py-5 border-b border-white/40 flex items-center justify-between bg-white/25 backdrop-blur-md">
         <div class="flex items-center space-x-3">
           <div class="relative flex items-center">
-            <img src="./assets/panda-avatar.png" alt="Bjoern Panda" class="w-12 h-12 object-contain panda-avatar">
-            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-400 border-2 border-white rounded-full"></span>
+            <img src="./assets/panda-avatar.png" alt="Bjoern Panda" class="w-16 h-16 object-contain panda-avatar filter drop-shadow-md">
+            <span class="absolute bottom-1 right-1 w-3 h-3 bg-emerald-400 border-2 border-white rounded-full"></span>
           </div>
           <div>
             <h2 class="text-sm font-semibold text-forest leading-tight">Bjoern KI-Assistent</h2>
@@ -199,9 +199,7 @@
       <div id="chat-stream" class="flex-1 overflow-y-auto px-8 py-8 space-y-8 custom-scrollbar">
 
         <!-- Mensaje de Bienvenida -->
-        <div class="flex items-start space-x-4 max-w-2xl">
-          <img src="./assets/panda-avatar.png" alt="Bjoern Panda Avatar"
-            class="w-14 h-14 object-contain flex-shrink-0 -mt-2 panda-avatar filter drop-shadow-md">
+        <div class="flex items-start max-w-2xl">
           <div class="space-y-4">
             <div
               class="bg-white/45 backdrop-blur-md border border-white/70 text-forest p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs">
@@ -426,9 +424,7 @@
 
     function showTypingIndicator() {
       const typingHtml = `
-        <div id="typing-indicator" class="flex items-center space-x-3 max-w-xs">
-          <img src="./assets/panda-avatar.png" alt="Bjoern Panda Avatar"
-            class="w-12 h-12 object-contain flex-shrink-0 panda-avatar filter drop-shadow-md">
+        <div id="typing-indicator" class="flex items-center max-w-xs">
           <div class="bg-bamboo-soft/60 px-4 py-3 rounded-2xl text-xs text-forest flex items-center space-x-1.5 border border-bamboo/20">
             <span class="w-1.5 h-1.5 bg-bamboo rounded-full animate-bounce" style="animation-delay: 0ms"></span>
             <span class="w-1.5 h-1.5 bg-bamboo rounded-full animate-bounce" style="animation-delay: 150ms"></span>
@@ -523,9 +519,7 @@
       }
 
       const aiBubbleHtml = `
-        <div class="flex items-start space-x-4 max-w-2xl">
-          <img src="./assets/panda-avatar.png" alt="Bjoern Panda Avatar"
-            class="w-14 h-14 object-contain flex-shrink-0 -mt-2 panda-avatar filter drop-shadow-md">
+        <div class="flex items-start max-w-2xl">
           <div class="bg-bamboo-soft/60 border border-bamboo/20 text-forest p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed">
             ${aiText}
           </div>
