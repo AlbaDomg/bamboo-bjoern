@@ -82,13 +82,13 @@ export function ConfirmationCard({ title, details, onConfirm, onCancel }) {
           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
           </svg>
-          <span>Crear Buzón Eco</span>
+          <span>Öko-Postfach erstellen</span>
         </button>
         <button
           onClick={onCancel}
           className="min-h-[44px] px-4 py-3 bg-gray-100 hover:bg-gray-200 text-[#746E68] text-xs font-medium rounded-lg transition-all cursor-pointer text-center"
         >
-          Cancelar
+          Abbrechen
         </button>
       </div>
     </div>
@@ -106,7 +106,7 @@ export function LoadingStatus({ message }) {
 }
 
 // 5. Componente InlineTextInput (Input incrustado directamente en la tarjeta de la pregunta)
-export function InlineTextInput({ placeholder = "Escribe aquí...", buttonText = "Continuar", onSubmit }) {
+export function InlineTextInput({ placeholder = "Gewünschter Name (z. B. kontakt)...", buttonText = "Weiter", onSubmit }) {
   const [val, setVal] = useState('');
 
   const handleSubmit = (e) => {
@@ -197,7 +197,7 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
       id: 'welcome-panda',
       role: 'assistant',
       content:
-        '¡Hola! 🌿 Soy Björn, tu asistente verde en Bamboo Bjoern. Estoy aquí para ayudarte a descubrir nuestro Green AI-Hosting 100% ecológico. ¿Qué te gustaría saber sobre nosotros?',
+        'Hallo! 🌿 Ich bin Björn, Ihr grüner Assistent bei Bamboo Björn. Ich bin hier, um Ihnen unser 100% ökologisches Grünes KI-Hosting vorzustellen. Wie kann ich Ihnen heute helfen?',
     },
   ]);
 
@@ -236,7 +236,7 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
 
     const lower = text.toLowerCase();
 
-    if (lower.includes('email') || lower.includes('correo') || lower.includes('buzon') || lower.includes('crear')) {
+    if (lower.includes('email') || lower.includes('e-mail') || lower.includes('konto') || lower.includes('correo') || lower.includes('erstellen')) {
       startMailCreateFlow();
       return;
     }
@@ -247,16 +247,16 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
       setIsLoading(false);
 
       let responseContent = '';
-      if (lower.includes('vision') || lower.includes('que es') || lower.includes(' bamboo') || lower.includes('quienes')) {
-        responseContent = `BambooBjørn es la primera plataforma de Green AI-Hosting de alta eficiencia en Europa. Nuestra visión es descarbonizar la infraestructura digital combinando energía 100% renovable, inteligencia artificial de última generación y refrigeración líquida de baja huella hídrica.`;
-      } else if (lower.includes('sostenib') || lower.includes('energia') || lower.includes('co2') || lower.includes('carbono') || lower.includes('ecolog')) {
-        responseContent = `Nuestra arquitectura reduce la huella de carbono hasta un -95% en comparación con los proveedores en la nube tradicionales. Toda nuestra energía proviene directamente de fuentes solares y eólicas certificadas en Europa.`;
-      } else if (lower.includes('server') || lower.includes('servidor') || lower.includes('pue') || lower.includes('nodo') || lower.includes('ubi')) {
-        responseContent = `Nuestros nodos principales están estratégicamente ubicados en Frankfurt (Alemania). Operan con una Power Usage Effectiveness (PUE) ultrabaja de 1.12 y cuentan con recuperación directa de calor térmico para la comunidad circundante.`;
-      } else if (lower.includes('ai') || lower.includes('ia') || lower.includes('inteligencia') || lower.includes('mistral')) {
-        responseContent = `El A.I.-Hosting de BambooBjørn utiliza modelos optimizados como Mistral AI ejecutados en hardware acelerado neutro en carbono, maximizando la eficiencia energética por cada consulta realizada.`;
+      if (lower.includes('vision') || lower.includes('was ist') || lower.includes('bamboo') || lower.includes('wer')) {
+        responseContent = `BambooBjørn ist Europas führende Plattform für hochleistungsfähiges Grünes KI-Hosting. Unsere Mission ist die Dekarbonisierung der Cloud durch 100% erneuerbare Energie, Flüssigkeitskühlung und klimaneutrale KI-Server.`;
+      } else if (lower.includes('nachhaltig') || lower.includes('energie') || lower.includes('co2') || lower.includes('kohlenstoff') || lower.includes('oeko')) {
+        responseContent = `Unsere Architektur reduziert die Kohlenstoffemissionen im Vergleich zu herkömmlichen Rechenzentren um bis zu 95%. Unser gesamter Strom stammt direkt aus zertifizierten Solar- und Windquellen in Europa.`;
+      } else if (lower.includes('server') || lower.includes('pue') || lower.includes('knoten') || lower.includes('frankfurt')) {
+        responseContent = `Unsere Hauptknoten befinden sich strategisch in Frankfurt (Deutschland). Sie arbeiten mit einer ultraniedrigen Power Usage Effectiveness (PUE) von 1,12 und bieten direkte Abwärmenutzung für die umliegende Gemeinde.`;
+      } else if (lower.includes('ai') || lower.includes('ki') || lower.includes('intelligenz') || lower.includes('mistral')) {
+        responseContent = `Das Grüne KI-Hosting von BambooBjørn nutzt optimierte Modelle wie Mistral AI auf beschleunigter, CO₂-neutraler Hardware, um die Energieeffizienz pro Anfrage zu maximieren.`;
       } else {
-        responseContent = `BambooBjørn combina infraestructura ecológica y tecnología de punta para ofrecer hosting web y servicios de correo 100% libres de carbono. ¿Te gustaría crear tu primer buzón de correo eco-amigable o conocer nuestras métricas?`;
+        responseContent = `BambooBjørn kombiniert ökologische Infrastruktur und Spitzentechnologie für 100% CO₂-neutrale Web- und E-Mail-Dienste. Möchten Sie Ihr erstes Öko-Postfach erstellen oder unsere Kennzahlen kennenlernen?`;
       }
 
       setMessages((prev) => [
@@ -281,7 +281,7 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
         {
           id: Date.now().toString(),
           role: 'assistant',
-          content: '¡Excelente! Vamos a crear tu nuevo buzón de correo 100% ecológico. ¿Para qué dominio deseas crear la nueva dirección de correo?',
+          content: 'Ausgezeichnet! Wir erstellen Ihr neues 100% ökologisches E-Mail-Postfach. Für welche Domain möchten Sie die neue E-Mail-Adresse erstellen?',
         },
       ]);
     }, 600);
@@ -292,11 +292,11 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
     setFlowState((prev) => ({ ...prev, step: 'ENTER_NAME', selectedDomain: domain }));
     setMessages((prev) => [
       ...prev,
-      { id: Date.now().toString(), role: 'user', content: `Dominio seleccionado: ${domain}` },
+      { id: Date.now().toString(), role: 'user', content: `Ausgewählte Domain: ${domain}` },
       {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: `Perfecto, crearemos tu correo en @${domain} 🌿. Introduce el nombre deseado para tu buzón (por ejemplo: albadege94, contacto, info):`,
+        content: `Perfekt, wir erstellen Ihre E-Mail unter @${domain} 🌿. Geben Sie den gewünschten Namen für Ihr Postfach ein (z. B. kontakt, hallo, info):`,
       },
     ]);
   };
@@ -314,7 +314,7 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
         {
           id: Date.now().toString(),
           role: 'assistant',
-          content: `¡Todo listo! Hemos preparado la ficha de configuración para tu nuevo correo ecológico. Por favor revisa los detalles antes de crear:`,
+          content: `Alles bereit! Wir haben das Konfigurationsblatt für Ihre neue Öko-E-Mail vorbereitet. Bitte überprüfen Sie die Details vor der Erstellung:`,
         },
       ]);
     }, 600);
@@ -332,7 +332,7 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
         {
           id: Date.now().toString(),
           role: 'assistant',
-          content: `🎉 ¡Buzón ecológico creado con éxito! Tu dirección ${flowState.mailboxName}@${flowState.selectedDomain} ya está activa en el nodo Frankfurt Solar Grid con SSL Gratuito y cero emisiones de carbono.`,
+          content: `🎉 Öko-Postfach erfolgreich erstellt! Ihre Adresse ${flowState.mailboxName}@${flowState.selectedDomain} ist jetzt auf dem Knoten Frankfurt Solar Grid mit kostenlosem SSL-Zertifikat und null CO₂-Emissionen aktiv.`,
         },
       ]);
     }, 1500);
@@ -343,8 +343,8 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
     setFlowState({ activeFlow: null, step: 'IDLE', mailboxName: '', selectedDomain: '' });
     setMessages((prev) => [
       ...prev,
-      { id: Date.now().toString(), role: 'user', content: 'Cancelar creación' },
-      { id: (Date.now() + 1).toString(), role: 'assistant', content: 'Entendido, hemos cancelado la operación. ¿En qué más puedo orientarte?' },
+      { id: Date.now().toString(), role: 'user', content: 'Erstellung abbrechen' },
+      { id: (Date.now() + 1).toString(), role: 'assistant', content: 'Verstanden, die Operation wurde abgebrochen. Wie kann ich Ihnen heute weiterhelfen?' },
     ]);
   };
 
@@ -381,9 +381,9 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
           </div>
           <div>
             <h3 className="font-semibold text-base leading-tight tracking-wide flex items-center gap-1.5 font-['Space_Grotesk',sans-serif]">
-              Björn AI <span className="text-[10px] bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] text-white px-2.5 py-0.5 rounded-full font-medium">Hosting Verde</span>
+              Björn AI <span className="text-[10px] bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] text-white px-2.5 py-0.5 rounded-full font-medium">Grünes Hosting</span>
             </h3>
-            <p className="text-xs text-[#919D97]">Asistente Ecológico • Bamboo Bjoern</p>
+            <p className="text-xs text-[#919D97]">Ökologischer Assistent • Bamboo Björn</p>
           </div>
         </div>
         <div className="flex items-center gap-2">
@@ -391,7 +391,7 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
             onClick={startMailCreateFlow}
             className="text-xs px-3 py-1.5 rounded-lg bg-[#789340] hover:bg-[#688235] text-white font-medium transition-all shadow-xs cursor-pointer flex items-center gap-1.5"
           >
-            <span>+ Nuevo Correo Eco</span>
+            <span>+ Neues Öko-E-Mail</span>
           </button>
         </div>
       </header>
@@ -406,10 +406,10 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
         {flowState.activeFlow === 'mail.create' && flowState.step === 'ENTER_NAME' && !isLoading && (
           <div className="ml-2 max-w-md animate-fade-in">
             <div className="p-4 bg-white rounded-2xl border border-[#EBECE5] shadow-xs">
-              <span className="text-xs text-[#746E68] font-normal">Introduce el nombre deseado para tu nuevo buzón de correo eco:</span>
+              <span className="text-xs text-[#746E68] font-normal">Geben Sie den gewünschten Namen für Ihr neues Öko-Postfach ein:</span>
               <InlineTextInput
-                placeholder="Nombre deseado (ej. contacto, hola)..."
-                buttonText="Continuar"
+                placeholder="Gewünschter Name (z. B. kontakt, hallo)..."
+                buttonText="Weiter"
                 onSubmit={(val) => {
                   const userMsg = { id: Date.now().toString(), role: 'user', content: val };
                   setMessages((prev) => [...prev, userMsg]);
@@ -434,12 +434,12 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
         {flowState.activeFlow === 'mail.create' && flowState.step === 'CONFIRM' && !isLoading && (
           <div className="ml-2 animate-fade-in max-w-md">
             <ConfirmationCard
-              title="Resumen del Buzón Ecológico"
+              title="Öko-Postfach Übersicht"
               details={[
-                { label: 'Dirección completa', value: `${flowState.mailboxName}@${flowState.selectedDomain}` },
-                { label: 'Servidor', value: 'Frankfurt Solar Grid (EU)' },
-                { label: 'Seguridad', value: 'SSL Wildcard Gratuito' },
-                { label: 'Cero Carbono', value: '100% Energía Renovable' },
+                { label: 'Vollständige Adresse', value: `${flowState.mailboxName}@${flowState.selectedDomain}` },
+                { label: 'Server', value: 'Frankfurt Solar Grid (EU)' },
+                { label: 'Sicherheit', value: 'Kostenloses Wildcard-SSL' },
+                { label: 'CO₂-Fußabdruck', value: '100% Erneuerbare Energie' },
               ]}
               onConfirm={handleConfirmCreate}
               onCancel={handleCancelFlow}
@@ -450,7 +450,7 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
         {/* Componente dinámico de Estado de Carga / Creación */}
         {flowState.activeFlow === 'mail.create' && flowState.step === 'CREATING' && (
           <div className="ml-2 animate-fade-in max-w-sm">
-            <LoadingStatus message="Bjoern está aprovisionando tu buzón de correo 100% neutro en carbono..." />
+            <LoadingStatus message="Björn richtet Ihr 100% CO₂-neutrales Postfach ein..." />
           </div>
         )}
 
@@ -458,7 +458,7 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
         {isLoading && (
           <div className="flex items-end gap-3 justify-start">
             <div className="bg-[#FAF8F5] border border-[#EBECE5] px-4 py-3 rounded-2xl rounded-bl-none shadow-xs flex items-center gap-1.5">
-              <span className="text-xs text-[#746E68] font-medium mr-1">Björn está pensando</span>
+              <span className="text-xs text-[#746E68] font-medium mr-1">Björn denkt nach</span>
               <span className="w-1.5 h-1.5 bg-[#789340] rounded-full animate-bounce [animation-delay:-0.3s]"></span>
               <span className="w-1.5 h-1.5 bg-[#789340] rounded-full animate-bounce [animation-delay:-0.15s]"></span>
               <span className="w-1.5 h-1.5 bg-[#CF614A] rounded-full animate-bounce"></span>
@@ -481,8 +481,8 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
             onChange={(e) => setInput(e.target.value)}
             placeholder={
               flowState.step === 'ENTER_NAME'
-                ? 'Escribe el nombre deseado (ej. contacto)...'
-                : 'Escribe un mensaje o pregunta sobre hosting verde...'
+                ? 'Gewünschten Namen eingeben (z. B. kontakt)...'
+                : 'Schreiben Sie eine Nachricht oder Frage zum grünen Hosting...'
             }
             className="w-full pl-4 pr-10 py-3 bg-white border border-[#EBECE5] rounded-2xl text-sm text-[#34312D] placeholder-[#746E68]/70 focus:outline-none focus:ring-2 focus:ring-[#789340]/40 focus:border-[#789340] transition-all font-['Space_Grotesk',sans-serif]"
           />
@@ -493,7 +493,7 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
           disabled={!input.trim() || isLoading}
           className="px-5 py-3 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold rounded-lg text-sm flex items-center justify-center gap-2 shadow-md transition-all active:scale-95 cursor-pointer font-['Space_Grotesk',sans-serif]"
         >
-          <span>Enviar</span>
+          <span>Senden</span>
           <svg
             className="w-4 h-4 transform rotate-90"
             fill="none"
