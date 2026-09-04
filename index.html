@@ -224,10 +224,10 @@
       class="glass-floating ai-glow rounded-2xl sm:rounded-3xl shadow-apple-float flex-1 flex flex-col h-full overflow-hidden transition-all duration-300 border border-white/70 relative min-h-0">
 
       <!-- Cabecera Interior Minimalista del Chat -->
-      <div class="px-4 sm:px-8 py-3 sm:py-5 border-b border-white/40 flex items-center justify-between bg-white/25 backdrop-blur-md">
+      <div class="px-4 sm:px-8 py-3 sm:py-4 border-b border-white/40 flex flex-wrap items-center justify-between gap-2 bg-white/25 backdrop-blur-md">
         <div class="flex items-center space-x-2.5 sm:space-x-3">
           <div class="relative flex items-center">
-            <img src="./assets/panda-avatar.png" alt="Bjoern Panda" class="w-12 h-12 sm:w-16 sm:h-16 object-contain panda-avatar filter drop-shadow-md">
+            <img src="./assets/panda-avatar.png" alt="Bjoern Panda" class="w-10 h-10 sm:w-14 sm:h-14 object-contain panda-avatar filter drop-shadow-md">
             <span class="absolute bottom-0.5 right-0.5 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-emerald-400 border-2 border-white rounded-full"></span>
           </div>
           <div>
@@ -236,18 +236,29 @@
           </div>
         </div>
 
-        <button onclick="toggleDatacenterModal()"
-          class="text-[11px] sm:text-xs text-charcoal-muted hover:text-forest transition-colors flex items-center space-x-1 sm:space-x-1.5 font-normal">
-          <svg class="w-3.5 h-3.5 text-bamboo flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
-            </path>
-          </svg>
-          <span class="hidden sm:inline">Thermische Technologie</span>
-          <span class="inline sm:hidden">Info</span>
-        </button>
+        <div class="flex items-center gap-2">
+          <!-- Switcher de Perfil Cliente (Fase 3) -->
+          <button id="auth-toggle-btn" onclick="toggleAuthModeHtml()"
+            class="text-[11px] sm:text-xs px-3 py-1.5 rounded-xl font-medium transition-all shadow-xs cursor-pointer flex items-center gap-1.5 border bg-[#34312D] text-white border-forest/30 hover:bg-[#34312D]/90"
+            title="Klicken zum Umschalten zwischen Clienta Autenticada y Visitante">
+            <span id="auth-status-dot" class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span id="auth-toggle-text">👤 Clienta (Elena)</span>
+          </button>
+
+          <button onclick="toggleDatacenterModal()"
+            class="text-[11px] sm:text-xs text-charcoal-muted hover:text-forest transition-colors flex items-center space-x-1 sm:space-x-1.5 font-normal">
+            <svg class="w-3.5 h-3.5 text-bamboo flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+              </path>
+            </svg>
+            <span class="hidden sm:inline">Thermische Technologie</span>
+            <span class="inline sm:hidden">Info</span>
+          </button>
+        </div>
       </div>
+
 
       <!-- Stream de Mensajes con Gran Espaciado y Aire -->
       <div id="chat-stream" class="flex-1 overflow-y-auto px-4 sm:px-8 py-4 sm:py-8 space-y-4 sm:space-y-8 custom-scrollbar">
@@ -418,6 +429,8 @@
     const chatInput = document.getElementById('chat-input');
     const modal = document.getElementById('datacenter-modal');
 
+    let isUserLoggedIn = true;
+
     // Estado del flujo conversacional local ('mail.create')
     let mailFlowState = {
       activeFlow: null, // 'mail.create'
@@ -426,25 +439,314 @@
       selectedDomain: ''
     };
 
-    // Efecto Typewriter para el mensaje de bienvenida
     document.addEventListener('DOMContentLoaded', () => {
-      const welcomeEl = document.getElementById('welcome-text');
-      if (welcomeEl) {
-        const fullText = "Wir entwickeln nachhaltige Hochleistungs-Webinfrastruktur, angetrieben von 100% erneuerbarer Energie und optimiert durch Mistral AI.";
-        let index = 0;
-        welcomeEl.textContent = '';
-
-        function typeNextChar() {
-          if (index < fullText.length) {
-            welcomeEl.textContent += fullText.charAt(index);
-            index++;
-            setTimeout(typeNextChar, 20);
-          }
-        }
-
-        typeNextChar();
-      }
+      renderInitialStream();
     });
+
+    function toggleAuthModeHtml() {
+      isUserLoggedIn = !isUserLoggedIn;
+      const toggleText = document.getElementById('auth-toggle-text');
+      const toggleDot = document.getElementById('auth-status-dot');
+
+      if (isUserLoggedIn) {
+        if (toggleText) toggleText.textContent = '👤 Clienta (Elena)';
+        if (toggleDot) toggleDot.className = 'w-2 h-2 rounded-full bg-emerald-400 animate-pulse';
+      } else {
+        if (toggleText) toggleText.textContent = '🌐 Visitante';
+        if (toggleDot) toggleDot.className = 'w-2 h-2 rounded-full bg-amber-400';
+      }
+
+      mailFlowState = { activeFlow: null, step: 'IDLE', mailboxName: '', selectedDomain: '' };
+      renderInitialStream();
+    }
+
+    function renderInitialStream() {
+      if (!chatStream) return;
+
+      if (isUserLoggedIn) {
+        chatStream.innerHTML = `
+          <!-- Mensaje de Bienvenida a Clienta Autenticada (Fase 3) -->
+          <div class="flex items-start max-w-3xl animate-fade-in">
+            <div class="space-y-4 w-full">
+              <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs w-full">
+                <div class="text-[11px] font-semibold text-[#789340] mb-1.5 flex items-center gap-1.5">
+                  <span>Björn</span>
+                  <span class="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+                </div>
+                <p class="font-semibold text-forest text-base mb-1">Willkommen zurück, Frau Rostova! 🌿</p>
+                <p class="text-charcoal-muted font-normal text-xs sm:text-sm mb-3">
+                  Schön, Sie wiederzusehen. Hier ist die Echtzeit-Übersicht Ihrer aktiven grünen Dienste bei Bamboo Bjørn:
+                </p>
+
+                <!-- Tarjeta de Productos Activos (CustomerProductsCard) -->
+                <div class="p-4 sm:p-5 bg-white rounded-2xl border border-[#789340]/20 shadow-sm space-y-4 w-full text-[#34312D]">
+                  <div class="flex items-center justify-between border-b border-[#EBECE5] pb-3">
+                    <div class="flex items-center gap-2.5">
+                      <div class="w-9 h-9 rounded-full bg-[#789340]/15 text-[#789340] flex items-center justify-center font-bold text-xs border border-[#789340]/30 shadow-xs">
+                        ER
+                      </div>
+                      <div>
+                        <h4 class="font-semibold text-xs sm:text-sm text-[#34312D]">Elena Rostova</h4>
+                        <p class="text-[10px] text-[#746E68]">Green Design Studio • Active Öko-Kundin</p>
+                      </div>
+                    </div>
+                    <span class="text-[10px] bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2.5 py-1 rounded-full font-semibold flex items-center gap-1.5">
+                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                      Alle Systeme Aktiv
+                    </span>
+                  </div>
+
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <!-- Producto 1: Dominios -->
+                    <div class="p-3 bg-[#FAF8F5] rounded-xl border border-[#EBECE5] flex flex-col justify-between space-y-3">
+                      <div>
+                        <div class="flex items-center justify-between">
+                          <span class="text-[11px] font-semibold text-[#746E68] flex items-center gap-1">🌐 Active Domain</span>
+                          <span class="text-[9px] bg-emerald-100/80 text-emerald-800 px-1.5 py-0.5 rounded font-medium border border-emerald-200">SSL OK</span>
+                        </div>
+                        <p class="text-xs sm:text-sm font-semibold text-[#34312D] mt-1.5 truncate">bamboo-bjoern.eu</p>
+                        <p class="text-[10px] text-[#746E68] mt-0.5">Frankfurt Solar Node 1</p>
+                      </div>
+                      <button onclick="showDnsCardHtml()" class="w-full min-h-[36px] px-3 py-2 bg-white hover:bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:text-white hover:border-transparent border border-[#789340]/30 text-[#34312D] text-[11px] font-semibold rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1 active:scale-[0.98]">
+                        <span>⚙️ Configurar DNS</span>
+                      </button>
+                    </div>
+
+                    <!-- Producto 2: Buzones -->
+                    <div class="p-3 bg-[#FAF8F5] rounded-xl border border-[#EBECE5] flex flex-col justify-between space-y-3">
+                      <div>
+                        <div class="flex items-center justify-between">
+                          <span class="text-[11px] font-semibold text-[#746E68] flex items-center gap-1">✉️ Öko-Postfächer</span>
+                          <span class="text-[9px] bg-emerald-100/80 text-emerald-800 px-1.5 py-0.5 rounded font-medium border border-emerald-200">2 / 5</span>
+                        </div>
+                        <p class="text-xs sm:text-sm font-semibold text-[#34312D] mt-1.5 truncate">hallo@ / kontakt@</p>
+                        <div class="mt-2 space-y-1">
+                          <div class="flex justify-between text-[10px] text-[#746E68]">
+                            <span>Speicherplatz</span>
+                            <span class="font-medium text-[#789340]">2,4 GB / 10 GB</span>
+                          </div>
+                          <div class="w-full h-2 bg-[#EBECE5] rounded-full overflow-hidden">
+                            <div class="h-full bg-[linear-gradient(90deg,#789340,#5e7432)] rounded-full w-[24%] transition-all"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <button onclick="startMailCreateFlow()" class="w-full min-h-[36px] px-3 py-2 bg-white hover:bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:text-white hover:border-transparent border border-[#789340]/30 text-[#34312D] text-[11px] font-semibold rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1 active:scale-[0.98]">
+                        <span>➕ Añadir Nuevo Buzón</span>
+                      </button>
+                    </div>
+
+                    <!-- Producto 3: Servidor KVM -->
+                    <div class="p-3 bg-[#FAF8F5] rounded-xl border border-[#EBECE5] flex flex-col justify-between space-y-3">
+                      <div>
+                        <div class="flex items-center justify-between">
+                          <span class="text-[11px] font-semibold text-[#746E68] flex items-center gap-1">⚡ KI-KVM Server</span>
+                          <span class="text-[9px] bg-emerald-100/80 text-emerald-800 px-1.5 py-0.5 rounded font-medium border border-emerald-200">PUE 1.12</span>
+                        </div>
+                        <p class="text-xs sm:text-sm font-semibold text-[#34312D] mt-1.5 truncate">Frankfurt Solar Node</p>
+                        <p class="text-[10px] text-[#746E68] mt-0.5">2 vCPU • 4GB RAM • 100% Öko</p>
+                      </div>
+                      <button onclick="showTelemetryCardHtml()" class="w-full min-h-[36px] px-3 py-2 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-[11px] font-semibold rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1 shadow-xs active:scale-[0.98]">
+                        <span>📊 Ver Telemetría</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Sugerencias Rápidas de Texto -->
+              <div class="flex flex-wrap gap-2.5 pt-1" id="suggestion-chips">
+                <button onclick="showDnsCardHtml()" class="btn-bamboo-chip">
+                  <svg class="w-3.5 h-3.5 text-[#789340]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/></svg>
+                  <span>Configurar DNS</span>
+                </button>
+                <button onclick="showTelemetryCardHtml()" class="btn-bamboo-chip">
+                  <svg class="w-3.5 h-3.5 text-[#789340]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                  <span>Telemetría de Servidor</span>
+                </button>
+                <button onclick="startMailCreateFlow()" class="btn-bamboo-chip">
+                  <svg class="w-3.5 h-3.5 text-[#789340]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                  <span>Añadir Nuevo Buzón</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      } else {
+        chatStream.innerHTML = `
+          <!-- Mensaje de Bienvenida Modo Visitante -->
+          <div class="flex items-start max-w-2xl animate-fade-in">
+            <div class="space-y-4">
+              <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs">
+                <p class="font-semibold text-forest text-base mb-2">Willkommen bei Bamboo Björn!</p>
+                <p id="welcome-text" class="text-charcoal-muted font-normal mb-4 min-h-[40px]">
+                  Wir entwickeln nachhaltige Hochleistungs-Webinfrastruktur, angetrieben von 100% erneuerbarer Energie und optimiert durch Mistral AI.
+                </p>
+                <div class="relative rounded-2xl overflow-hidden border border-white/50 my-4 cursor-pointer group shadow-xs" onclick="toggleDatacenterModal()">
+                  <img src="./assets/datacenter_node.jpg" alt="Server mit Flüssigkeitskühlung" class="w-full h-40 object-cover transition-transform duration-700 group-hover:scale-105">
+                  <div class="absolute inset-0 bg-gradient-to-t from-forest/70 via-transparent to-transparent p-4 flex items-end justify-between text-white">
+                    <div class="flex items-center space-x-2">
+                      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                      <span class="text-xs font-normal tracking-wide">Öko-Server • Flüssigkeitskühlung</span>
+                    </div>
+                    <span class="text-[11px] bg-white/20 backdrop-blur-md px-2.5 py-0.5 rounded-full font-normal">38°C CPU</span>
+                  </div>
+                </div>
+                <p class="text-charcoal-muted font-normal">Wie kann ich Ihnen heute helfen?</p>
+              </div>
+              <div class="flex flex-wrap gap-2.5 pt-1" id="suggestion-chips">
+                <button onclick="sendQuickPrompt('Welches grüne Hosting brauche ich?')" class="btn-bamboo-chip">
+                  <span>Welches grüne Hosting brauche ich?</span>
+                </button>
+                <button onclick="sendQuickPrompt('Serverstatus und Leistung anzeigen')" class="btn-bamboo-chip">
+                  <span>Serverstatus anzeigen</span>
+                </button>
+                <button onclick="sendQuickPrompt('Professionelles Öko-E-Mail-Konto erstellen')" class="btn-bamboo-chip">
+                  <span>E-Mail-Konto erstellen</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    function showDnsCardHtml() {
+      addUserMessage('⚙️ Configurar DNS para bamboo-bjoern.eu');
+      showTypingIndicator();
+      setTimeout(() => {
+        removeTypingIndicator();
+        const dnsCardHtml = `
+          <div class="flex items-start max-w-2xl animate-fade-in">
+            <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-xs sm:text-sm leading-relaxed shadow-xs space-y-3 w-full max-w-xl">
+              <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
+                <span>Björn</span>
+                <span class="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+              </div>
+              <p class="font-semibold text-forest text-xs sm:text-sm">Hier ist die aktuelle DNS-Konfiguration für Ihre aktive Domain <span class="font-mono text-[#789340]">bamboo-bjoern.eu</span>:</p>
+
+              <div class="p-4 bg-white rounded-2xl border border-[#EBECE5] shadow-xs space-y-3 w-full text-[#34312D]">
+                <div class="flex items-center justify-between border-b border-[#EBECE5] pb-2">
+                  <h4 class="font-semibold text-xs text-[#34312D] flex items-center gap-1.5">⚙️ DNS-Zone: bamboo-bjoern.eu</h4>
+                  <span class="text-[10px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-medium border border-emerald-200">DNSSEC Aktiv</span>
+                </div>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left border-collapse text-[11px]">
+                    <thead>
+                      <tr class="border-b border-[#EBECE5] text-[#746E68]">
+                        <th class="py-1.5 px-2 font-semibold">Typ</th>
+                        <th class="py-1.5 px-2 font-semibold">Host</th>
+                        <th class="py-1.5 px-2 font-semibold">Wert</th>
+                        <th class="py-1.5 px-2 font-semibold text-right">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-[#EBECE5]/60 font-mono text-[10px]">
+                      <tr class="hover:bg-[#FAF8F5]">
+                        <td class="py-2 px-2 font-bold text-[#789340]">A</td>
+                        <td class="py-2 px-2 text-[#34312D]">@</td>
+                        <td class="py-2 px-2 text-[#746E68]">185.199.108.153</td>
+                        <td class="py-2 px-2 text-right"><span class="bg-emerald-50 text-emerald-800 px-1.5 py-0.5 rounded text-[9px] font-sans font-medium border border-emerald-200">Aktiv</span></td>
+                      </tr>
+                      <tr class="hover:bg-[#FAF8F5]">
+                        <td class="py-2 px-2 font-bold text-[#789340]">AAAA</td>
+                        <td class="py-2 px-2 text-[#34312D]">@</td>
+                        <td class="py-2 px-2 text-[#746E68]">2a04:4e42::644</td>
+                        <td class="py-2 px-2 text-right"><span class="bg-emerald-50 text-emerald-800 px-1.5 py-0.5 rounded text-[9px] font-sans font-medium border border-emerald-200">Aktiv</span></td>
+                      </tr>
+                      <tr class="hover:bg-[#FAF8F5]">
+                        <td class="py-2 px-2 font-bold text-[#789340]">MX</td>
+                        <td class="py-2 px-2 text-[#34312D]">@</td>
+                        <td class="py-2 px-2 text-[#746E68]">10 mail.bamboo-bjoern.eu</td>
+                        <td class="py-2 px-2 text-right"><span class="bg-emerald-50 text-emerald-800 px-1.5 py-0.5 rounded text-[9px] font-sans font-medium border border-emerald-200">Aktiv</span></td>
+                      </tr>
+                      <tr class="hover:bg-[#FAF8F5]">
+                        <td class="py-2 px-2 font-bold text-[#789340]">TXT</td>
+                        <td class="py-2 px-2 text-[#34312D]">_spf</td>
+                        <td class="py-2 px-2 text-[#746E68]">v=spf1 include:_spf.bamboo-bjoern.eu ~all</td>
+                        <td class="py-2 px-2 text-right"><span class="bg-emerald-50 text-emerald-800 px-1.5 py-0.5 rounded text-[9px] font-sans font-medium border border-emerald-200">Aktiv</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-[#EBECE5]">
+                  <button onclick="startMailCreateFlow()" class="flex-1 sm:flex-none min-h-[36px] px-3 py-1.5 bg-[#789340] hover:bg-[#688235] text-white text-xs font-semibold rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1">
+                    <span>➕ Neue Record</span>
+                  </button>
+                  <button class="flex-1 sm:flex-none min-h-[36px] px-3 py-1.5 bg-emerald-50 border border-emerald-200 text-emerald-800 hover:bg-emerald-100 text-xs font-medium rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1">
+                    <span>🔄 DNS-Prüfung</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        chatStream.insertAdjacentHTML('beforeend', dnsCardHtml);
+        chatStream.scrollTop = chatStream.scrollHeight;
+      }, 500);
+    }
+
+    function showTelemetryCardHtml() {
+      addUserMessage('📊 Ver Telemetría de Servidor KVM');
+      showTypingIndicator();
+      setTimeout(() => {
+        removeTypingIndicator();
+        const telemetryCardHtml = `
+          <div class="flex items-start max-w-2xl animate-fade-in">
+            <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-xs sm:text-sm leading-relaxed shadow-xs space-y-3 w-full max-w-xl">
+              <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
+                <span>Björn</span>
+                <span class="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+              </div>
+              <p class="font-semibold text-forest text-xs sm:text-sm">Hier sind die Live-Messwerte Ihres ökologischen Servers im Rechenzentrum Frankfurt Solar Node:</p>
+
+              <div class="p-4 bg-white rounded-2xl border border-[#EBECE5] shadow-xs space-y-3 w-full text-[#34312D]">
+                <div class="flex items-center justify-between border-b border-[#EBECE5] pb-2">
+                  <div>
+                    <h4 class="font-semibold text-xs sm:text-sm text-[#34312D]">📊 Live-Telemetrie: Frankfurt Solar Node</h4>
+                    <p class="text-[10px] text-[#746E68]">Echtzeit-Daten vom Grünen Rechenzentrum Frankfurt</p>
+                  </div>
+                  <span class="text-[10px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-medium border border-emerald-200 flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span> Live
+                  </span>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
+                  <div class="p-2.5 bg-[#FAF8F5] rounded-xl border border-[#EBECE5] text-center">
+                    <span class="text-[10px] text-[#746E68] block">CPU Auslastung</span>
+                    <span class="text-sm font-bold text-[#789340] block">14.2%</span>
+                    <span class="text-[9px] text-emerald-700 block">Optimiert (Mistral)</span>
+                  </div>
+                  <div class="p-2.5 bg-[#FAF8F5] rounded-xl border border-[#EBECE5] text-center">
+                    <span class="text-[10px] text-[#746E68] block">PUE Effizienz</span>
+                    <span class="text-sm font-bold text-[#34312D] block">1.12</span>
+                    <span class="text-[9px] text-[#746E68] block">Ziel: 1.10</span>
+                  </div>
+                  <div class="p-2.5 bg-[#FAF8F5] rounded-xl border border-[#EBECE5] text-center">
+                    <span class="text-[10px] text-[#746E68] block">Solar Direct Feed</span>
+                    <span class="text-sm font-bold text-emerald-700 block">100%</span>
+                    <span class="text-[9px] text-emerald-700 block">Solar & Wind</span>
+                  </div>
+                  <div class="p-2.5 bg-[#FAF8F5] rounded-xl border border-[#EBECE5] text-center">
+                    <span class="text-[10px] text-[#746E68] block">Flüssigkühlung</span>
+                    <span class="text-sm font-bold text-[#CF614A] block">28.4 °C</span>
+                    <span class="text-[9px] text-[#746E68] block">Abwärmenutzung</span>
+                  </div>
+                </div>
+                <div class="p-3 bg-emerald-50/70 border border-emerald-200/80 rounded-xl flex items-center justify-between text-xs text-emerald-900">
+                  <div class="flex items-center gap-2">
+                    <span class="text-base">🌱</span>
+                    <div>
+                      <span class="font-semibold block">Klimaneutraler Betrieb</span>
+                      <span class="text-[10px] text-emerald-800">Eingespartes CO₂: 412 kg/Jahr (-95% vs. Standard-Server)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        chatStream.insertAdjacentHTML('beforeend', telemetryCardHtml);
+        chatStream.scrollTop = chatStream.scrollHeight;
+      }, 500);
+    }
 
     function toggleDatacenterModal() {
       modal.classList.toggle('hidden');
@@ -465,7 +767,6 @@
 
       chatStream.scrollTop = chatStream.scrollHeight;
 
-      // Si estamos dentro del flujo 'mail.create' esperando el nombre del buzón
       if (mailFlowState.activeFlow === 'mail.create' && mailFlowState.step === 'ENTER_NAME') {
         processMailNameInput(text);
         return;
@@ -475,10 +776,22 @@
 
       setTimeout(() => {
         removeTypingIndicator();
+        
+        const lower = text.toLowerCase();
+        if (lower.includes('dns') || lower.includes('domain') || lower.includes('registro')) {
+          showDnsCardHtml();
+          return;
+        }
+        if (lower.includes('telemetria') || lower.includes('telemetrie') || lower.includes('pue') || lower.includes('cpu')) {
+          showTelemetryCardHtml();
+          return;
+        }
+
         generateAiResponse(text);
         chatStream.scrollTop = chatStream.scrollHeight;
       }, 800);
     }
+
 
     function addUserMessage(messageText) {
       const userBubbleHtml = `

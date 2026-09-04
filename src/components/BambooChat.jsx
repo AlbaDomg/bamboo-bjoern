@@ -14,7 +14,7 @@ export function ChatMessage({ role, content, children, avatarPath = '/panda-avat
       }`}
     >
       <div
-        className={`max-w-[92%] sm:max-w-[80%] px-4 sm:px-5 py-3 sm:py-3.5 rounded-2xl text-xs sm:text-sm leading-relaxed shadow-xs ${
+        className={`max-w-[92%] sm:max-w-[85%] px-4 sm:px-5 py-3 sm:py-3.5 rounded-2xl text-xs sm:text-sm leading-relaxed shadow-xs ${
           isAssistant
             ? 'bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] rounded-bl-none'
             : 'bg-white border border-[#EBECE5] text-[#34312D] font-normal rounded-br-none shadow-xs'
@@ -23,12 +23,12 @@ export function ChatMessage({ role, content, children, avatarPath = '/panda-avat
         {isAssistant && (
           <div className="text-[11px] font-semibold text-[#789340] mb-1.5 flex items-center gap-1.5">
             <span>Björn</span>
-            <span class="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+            <span className="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
           </div>
         )}
 
-        <div className="whitespace-pre-wrap">{content}</div>
-        {children && <div className="mt-3">{children}</div>}
+        {content && <div className="whitespace-pre-wrap">{content}</div>}
+        {children && <div className="mt-2">{children}</div>}
       </div>
     </div>
   );
@@ -140,66 +140,249 @@ export function InlineTextInput({ placeholder = "Gewünschter Name (z. B. kontak
   );
 }
 
-// 6. Componente VisitorInfoCard (Tarjeta Informativa para Interesadas / Modo Visitante)
-export function VisitorInfoCard({ title, subtitle, metrics = [], content, ctaText, onCtaClick }) {
+// 6. Componente CustomerProductsCard (Fase 3: Listado de productos activos de la clienta en tiempo real)
+export function CustomerProductsCard({ onConfigureDns, onAddMailbox, onViewTelemetry }) {
   return (
-    <div className="mt-3 p-4 sm:p-5 bg-white rounded-2xl border border-[#EBECE5] shadow-xs space-y-3 w-full max-w-full">
+    <div className="mt-3 p-4 sm:p-5 bg-white rounded-2xl border border-[#789340]/20 shadow-sm space-y-4 w-full text-[#34312D] font-['Space_Grotesk',sans-serif]">
+      {/* Header Cliente Autenticada */}
+      <div className="flex items-center justify-between border-b border-[#EBECE5] pb-3">
+        <div className="flex items-center gap-2.5">
+          <div className="w-9 h-9 rounded-full bg-[#789340]/15 text-[#789340] flex items-center justify-center font-bold text-xs border border-[#789340]/30 shadow-xs">
+            ER
+          </div>
+          <div>
+            <h4 className="font-semibold text-xs sm:text-sm text-[#34312D]">Elena Rostova</h4>
+            <p className="text-[10px] text-[#746E68]">Green Design Studio • Active Öko-Kundin</p>
+          </div>
+        </div>
+        <span className="text-[10px] bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2.5 py-1 rounded-full font-semibold flex items-center gap-1.5 shadow-2xs">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          Alle Systeme Aktiv
+        </span>
+      </div>
+
+      {/* Grid de Productos Activos */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+        {/* Producto 1: Dominios */}
+        <div className="p-3 bg.FAF8F5 bg-[#FAF8F5] rounded-xl border border-[#EBECE5] flex flex-col justify-between space-y-3 hover:border-[#789340]/40 transition-all shadow-2xs">
+          <div>
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] font-semibold text-[#746E68] flex items-center gap-1">
+                <span>🌐</span> Active Domain
+              </span>
+              <span className="text-[9px] bg-emerald-100/80 text-emerald-800 px-1.5 py-0.5 rounded font-medium border border-emerald-200">
+                SSL OK
+              </span>
+            </div>
+            <p className="text-xs sm:text-sm font-semibold text-[#34312D] mt-1.5 truncate">bamboo-bjoern.eu</p>
+            <p className="text-[10px] text-[#746E68] mt-0.5">Frankfurt Solar Node 1</p>
+          </div>
+          <button
+            onClick={onConfigureDns}
+            className="w-full min-h-[36px] px-3 py-2 bg-white hover:bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:text-white hover:border-transparent border border-[#789340]/30 text-[#34312D] text-[11px] font-semibold rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1 active:scale-[0.98]"
+          >
+            <span>⚙️ Configurar DNS</span>
+          </button>
+        </div>
+
+        {/* Producto 2: Buzones de Correo con Almacenamiento Verde */}
+        <div className="p-3 bg-[#FAF8F5] rounded-xl border border-[#EBECE5] flex flex-col justify-between space-y-3 hover:border-[#789340]/40 transition-all shadow-2xs">
+          <div>
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] font-semibold text-[#746E68] flex items-center gap-1">
+                <span>✉️</span> Öko-Postfächer
+              </span>
+              <span className="text-[9px] bg-emerald-100/80 text-emerald-800 px-1.5 py-0.5 rounded font-medium border border-emerald-200">
+                2 / 5
+              </span>
+            </div>
+            <p className="text-xs sm:text-sm font-semibold text-[#34312D] mt-1.5 truncate">hallo@ / kontakt@</p>
+
+            {/* Indicator de Almacenamiento */}
+            <div className="mt-2 space-y-1">
+              <div className="flex justify-between text-[10px] text-[#746E68]">
+                <span>Speicherplatz</span>
+                <span className="font-medium text-[#789340]">2,4 GB / 10 GB</span>
+              </div>
+              <div className="w-full h-2 bg-[#EBECE5] rounded-full overflow-hidden">
+                <div className="h-full bg-[linear-gradient(90deg,#789340,#5e7432)] rounded-full w-[24%] transition-all"></div>
+              </div>
+            </div>
+          </div>
+          <button
+            onClick={onAddMailbox}
+            className="w-full min-h-[36px] px-3 py-2 bg-white hover:bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:text-white hover:border-transparent border border-[#789340]/30 text-[#34312D] text-[11px] font-semibold rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1 active:scale-[0.98]"
+          >
+            <span>➕ Añadir Nuevo Buzón</span>
+          </button>
+        </div>
+
+        {/* Producto 3: Servidor KVM Ecológico */}
+        <div className="p-3 bg-[#FAF8F5] rounded-xl border border-[#EBECE5] flex flex-col justify-between space-y-3 hover:border-[#789340]/40 transition-all shadow-2xs">
+          <div>
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] font-semibold text-[#746E68] flex items-center gap-1">
+                <span>⚡</span> KI-KVM Server
+              </span>
+              <span className="text-[9px] bg-emerald-100/80 text-emerald-800 px-1.5 py-0.5 rounded font-medium border border-emerald-200">
+                PUE 1.12
+              </span>
+            </div>
+            <p className="text-xs sm:text-sm font-semibold text-[#34312D] mt-1.5 truncate">Frankfurt Solar Node</p>
+            <p className="text-[10px] text-[#746E68] mt-0.5">2 vCPU • 4GB RAM • 100% Öko</p>
+          </div>
+          <button
+            onClick={onViewTelemetry}
+            className="w-full min-h-[36px] px-3 py-2 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-[11px] font-semibold rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1 shadow-xs active:scale-[0.98]"
+          >
+            <span>📊 Ver Telemetría</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// 7. Componente DnsConfigCard (Configuración y gestión rápida de DNS)
+export function DnsConfigCard({ domain = 'bamboo-bjoern.eu' }) {
+  const records = [
+    { type: 'A', host: '@', value: '185.199.108.153', ttl: '3600', status: 'Aktiv' },
+    { type: 'AAAA', host: '@', value: '2a04:4e42::644', ttl: '3600', status: 'Aktiv' },
+    { type: 'MX', host: '@', value: '10 mail.bamboo-bjoern.eu', ttl: '3600', status: 'Aktiv' },
+    { type: 'TXT', host: '_spf', value: 'v=spf1 include:_spf.bamboo-bjoern.eu ~all', ttl: '3600', status: 'Aktiv' },
+  ];
+
+  return (
+    <div className="mt-3 p-4 sm:p-5 bg-white rounded-2xl border border-[#EBECE5] shadow-xs space-y-3 w-full text-[#34312D]">
+      <div className="flex items-center justify-between border-b border-[#EBECE5] pb-2">
+        <h4 className="font-semibold text-xs sm:text-sm text-[#34312D] flex items-center gap-1.5">
+          <span>⚙️</span> DNS-Zone: <span className="text-[#789340] font-mono">{domain}</span>
+        </h4>
+        <span className="text-[10px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-medium border border-emerald-200">
+          DNSSEC Aktiv
+        </span>
+      </div>
+
+      <div className="overflow-x-auto">
+        <table className="w-full text-left border-collapse text-[11px]">
+          <thead>
+            <tr className="border-b border-[#EBECE5] text-[#746E68]">
+              <th className="py-1.5 px-2 font-semibold">Typ</th>
+              <th className="py-1.5 px-2 font-semibold">Host</th>
+              <th className="py-1.5 px-2 font-semibold">Wert</th>
+              <th className="py-1.5 px-2 font-semibold text-right">Status</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-[#EBECE5]/60 font-mono text-[10px]">
+            {records.map((r, idx) => (
+              <tr key={idx} className="hover:bg-[#FAF8F5]">
+                <td className="py-2 px-2 font-bold text-[#789340]">{r.type}</td>
+                <td className="py-2 px-2 text-[#34312D]">{r.host}</td>
+                <td className="py-2 px-2 text-[#746E68] truncate max-w-[140px] sm:max-w-[200px]">{r.value}</td>
+                <td className="py-2 px-2 text-right">
+                  <span className="bg-emerald-50 text-emerald-800 px-1.5 py-0.5 rounded text-[9px] font-sans font-medium border border-emerald-200">
+                    {r.status}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-2 border-t border-[#EBECE5]">
+        <div className="flex flex-wrap items-center gap-2 w-full">
+          <button className="flex-1 sm:flex-none min-h-[36px] px-3 py-1.5 bg-[#789340] hover:bg-[#688235] text-white text-xs font-semibold rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1">
+            <span>➕ Neue DNS-Record</span>
+          </button>
+          <button className="flex-1 sm:flex-none min-h-[36px] px-3 py-1.5 bg-emerald-50 border border-emerald-200 text-emerald-800 hover:bg-emerald-100 text-xs font-medium rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1">
+            <span>🔄 DNS-Prüfung</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// 8. Componente TelemetryCard (Métricas y estado en tiempo real del servidor ecológico)
+export function TelemetryCard({ serverName = 'Frankfurt Solar Node (KVM-01)' }) {
+  return (
+    <div className="mt-3 p-4 sm:p-5 bg-white rounded-2xl border border-[#EBECE5] shadow-xs space-y-3 w-full text-[#34312D]">
       <div className="flex items-center justify-between border-b border-[#EBECE5] pb-2">
         <div>
           <h4 className="font-semibold text-xs sm:text-sm text-[#34312D] flex items-center gap-1.5">
-            <span>🌿</span> {title}
+            <span>📊</span> Live-Telemetrie: {serverName}
           </h4>
-          {subtitle && <p className="text-[10px] sm:text-[11px] text-[#746E68] mt-0.5">{subtitle}</p>}
+          <p className="text-[10px] text-[#746E68]">Echtzeit-Daten vom Grünen Rechenzentrum Frankfurt</p>
+        </div>
+        <span className="text-[10px] bg-emerald-50 text-emerald-700 px-2.5 py-0.5 rounded-full font-medium border border-emerald-200 flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+          Live
+        </span>
+      </div>
+
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
+        <div className="p-2.5 bg-[#FAF8F5] rounded-xl border border-[#EBECE5] text-center">
+          <span className="text-[10px] text-[#746E68] block">CPU Auslastung</span>
+          <span className="text-sm sm:text-base font-bold text-[#789340] mt-0.5 block">14.2%</span>
+          <span className="text-[9px] text-emerald-700 block mt-0.5">Optimiert (Mistral)</span>
+        </div>
+
+        <div className="p-2.5 bg-[#FAF8F5] rounded-xl border border-[#EBECE5] text-center">
+          <span className="text-[10px] text-[#746E68] block">PUE Effizienz</span>
+          <span className="text-sm sm:text-base font-bold text-[#34312D] mt-0.5 block">1.12</span>
+          <span className="text-[9px] text-[#746E68] block mt-0.5">Ziel: 1.10</span>
+        </div>
+
+        <div className="p-2.5 bg-[#FAF8F5] rounded-xl border border-[#EBECE5] text-center">
+          <span className="text-[10px] text-[#746E68] block">Solar Direct Feed</span>
+          <span className="text-sm sm:text-base font-bold text-emerald-700 mt-0.5 block">100%</span>
+          <span className="text-[9px] text-emerald-700 block mt-0.5">Solar & Wind</span>
+        </div>
+
+        <div className="p-2.5 bg-[#FAF8F5] rounded-xl border border-[#EBECE5] text-center">
+          <span className="text-[10px] text-[#746E68] block">Flüssigkühlung</span>
+          <span className="text-sm sm:text-base font-bold text-[#CF614A] mt-0.5 block">28.4 °C</span>
+          <span className="text-[9px] text-[#746E68] block mt-0.5">Abwärmenutzung</span>
         </div>
       </div>
 
-      <p className="text-xs sm:text-sm text-[#34312D] leading-relaxed">{content}</p>
-
-      {metrics.length > 0 && (
-        <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-1">
-          {metrics.map((m, idx) => (
-            <span
-              key={idx}
-              className="inline-flex items-center gap-1 text-[10px] sm:text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2.5 py-1 rounded-lg"
-            >
-              <span>{m.icon || '🌱'}</span>
-              <span>{m.label}: {m.value}</span>
-            </span>
-          ))}
+      <div className="p-3 bg-emerald-50/70 border border-emerald-200/80 rounded-xl flex items-center justify-between text-xs text-emerald-900">
+        <div className="flex items-center gap-2">
+          <span className="text-base">🌱</span>
+          <div>
+            <span className="font-semibold block">Klimaneutraler Betrieb</span>
+            <span className="text-[10px] text-emerald-800">Eingespartes CO₂: 412 kg/Jahr (-95% vs. Standard-Server)</span>
+          </div>
         </div>
-      )}
-
-      {ctaText && (
-        <div className="pt-2 border-t border-[#EBECE5] flex justify-end">
-          <button
-            onClick={onCtaClick}
-            className="w-full sm:w-auto min-h-[44px] px-4 py-2.5 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-lg shadow-sm transition-all flex items-center justify-center gap-1.5 cursor-pointer font-['Space_Grotesk',sans-serif] active:scale-[0.98]"
-          >
-            <span>{ctaText}</span>
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </button>
-        </div>
-      )}
+      </div>
     </div>
   );
 }
 
 /**
  * Componente Principal de Chat Inteligente (BambooBjørn)
- * Soporta la simulación de flujos modulares (Conversation API)
+ * Soporta la simulación de flujos modulares (Conversation API) y Contexto de Clienta (Fase 3)
  */
 export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
+  // Estado de autenticación simulada (Clienta por defecto vs Visitante)
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+
+  const initialClientMessage = {
+    id: 'welcome-client',
+    role: 'assistant',
+    content: 'Willkommen zurück, Frau Rostova! 🌿 Schön, Sie wiederzusehen. Hier ist die Echtzeit-Übersicht Ihrer aktiven grünen Dienste bei Bamboo Bjørn:',
+    isCustomerCard: true,
+  };
+
+  const initialVisitorMessage = {
+    id: 'welcome-visitor',
+    role: 'assistant',
+    content: 'Hallo! 🌿 Ich bin Björn, Ihr grüner Assistent bei Bamboo Björn. Ich bin hier, um Ihnen unser 100% ökologisches Grünes KI-Hosting vorzustellen. Wie kann ich Ihnen heute helfen?',
+  };
+
   // Estado general de mensajes
-  const [messages, setMessages] = useState([
-    {
-      id: 'welcome-panda',
-      role: 'assistant',
-      content:
-        'Hallo! 🌿 Ich bin Björn, Ihr grüner Assistent bei Bamboo Björn. Ich bin hier, um Ihnen unser 100% ökologisches Grünes KI-Hosting vorzustellen. Wie kann ich Ihnen heute helfen?',
-    },
-  ]);
+  const [messages, setMessages] = useState([initialClientMessage]);
 
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -218,7 +401,50 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isLoading, flowState]);
 
-  // Manejador del envío de texto del usuario (Respuestas para Visitantes / Interessentin)
+  // Cambiar entre el modo Clienta Autenticada y Modo Visitante
+  const toggleAuthMode = () => {
+    const nextMode = !isLoggedIn;
+    setIsLoggedIn(nextMode);
+    setFlowState({ activeFlow: null, step: 'IDLE', mailboxName: '', selectedDomain: '' });
+    if (nextMode) {
+      setMessages([initialClientMessage]);
+    } else {
+      setMessages([initialVisitorMessage]);
+    }
+  };
+
+  // Acciones Rápidas (CTAs) de la tarjeta de productos
+  const handleShowDns = () => {
+    setMessages((prev) => [
+      ...prev,
+      { id: Date.now().toString(), role: 'user', content: '⚙️ Configurar DNS para bamboo-bjoern.eu' },
+      {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: 'Hier ist die aktuelle DNS-Konfiguration für Ihre aktive Domain bamboo-bjoern.eu:',
+        customComponent: 'dns_config',
+      },
+    ]);
+  };
+
+  const handleShowTelemetry = () => {
+    setMessages((prev) => [
+      ...prev,
+      { id: Date.now().toString(), role: 'user', content: '📊 Ver Telemetría de Servidor KVM' },
+      {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: 'Hier sind die Live-Messwerte Ihres ökologischen Servers im Rechenzentrum Frankfurt Solar Node:',
+        customComponent: 'telemetry',
+      },
+    ]);
+  };
+
+  const handleAddMailboxAction = () => {
+    startMailCreateFlow();
+  };
+
+  // Manejador del envío de texto del usuario
   const handleSend = (e) => {
     e?.preventDefault();
     const text = input.trim();
@@ -236,7 +462,17 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
 
     const lower = text.toLowerCase();
 
-    if (lower.includes('email') || lower.includes('e-mail') || lower.includes('konto') || lower.includes('correo') || lower.includes('erstellen')) {
+    if (lower.includes('dns') || lower.includes('domain') || lower.includes('registro')) {
+      handleShowDns();
+      return;
+    }
+
+    if (lower.includes('telemetria') || lower.includes('telemetrie') || lower.includes('pue') || lower.includes('cpu')) {
+      handleShowTelemetry();
+      return;
+    }
+
+    if (lower.includes('email') || lower.includes('e-mail') || lower.includes('konto') || lower.includes('correo') || lower.includes('erstellen') || lower.includes('buzon') || lower.includes('postfach')) {
       startMailCreateFlow();
       return;
     }
@@ -251,12 +487,12 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
         responseContent = `BambooBjørn ist Europas führende Plattform für hochleistungsfähiges Grünes KI-Hosting. Unsere Mission ist die Dekarbonisierung der Cloud durch 100% erneuerbare Energie, Flüssigkeitskühlung und klimaneutrale KI-Server.`;
       } else if (lower.includes('nachhaltig') || lower.includes('energie') || lower.includes('co2') || lower.includes('kohlenstoff') || lower.includes('oeko')) {
         responseContent = `Unsere Architektur reduziert die Kohlenstoffemissionen im Vergleich zu herkömmlichen Rechenzentren um bis zu 95%. Unser gesamter Strom stammt direkt aus zertifizierten Solar- und Windquellen in Europa.`;
-      } else if (lower.includes('server') || lower.includes('pue') || lower.includes('knoten') || lower.includes('frankfurt')) {
+      } else if (lower.includes('server') || lower.includes('knoten') || lower.includes('frankfurt')) {
         responseContent = `Unsere Hauptknoten befinden sich strategisch in Frankfurt (Deutschland). Sie arbeiten mit einer ultraniedrigen Power Usage Effectiveness (PUE) von 1,12 und bieten direkte Abwärmenutzung für die umliegende Gemeinde.`;
       } else if (lower.includes('ai') || lower.includes('ki') || lower.includes('intelligenz') || lower.includes('mistral')) {
         responseContent = `Das Grüne KI-Hosting von BambooBjørn nutzt optimierte Modelle wie Mistral AI auf beschleunigter, CO₂-neutraler Hardware, um die Energieeffizienz pro Anfrage zu maximieren.`;
       } else {
-        responseContent = `BambooBjørn kombiniert ökologische Infrastruktur und Spitzentechnologie für 100% CO₂-neutrale Web- und E-Mail-Dienste. Möchten Sie Ihr erstes Öko-Postfach erstellen oder unsere Kennzahlen kennenlernen?`;
+        responseContent = `BambooBjørn kombiniert ökologische Infrastruktur und Spitzentechnologie für 100% CO₂-neutrale Web- und E-Mail-Dienste. Möchten Sie ein neues Öko-Postfach erstellen, Ihre DNS konfigurieren oder die Server-Telemetrie prüfen?`;
       }
 
       setMessages((prev) => [
@@ -349,7 +585,7 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto h-[600px] flex flex-col rounded-3xl overflow-hidden shadow-2xl bg-[#FAF8F5]/90 backdrop-blur-xl border border-white/80 font-['Space_Grotesk',sans-serif] text-[#34312D] transition-all">
+    <div className="w-full max-w-3xl mx-auto h-[660px] flex flex-col rounded-3xl overflow-hidden shadow-2xl bg-[#FAF8F5]/95 backdrop-blur-xl border border-white/80 font-['Space_Grotesk',sans-serif] text-[#34312D] transition-all">
       {/* Inline styles para animación del avatar */}
       <style>{`
         @keyframes pandaFloat {
@@ -365,14 +601,14 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
         }
       `}</style>
 
-      {/* Cabecera del Chat */}
-      <header className="px-6 py-4 bg-[#34312D] text-white flex items-center justify-between border-b border-[#47433E]">
+      {/* Cabecera del Chat con Switcher de Perfil (Fase 3) */}
+      <header className="px-5 py-3.5 bg-[#34312D] text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-[#47433E]">
         <div className="flex items-center gap-3">
           <div className="relative flex items-center">
             <img
               src={avatarPath}
               alt="Panda Avatar"
-              className="w-16 h-16 object-contain panda-avatar-animated filter drop-shadow-md"
+              className="w-14 h-14 object-contain panda-avatar-animated filter drop-shadow-md"
               onError={(e) => {
                 e.currentTarget.src = 'https://api.dicebear.com/7.x/bottts/svg?seed=BambooPanda';
               }}
@@ -383,13 +619,28 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
             <h3 className="font-semibold text-base leading-tight tracking-wide flex items-center gap-1.5 font-['Space_Grotesk',sans-serif]">
               Björn AI <span className="text-[10px] bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] text-white px-2.5 py-0.5 rounded-full font-medium">Grünes Hosting</span>
             </h3>
-            <p className="text-xs text-[#919D97]">Ökologischer Assistent • Bamboo Björn</p>
+            <p className="text-xs text-[#919D97]">Ökologischer Assistent • Bamboo Bjørn</p>
           </div>
         </div>
-        <div className="flex items-center gap-2">
+
+        {/* Switcher de Estado / Contexto de Usuario */}
+        <div className="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-end">
+          <button
+            onClick={toggleAuthMode}
+            className={`text-xs px-3 py-1.5 rounded-xl font-medium transition-all shadow-xs cursor-pointer flex items-center gap-1.5 border ${
+              isLoggedIn
+                ? 'bg-emerald-950/80 border-emerald-500/40 text-emerald-200 hover:bg-emerald-900'
+                : 'bg-stone-800/80 border-stone-600/40 text-stone-300 hover:bg-stone-700'
+            }`}
+            title="Klicken zum Umschalten zwischen Clienta Autenticada y Visitante"
+          >
+            <span className={`w-2 h-2 rounded-full ${isLoggedIn ? 'bg-emerald-400 animate-pulse' : 'bg-amber-400'}`}></span>
+            <span>{isLoggedIn ? '👤 Clienta (Elena)' : '🌐 Visitante'}</span>
+          </button>
+
           <button
             onClick={startMailCreateFlow}
-            className="text-xs px-3 py-1.5 rounded-lg bg-[#789340] hover:bg-[#688235] text-white font-medium transition-all shadow-xs cursor-pointer flex items-center gap-1.5"
+            className="text-xs px-3 py-1.5 rounded-xl bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white font-medium transition-all shadow-xs cursor-pointer flex items-center gap-1.5"
           >
             <span>+ Neues Öko-E-Mail</span>
           </button>
@@ -397,12 +648,22 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
       </header>
 
       {/* Área de Mensajes Stream */}
-      <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-gradient-to-b from-[#FAF8F5] to-[#F8F8F8] custom-scrollbar">
+      <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 bg-gradient-to-b from-[#FAF8F5] to-[#F8F8F8] custom-scrollbar">
         {messages.map((msg) => (
-          <ChatMessage key={msg.id} role={msg.role} content={msg.content} avatarPath={avatarPath} />
+          <ChatMessage key={msg.id} role={msg.role} content={msg.content} avatarPath={avatarPath}>
+            {msg.isCustomerCard && (
+              <CustomerProductsCard
+                onConfigureDns={handleShowDns}
+                onAddMailbox={handleAddMailboxAction}
+                onViewTelemetry={handleShowTelemetry}
+              />
+            )}
+            {msg.customComponent === 'dns_config' && <DnsConfigCard domain="bamboo-bjoern.eu" />}
+            {msg.customComponent === 'telemetry' && <TelemetryCard serverName="Frankfurt Solar Node (KVM-01)" />}
+          </ChatMessage>
         ))}
 
-        {/* Componente dinámico de Input de Texto en Línea (Incrustado en el flujo) */}
+        {/* Componente dinámico de Input de Texto en Línea */}
         {flowState.activeFlow === 'mail.create' && flowState.step === 'ENTER_NAME' && !isLoading && (
           <div className="ml-2 max-w-md animate-fade-in">
             <div className="p-4 bg-white rounded-2xl border border-[#EBECE5] shadow-xs">
@@ -469,7 +730,7 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Formulario de Entrada de Texto Libre (TextInput siempre accesible) */}
+      {/* Formulario de Entrada de Texto Libre */}
       <form
         onSubmit={handleSend}
         className="p-4 bg-[#FAF8F5]/90 border-t border-[#EBECE5] flex items-center gap-2"
@@ -512,3 +773,4 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
     </div>
   );
 }
+
