@@ -181,7 +181,7 @@ export function CustomerProductsCard({ onConfigureDns, onAddMailbox, onViewTelem
             onClick={onConfigureDns}
             className="w-full min-h-[36px] px-3 py-2 bg-white hover:bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:text-white hover:border-transparent border border-[#789340]/30 text-[#34312D] text-[11px] font-semibold rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1 active:scale-[0.98]"
           >
-            <span>⚙️ Configurar DNS</span>
+            <span>⚙️ DNS konfigurieren</span>
           </button>
         </div>
 
@@ -213,7 +213,7 @@ export function CustomerProductsCard({ onConfigureDns, onAddMailbox, onViewTelem
             onClick={onAddMailbox}
             className="w-full min-h-[36px] px-3 py-2 bg-white hover:bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:text-white hover:border-transparent border border-[#789340]/30 text-[#34312D] text-[11px] font-semibold rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1 active:scale-[0.98]"
           >
-            <span>➕ Añadir Nuevo Buzón</span>
+            <span>➕ Neues Postfach hinzufügen</span>
           </button>
         </div>
 
@@ -235,7 +235,7 @@ export function CustomerProductsCard({ onConfigureDns, onAddMailbox, onViewTelem
             onClick={onViewTelemetry}
             className="w-full min-h-[36px] px-3 py-2 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-[11px] font-semibold rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1 shadow-xs active:scale-[0.98]"
           >
-            <span>📊 Ver Telemetría</span>
+            <span>📊 Telemetrie anzeigen</span>
           </button>
         </div>
       </div>
@@ -417,7 +417,7 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
   const handleShowDns = () => {
     setMessages((prev) => [
       ...prev,
-      { id: Date.now().toString(), role: 'user', content: '⚙️ Configurar DNS para bamboo-bjoern.eu' },
+      { id: Date.now().toString(), role: 'user', content: '⚙️ DNS für bamboo-bjoern.eu konfigurieren' },
       {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
@@ -430,7 +430,7 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
   const handleShowTelemetry = () => {
     setMessages((prev) => [
       ...prev,
-      { id: Date.now().toString(), role: 'user', content: '📊 Ver Telemetría de Servidor KVM' },
+      { id: Date.now().toString(), role: 'user', content: '📊 KVM-Server-Telemetrie anzeigen' },
       {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
@@ -632,10 +632,10 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
                 ? 'bg-emerald-950/80 border-emerald-500/40 text-emerald-200 hover:bg-emerald-900'
                 : 'bg-stone-800/80 border-stone-600/40 text-stone-300 hover:bg-stone-700'
             }`}
-            title="Klicken zum Umschalten zwischen Clienta Autenticada y Visitante"
+            title="Klicken, um zwischen Kundin und Besucher umzuschalten"
           >
             <span className={`w-2 h-2 rounded-full ${isLoggedIn ? 'bg-emerald-400 animate-pulse' : 'bg-amber-400'}`}></span>
-            <span>{isLoggedIn ? '👤 Clienta (Alba)' : '🌐 Visitante'}</span>
+            <span>{isLoggedIn ? '👤 Kundin (Alba)' : '🌐 Besucher'}</span>
           </button>
 
           <button

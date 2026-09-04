@@ -240,9 +240,9 @@
           <!-- Switcher de Perfil Cliente (Fase 3) -->
           <button id="auth-toggle-btn" onclick="toggleAuthModeHtml()"
             class="text-[11px] sm:text-xs px-3 py-1.5 rounded-xl font-medium transition-all shadow-xs cursor-pointer flex items-center gap-1.5 border bg-[#34312D] text-white border-forest/30 hover:bg-[#34312D]/90"
-            title="Klicken zum Umschalten zwischen Clienta Autenticada y Visitante">
+            title="Klicken, um zwischen Kundin und Besucher umzuschalten">
             <span id="auth-status-dot" class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span id="auth-toggle-text">👤 Clienta (Alba)</span>
+            <span id="auth-toggle-text">👤 Kundin (Alba)</span>
           </button>
 
           <button onclick="toggleDatacenterModal()"
@@ -449,10 +449,10 @@
       const toggleDot = document.getElementById('auth-status-dot');
 
       if (isUserLoggedIn) {
-        if (toggleText) toggleText.textContent = '👤 Clienta (Alba)';
+        if (toggleText) toggleText.textContent = '👤 Kundin (Alba)';
         if (toggleDot) toggleDot.className = 'w-2 h-2 rounded-full bg-emerald-400 animate-pulse';
       } else {
-        if (toggleText) toggleText.textContent = '🌐 Visitante';
+        if (toggleText) toggleText.textContent = '🌐 Besucher';
         if (toggleDot) toggleDot.className = 'w-2 h-2 rounded-full bg-amber-400';
       }
 
@@ -508,7 +508,7 @@
                         <p class="text-[10px] text-[#746E68] mt-0.5">Frankfurt Solar Node 1</p>
                       </div>
                       <button onclick="showDnsCardHtml()" class="w-full min-h-[36px] px-3 py-2 bg-white hover:bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:text-white hover:border-transparent border border-[#789340]/30 text-[#34312D] text-[11px] font-semibold rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1 active:scale-[0.98]">
-                        <span>⚙️ Configurar DNS</span>
+                        <span>⚙️ DNS konfigurieren</span>
                       </button>
                     </div>
 
@@ -531,7 +531,7 @@
                         </div>
                       </div>
                       <button onclick="startMailCreateFlow()" class="w-full min-h-[36px] px-3 py-2 bg-white hover:bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:text-white hover:border-transparent border border-[#789340]/30 text-[#34312D] text-[11px] font-semibold rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1 active:scale-[0.98]">
-                        <span>➕ Añadir Nuevo Buzón</span>
+                        <span>➕ Neues Postfach hinzufügen</span>
                       </button>
                     </div>
 
@@ -546,7 +546,7 @@
                         <p class="text-[10px] text-[#746E68] mt-0.5">2 vCPU • 4GB RAM • 100% Öko</p>
                       </div>
                       <button onclick="showTelemetryCardHtml()" class="w-full min-h-[36px] px-3 py-2 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-[11px] font-semibold rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1 shadow-xs active:scale-[0.98]">
-                        <span>📊 Ver Telemetría</span>
+                        <span>📊 Telemetrie anzeigen</span>
                       </button>
                     </div>
                   </div>
@@ -557,15 +557,15 @@
               <div class="flex flex-wrap gap-2.5 pt-1" id="suggestion-chips">
                 <button onclick="showDnsCardHtml()" class="btn-bamboo-chip">
                   <svg class="w-3.5 h-3.5 text-[#789340]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/></svg>
-                  <span>Configurar DNS</span>
+                  <span>DNS konfigurieren</span>
                 </button>
                 <button onclick="showTelemetryCardHtml()" class="btn-bamboo-chip">
                   <svg class="w-3.5 h-3.5 text-[#789340]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-                  <span>Telemetría de Servidor</span>
+                  <span>Server-Telemetrie</span>
                 </button>
                 <button onclick="startMailCreateFlow()" class="btn-bamboo-chip">
                   <svg class="w-3.5 h-3.5 text-[#789340]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                  <span>Añadir Nuevo Buzón</span>
+                  <span>Neues Postfach hinzufügen</span>
                 </button>
               </div>
             </div>
@@ -611,7 +611,7 @@
     }
 
     function showDnsCardHtml() {
-      addUserMessage('⚙️ Configurar DNS para bamboo-bjoern.eu');
+      addUserMessage('⚙️ DNS für bamboo-bjoern.eu konfigurieren');
       showTypingIndicator();
       setTimeout(() => {
         removeTypingIndicator();
@@ -685,7 +685,7 @@
     }
 
     function showTelemetryCardHtml() {
-      addUserMessage('📊 Ver Telemetría de Servidor KVM');
+      addUserMessage('📊 KVM-Server-Telemetrie anzeigen');
       showTypingIndicator();
       setTimeout(() => {
         removeTypingIndicator();
