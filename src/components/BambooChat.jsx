@@ -9,12 +9,12 @@ export function ChatMessage({ role, content, children, avatarPath = '/panda-avat
   const isAssistant = role === 'assistant';
   return (
     <div
-      className={`flex items-end gap-3 transition-all animate-fade-in ${
+      className={`flex items-end gap-2.5 sm:gap-3 transition-all animate-fade-in ${
         isAssistant ? 'justify-start' : 'justify-end'
       }`}
     >
       <div
-        className={`max-w-[85%] sm:max-w-[80%] px-5 py-3.5 rounded-2xl text-sm leading-relaxed shadow-xs ${
+        className={`max-w-[92%] sm:max-w-[80%] px-4 sm:px-5 py-3 sm:py-3.5 rounded-2xl text-xs sm:text-sm leading-relaxed shadow-xs ${
           isAssistant
             ? 'bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] rounded-bl-none'
             : 'bg-white border border-[#EBECE5] text-[#34312D] font-normal rounded-br-none shadow-xs'
@@ -23,7 +23,7 @@ export function ChatMessage({ role, content, children, avatarPath = '/panda-avat
         {isAssistant && (
           <div className="text-[11px] font-semibold text-[#789340] mb-1.5 flex items-center gap-1.5">
             <span>Björn</span>
-            <span className="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+            <span class="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
           </div>
         )}
 
@@ -37,14 +37,14 @@ export function ChatMessage({ role, content, children, avatarPath = '/panda-avat
 // 2. Componente OptionButtons (Botones de selección de dominio / opción múltiple)
 export function OptionButtons({ options, onSelect }) {
   return (
-    <div className="flex flex-wrap gap-2.5 pt-1">
+    <div className="flex flex-col sm:flex-row flex-wrap gap-2.5 pt-1 w-full">
       {options.map((option, idx) => (
         <button
           key={idx}
           onClick={() => onSelect(option)}
-          className="px-4 py-2.5 bg-white hover:bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:border-transparent hover:text-white border border-[#789340]/30 text-[#34312D] rounded-xl text-xs font-semibold flex items-center gap-2 shadow-xs transition-all cursor-pointer group"
+          className="w-full sm:w-auto min-h-[44px] px-4 py-3 bg-white hover:bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:border-transparent hover:text-white border border-[#789340]/30 text-[#34312D] rounded-xl text-xs font-semibold flex items-center justify-center sm:justify-start gap-2 shadow-xs transition-all cursor-pointer group active:scale-[0.98]"
         >
-          <span className="w-2 h-2 rounded-full bg-[#789340] group-hover:bg-white transition-colors"></span>
+          <span className="w-2 h-2 rounded-full bg-[#789340] group-hover:bg-white transition-colors flex-shrink-0"></span>
           <span>{option.label || option}</span>
         </button>
       ))}
@@ -55,9 +55,9 @@ export function OptionButtons({ options, onSelect }) {
 // 3. Componente ConfirmationCard (Tarjeta de resumen con botones de acción [Crear] / [Cancelar])
 export function ConfirmationCard({ title, details, onConfirm, onCancel }) {
   return (
-    <div className="mt-3 p-4 bg-white rounded-2xl border border-[#EBECE5] shadow-xs space-y-3">
+    <div className="mt-3 p-4 sm:p-5 bg-white rounded-2xl border border-[#EBECE5] shadow-xs space-y-3 w-full max-w-full">
       <div className="flex items-center justify-between border-b border-[#EBECE5] pb-2">
-        <h4 className="font-semibold text-sm text-[#34312D] flex items-center gap-1.5">
+        <h4 className="font-semibold text-xs sm:text-sm text-[#34312D] flex items-center gap-1.5">
           <span className="text-emerald-500">🍃</span> {title}
         </h4>
         <span className="text-[10px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-medium border border-emerald-200">
@@ -67,17 +67,17 @@ export function ConfirmationCard({ title, details, onConfirm, onCancel }) {
 
       <div className="space-y-1.5 text-xs text-[#746E68]">
         {details.map((item, idx) => (
-          <div key={idx} className="flex justify-between items-center">
-            <span className="font-normal">{item.label}:</span>
-            <span className="font-semibold text-[#34312D]">{item.value}</span>
+          <div key={idx} className="flex justify-between items-center gap-2">
+            <span className="font-normal flex-shrink-0">{item.label}:</span>
+            <span className="font-semibold text-[#34312D] truncate text-right">{item.value}</span>
           </div>
         ))}
       </div>
 
-      <div className="flex items-center gap-2 pt-2 border-t border-[#EBECE5]">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-2 border-t border-[#EBECE5]">
         <button
           onClick={onConfirm}
-          className="flex-1 px-4 py-2.5 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-lg shadow-sm transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+          className="flex-1 min-h-[44px] px-4 py-3 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-lg shadow-sm transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-[0.98]"
         >
           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
@@ -86,7 +86,7 @@ export function ConfirmationCard({ title, details, onConfirm, onCancel }) {
         </button>
         <button
           onClick={onCancel}
-          className="px-3.5 py-2.5 bg-gray-100 hover:bg-gray-200 text-[#746E68] text-xs font-medium rounded-lg transition-all cursor-pointer"
+          className="min-h-[44px] px-4 py-3 bg-gray-100 hover:bg-gray-200 text-[#746E68] text-xs font-medium rounded-lg transition-all cursor-pointer text-center"
         >
           Cancelar
         </button>
@@ -99,7 +99,7 @@ export function ConfirmationCard({ title, details, onConfirm, onCancel }) {
 export function LoadingStatus({ message }) {
   return (
     <div className="flex items-center gap-2.5 p-3.5 bg-emerald-50/80 border border-emerald-200/60 text-emerald-800 rounded-2xl text-xs font-medium animate-pulse">
-      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping flex-shrink-0"></span>
       <span>{message}</span>
     </div>
   );
@@ -117,19 +117,19 @@ export function InlineTextInput({ placeholder = "Escribe aquí...", buttonText =
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mt-3 flex items-center gap-2">
+    <form onSubmit={handleSubmit} className="mt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
       <input
         type="text"
         value={val}
         onChange={(e) => setVal(e.target.value)}
         placeholder={placeholder}
-        className="flex-1 px-4 py-2.5 bg-white border border-[#EBECE5] focus:border-[#789340] rounded-xl text-xs text-[#34312D] placeholder-[#746E68]/60 focus:outline-none focus:ring-2 focus:ring-[#789340]/20 transition-all font-['Space_Grotesk',sans-serif]"
+        className="w-full sm:flex-1 min-h-[44px] px-4 py-2.5 bg-white border border-[#EBECE5] focus:border-[#789340] rounded-xl text-xs sm:text-sm text-[#34312D] placeholder-[#746E68]/60 focus:outline-none focus:ring-2 focus:ring-[#789340]/20 transition-all font-['Space_Grotesk',sans-serif]"
         autoFocus
       />
       <button
         type="submit"
         disabled={!val.trim()}
-        className="px-4 py-2.5 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 disabled:opacity-40 disabled:cursor-not-allowed text-white text-xs font-semibold rounded-lg shadow-sm transition-all cursor-pointer flex items-center gap-1 font-['Space_Grotesk',sans-serif]"
+        className="w-full sm:w-auto min-h-[44px] px-5 py-2.5 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 disabled:opacity-40 disabled:cursor-not-allowed text-white text-xs font-semibold rounded-lg shadow-sm transition-all cursor-pointer flex items-center justify-center gap-1 font-['Space_Grotesk',sans-serif] active:scale-[0.98]"
       >
         <span>{buttonText}</span>
         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -143,24 +143,24 @@ export function InlineTextInput({ placeholder = "Escribe aquí...", buttonText =
 // 6. Componente VisitorInfoCard (Tarjeta Informativa para Interesadas / Modo Visitante)
 export function VisitorInfoCard({ title, subtitle, metrics = [], content, ctaText, onCtaClick }) {
   return (
-    <div className="mt-3 p-5 bg-white rounded-2xl border border-[#EBECE5] shadow-xs space-y-3">
+    <div className="mt-3 p-4 sm:p-5 bg-white rounded-2xl border border-[#EBECE5] shadow-xs space-y-3 w-full max-w-full">
       <div className="flex items-center justify-between border-b border-[#EBECE5] pb-2">
         <div>
-          <h4 className="font-semibold text-sm text-[#34312D] flex items-center gap-1.5">
+          <h4 className="font-semibold text-xs sm:text-sm text-[#34312D] flex items-center gap-1.5">
             <span>🌿</span> {title}
           </h4>
-          {subtitle && <p className="text-[11px] text-[#746E68] mt-0.5">{subtitle}</p>}
+          {subtitle && <p className="text-[10px] sm:text-[11px] text-[#746E68] mt-0.5">{subtitle}</p>}
         </div>
       </div>
 
-      <p className="text-xs text-[#34312D] leading-relaxed">{content}</p>
+      <p className="text-xs sm:text-sm text-[#34312D] leading-relaxed">{content}</p>
 
       {metrics.length > 0 && (
-        <div className="flex flex-wrap gap-2 pt-1">
+        <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-1">
           {metrics.map((m, idx) => (
             <span
               key={idx}
-              className="inline-flex items-center gap-1 text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2.5 py-1 rounded-lg"
+              className="inline-flex items-center gap-1 text-[10px] sm:text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2.5 py-1 rounded-lg"
             >
               <span>{m.icon || '🌱'}</span>
               <span>{m.label}: {m.value}</span>
@@ -173,7 +173,7 @@ export function VisitorInfoCard({ title, subtitle, metrics = [], content, ctaTex
         <div className="pt-2 border-t border-[#EBECE5] flex justify-end">
           <button
             onClick={onCtaClick}
-            className="px-4 py-2.5 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-lg shadow-sm transition-all flex items-center gap-1.5 cursor-pointer font-['Space_Grotesk',sans-serif]"
+            className="w-full sm:w-auto min-h-[44px] px-4 py-2.5 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-lg shadow-sm transition-all flex items-center justify-center gap-1.5 cursor-pointer font-['Space_Grotesk',sans-serif] active:scale-[0.98]"
           >
             <span>{ctaText}</span>
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -281,7 +281,7 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
         {
           id: Date.now().toString(),
           role: 'assistant',
-          content: '¡Excelente! Vamos a crear tu nuevo buzón de correo 100% ecológico 📧. ¿Para qué dominio deseas crear la nueva dirección de correo?',
+          content: '¡Excelente! Vamos a crear tu nuevo buzón de correo 100% ecológico. ¿Para qué dominio deseas crear la nueva dirección de correo?',
         },
       ]);
     }, 600);
