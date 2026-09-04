@@ -1,44 +1,364 @@
-import React, { useEffect, useRef } from 'react';
-import { useChat } from '@ai-sdk/react';
+import React, { useState, useEffect, useRef } from 'react';
 
 /**
- * Componente de Chat Inteligente para Bamboo Bjoern
- * Basado en Tailwind CSS y @ai-sdk/react
+ * Componentes Semánticos Reutilizables (Conversation API)
  */
-export default function BambooChat({ avatarPath = '/panda-avatar.png', apiPath = '/api/chat' }) {
-  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
-    api: apiPath,
-    initialMessages: [
-      {
-        id: 'welcome-panda',
-        role: 'assistant',
-        content:
-          '¡Hola! 🌿 Soy Björn, tu asistente verde en Bamboo Bjoern. Estoy aquí para ayudarte a elegir el mejor hosting 100% ecológico y de alto rendimiento para tus proyectos. ¿En qué puedo orientarte hoy?',
-      },
-    ],
+
+// 1. Componente Message (Burbujas para la Usuaria "DU" y Bjoern AI)
+export function ChatMessage({ role, content, children, avatarPath = '/panda-avatar.png' }) {
+  const isAssistant = role === 'assistant';
+  return (
+    <div
+      className={`flex items-end gap-3 transition-all animate-fade-in ${
+        isAssistant ? 'justify-start' : 'justify-end'
+      }`}
+    >
+      <div
+        className={`max-w-[85%] sm:max-w-[80%] px-5 py-3.5 rounded-2xl text-sm leading-relaxed shadow-xs ${
+          isAssistant
+            ? 'bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] rounded-bl-none'
+            : 'bg-white border border-[#EBECE5] text-[#34312D] font-normal rounded-br-none shadow-xs'
+        }`}
+      >
+        {isAssistant && (
+          <div className="text-[11px] font-semibold text-[#789340] mb-1.5 flex items-center gap-1.5">
+            <span>Björn</span>
+            <span className="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+          </div>
+        )}
+
+        <div className="whitespace-pre-wrap">{content}</div>
+        {children && <div className="mt-3">{children}</div>}
+      </div>
+    </div>
+  );
+}
+
+// 2. Componente OptionButtons (Botones de selección de dominio / opción múltiple)
+export function OptionButtons({ options, onSelect }) {
+  return (
+    <div className="flex flex-wrap gap-2.5 pt-1">
+      {options.map((option, idx) => (
+        <button
+          key={idx}
+          onClick={() => onSelect(option)}
+          className="px-4 py-2.5 bg-white hover:bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:border-transparent hover:text-white border border-[#789340]/30 text-[#34312D] rounded-xl text-xs font-semibold flex items-center gap-2 shadow-xs transition-all cursor-pointer group"
+        >
+          <span className="w-2 h-2 rounded-full bg-[#789340] group-hover:bg-white transition-colors"></span>
+          <span>{option.label || option}</span>
+        </button>
+      ))}
+    </div>
+  );
+}
+
+// 3. Componente ConfirmationCard (Tarjeta de resumen con botones de acción [Crear] / [Cancelar])
+export function ConfirmationCard({ title, details, onConfirm, onCancel }) {
+  return (
+    <div className="mt-3 p-4 bg-white rounded-2xl border border-[#EBECE5] shadow-xs space-y-3">
+      <div className="flex items-center justify-between border-b border-[#EBECE5] pb-2">
+        <h4 className="font-semibold text-sm text-[#34312D] flex items-center gap-1.5">
+          <span className="text-emerald-500">🍃</span> {title}
+        </h4>
+        <span className="text-[10px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-medium border border-emerald-200">
+          -95% CO₂
+        </span>
+      </div>
+
+      <div className="space-y-1.5 text-xs text-[#746E68]">
+        {details.map((item, idx) => (
+          <div key={idx} className="flex justify-between items-center">
+            <span className="font-normal">{item.label}:</span>
+            <span className="font-semibold text-[#34312D]">{item.value}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="flex items-center gap-2 pt-2 border-t border-[#EBECE5]">
+        <button
+          onClick={onConfirm}
+          className="flex-1 px-4 py-2.5 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-lg shadow-sm transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+        >
+          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+          </svg>
+          <span>Crear Buzón Eco</span>
+        </button>
+        <button
+          onClick={onCancel}
+          className="px-3.5 py-2.5 bg-gray-100 hover:bg-gray-200 text-[#746E68] text-xs font-medium rounded-lg transition-all cursor-pointer"
+        >
+          Cancelar
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// 4. Componente LoadingStatus (Estado intermedio animado)
+export function LoadingStatus({ message }) {
+  return (
+    <div className="flex items-center gap-2.5 p-3.5 bg-emerald-50/80 border border-emerald-200/60 text-emerald-800 rounded-2xl text-xs font-medium animate-pulse">
+      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+      <span>{message}</span>
+    </div>
+  );
+}
+
+// 5. Componente InlineTextInput (Input incrustado directamente en la tarjeta de la pregunta)
+export function InlineTextInput({ placeholder = "Escribe aquí...", buttonText = "Continuar", onSubmit }) {
+  const [val, setVal] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!val.trim()) return;
+    onSubmit(val.trim());
+    setVal('');
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="mt-3 flex items-center gap-2">
+      <input
+        type="text"
+        value={val}
+        onChange={(e) => setVal(e.target.value)}
+        placeholder={placeholder}
+        className="flex-1 px-4 py-2.5 bg-white border border-[#EBECE5] focus:border-[#789340] rounded-xl text-xs text-[#34312D] placeholder-[#746E68]/60 focus:outline-none focus:ring-2 focus:ring-[#789340]/20 transition-all font-['Space_Grotesk',sans-serif]"
+        autoFocus
+      />
+      <button
+        type="submit"
+        disabled={!val.trim()}
+        className="px-4 py-2.5 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 disabled:opacity-40 disabled:cursor-not-allowed text-white text-xs font-semibold rounded-lg shadow-sm transition-all cursor-pointer flex items-center gap-1 font-['Space_Grotesk',sans-serif]"
+      >
+        <span>{buttonText}</span>
+        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </button>
+    </form>
+  );
+}
+
+// 6. Componente VisitorInfoCard (Tarjeta Informativa para Interesadas / Modo Visitante)
+export function VisitorInfoCard({ title, subtitle, metrics = [], content, ctaText, onCtaClick }) {
+  return (
+    <div className="mt-3 p-5 bg-white rounded-2xl border border-[#EBECE5] shadow-xs space-y-3">
+      <div className="flex items-center justify-between border-b border-[#EBECE5] pb-2">
+        <div>
+          <h4 className="font-semibold text-sm text-[#34312D] flex items-center gap-1.5">
+            <span>🌿</span> {title}
+          </h4>
+          {subtitle && <p className="text-[11px] text-[#746E68] mt-0.5">{subtitle}</p>}
+        </div>
+      </div>
+
+      <p className="text-xs text-[#34312D] leading-relaxed">{content}</p>
+
+      {metrics.length > 0 && (
+        <div className="flex flex-wrap gap-2 pt-1">
+          {metrics.map((m, idx) => (
+            <span
+              key={idx}
+              className="inline-flex items-center gap-1 text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2.5 py-1 rounded-lg"
+            >
+              <span>{m.icon || '🌱'}</span>
+              <span>{m.label}: {m.value}</span>
+            </span>
+          ))}
+        </div>
+      )}
+
+      {ctaText && (
+        <div className="pt-2 border-t border-[#EBECE5] flex justify-end">
+          <button
+            onClick={onCtaClick}
+            className="px-4 py-2.5 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-lg shadow-sm transition-all flex items-center gap-1.5 cursor-pointer font-['Space_Grotesk',sans-serif]"
+          >
+            <span>{ctaText}</span>
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/**
+ * Componente Principal de Chat Inteligente (BambooBjørn)
+ * Soporta la simulación de flujos modulares (Conversation API)
+ */
+export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
+  // Estado general de mensajes
+  const [messages, setMessages] = useState([
+    {
+      id: 'welcome-panda',
+      role: 'assistant',
+      content:
+        '¡Hola! 🌿 Soy Björn, tu asistente verde en Bamboo Bjoern. Estoy aquí para ayudarte a descubrir nuestro Green AI-Hosting 100% ecológico. ¿Qué te gustaría saber sobre nosotros?',
+    },
+  ]);
+
+  const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Estado del flujo conversacional MVP ('mail.create')
+  const [flowState, setFlowState] = useState({
+    activeFlow: null, // 'mail.create'
+    step: 'IDLE', // 'SELECT_DOMAIN' | 'ENTER_NAME' | 'CONFIRM' | 'CREATING' | 'SUCCESS'
+    mailboxName: '',
+    selectedDomain: '',
   });
 
   const messagesEndRef = useRef(null);
 
-  const scrollToBottom = () => {
+  useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages, isLoading, flowState]);
+
+  // Manejador del envío de texto del usuario (Respuestas para Visitantes / Interessentin)
+  const handleSend = (e) => {
+    e?.preventDefault();
+    const text = input.trim();
+    if (!text || isLoading) return;
+
+    const userMsg = { id: Date.now().toString(), role: 'user', content: text };
+    setMessages((prev) => [...prev, userMsg]);
+    setInput('');
+
+    // Si estamos esperando el nombre del buzón en el flujo mail.create
+    if (flowState.activeFlow === 'mail.create' && flowState.step === 'ENTER_NAME') {
+      processMailName(text);
+      return;
+    }
+
+    const lower = text.toLowerCase();
+
+    if (lower.includes('email') || lower.includes('correo') || lower.includes('buzon') || lower.includes('crear')) {
+      startMailCreateFlow();
+      return;
+    }
+
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+
+      let responseContent = '';
+      if (lower.includes('vision') || lower.includes('que es') || lower.includes(' bamboo') || lower.includes('quienes')) {
+        responseContent = `BambooBjørn es la primera plataforma de Green AI-Hosting de alta eficiencia en Europa. Nuestra visión es descarbonizar la infraestructura digital combinando energía 100% renovable, inteligencia artificial de última generación y refrigeración líquida de baja huella hídrica.`;
+      } else if (lower.includes('sostenib') || lower.includes('energia') || lower.includes('co2') || lower.includes('carbono') || lower.includes('ecolog')) {
+        responseContent = `Nuestra arquitectura reduce la huella de carbono hasta un -95% en comparación con los proveedores en la nube tradicionales. Toda nuestra energía proviene directamente de fuentes solares y eólicas certificadas en Europa.`;
+      } else if (lower.includes('server') || lower.includes('servidor') || lower.includes('pue') || lower.includes('nodo') || lower.includes('ubi')) {
+        responseContent = `Nuestros nodos principales están estratégicamente ubicados en Frankfurt (Alemania). Operan con una Power Usage Effectiveness (PUE) ultrabaja de 1.12 y cuentan con recuperación directa de calor térmico para la comunidad circundante.`;
+      } else if (lower.includes('ai') || lower.includes('ia') || lower.includes('inteligencia') || lower.includes('mistral')) {
+        responseContent = `El A.I.-Hosting de BambooBjørn utiliza modelos optimizados como Mistral AI ejecutados en hardware acelerado neutro en carbono, maximizando la eficiencia energética por cada consulta realizada.`;
+      } else {
+        responseContent = `BambooBjørn combina infraestructura ecológica y tecnología de punta para ofrecer hosting web y servicios de correo 100% libres de carbono. ¿Te gustaría crear tu primer buzón de correo eco-amigable o conocer nuestras métricas?`;
+      }
+
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: (Date.now() + 1).toString(),
+          role: 'assistant',
+          content: responseContent,
+        },
+      ]);
+    }, 700);
   };
 
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages, isLoading]);
+  // Iniciar flujo de creación de correo (Paso 1: Selección de Dominio)
+  const startMailCreateFlow = () => {
+    setFlowState({ activeFlow: 'mail.create', step: 'SELECT_DOMAIN', mailboxName: '', selectedDomain: '' });
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now().toString(),
+          role: 'assistant',
+          content: '¡Excelente! Vamos a crear tu nuevo buzón de correo 100% ecológico 📧. ¿Para qué dominio deseas crear la nueva dirección de correo?',
+        },
+      ]);
+    }, 600);
+  };
+
+  // Paso 1 -> 2: Seleccionar dominio y solicitar el nombre del buzón
+  const handleSelectDomain = (domain) => {
+    setFlowState((prev) => ({ ...prev, step: 'ENTER_NAME', selectedDomain: domain }));
+    setMessages((prev) => [
+      ...prev,
+      { id: Date.now().toString(), role: 'user', content: `Dominio seleccionado: ${domain}` },
+      {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: `Perfecto, crearemos tu correo en @${domain} 🌿. Introduce el nombre deseado para tu buzón (por ejemplo: albadege94, contacto, info):`,
+      },
+    ]);
+  };
+
+  // Paso 2 -> 3: Procesar nombre del buzón y mostrar tarjeta de confirmación final
+  const processMailName = (name) => {
+    const cleanName = name.split('@')[0].toLowerCase().trim();
+    setFlowState((prev) => ({ ...prev, step: 'CONFIRM', mailboxName: cleanName }));
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now().toString(),
+          role: 'assistant',
+          content: `¡Todo listo! Hemos preparado la ficha de configuración para tu nuevo correo ecológico. Por favor revisa los detalles antes de crear:`,
+        },
+      ]);
+    }, 600);
+  };
+
+  // Confirmar creación final (Simulación)
+  const handleConfirmCreate = () => {
+    setFlowState((prev) => ({ ...prev, step: 'CREATING' }));
+    
+    // Simular tiempo de aprovisionamiento en servidor (1.5s)
+    setTimeout(() => {
+      setFlowState({ activeFlow: null, step: 'IDLE', mailboxName: '', selectedDomain: '' });
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now().toString(),
+          role: 'assistant',
+          content: `🎉 ¡Buzón ecológico creado con éxito! Tu dirección ${flowState.mailboxName}@${flowState.selectedDomain} ya está activa en el nodo Frankfurt Solar Grid con SSL Gratuito y cero emisiones de carbono.`,
+        },
+      ]);
+    }, 1500);
+  };
+
+  // Cancelar flujo
+  const handleCancelFlow = () => {
+    setFlowState({ activeFlow: null, step: 'IDLE', mailboxName: '', selectedDomain: '' });
+    setMessages((prev) => [
+      ...prev,
+      { id: Date.now().toString(), role: 'user', content: 'Cancelar creación' },
+      { id: (Date.now() + 1).toString(), role: 'assistant', content: 'Entendido, hemos cancelado la operación. ¿En qué más puedo orientarte?' },
+    ]);
+  };
 
   return (
-    <div className="w-full max-w-2xl mx-auto h-[600px] flex flex-col rounded-3xl overflow-hidden shadow-2xl bg-white/70 backdrop-blur-xl border border-white/60 font-sans text-slate-800 transition-all">
-      {/* Inline styles para animación sutil del avatar de panda */}
+    <div className="w-full max-w-2xl mx-auto h-[600px] flex flex-col rounded-3xl overflow-hidden shadow-2xl bg-[#FAF8F5]/90 backdrop-blur-xl border border-white/80 font-['Space_Grotesk',sans-serif] text-[#34312D] transition-all">
+      {/* Inline styles para animación del avatar */}
       <style>{`
         @keyframes pandaFloat {
           0%, 100% { transform: translateY(0px) rotate(0deg); }
           50% { transform: translateY(-3px) rotate(1deg); }
         }
         @keyframes pulseGlow {
-          0%, 100% { box-shadow: 0 0 10px rgba(114, 152, 96, 0.2); }
-          50% { box-shadow: 0 0 18px rgba(114, 152, 96, 0.45); }
+          0%, 100% { box-shadow: 0 0 10px rgba(120, 147, 64, 0.25); }
+          50% { box-shadow: 0 0 18px rgba(207, 97, 74, 0.4); }
         }
         .panda-avatar-animated {
           animation: pandaFloat 3.5s ease-in-out infinite, pulseGlow 3s ease-in-out infinite;
@@ -46,7 +366,7 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png', apiPath =
       `}</style>
 
       {/* Cabecera del Chat */}
-      <header className="px-6 py-4 bg-[#142E23] text-white flex items-center justify-between border-b border-[#234E3C]">
+      <header className="px-6 py-4 bg-[#34312D] text-white flex items-center justify-between border-b border-[#47433E]">
         <div className="flex items-center gap-3">
           <div className="relative flex items-center">
             <img
@@ -57,66 +377,91 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png', apiPath =
                 e.currentTarget.src = 'https://api.dicebear.com/7.x/bottts/svg?seed=BambooPanda';
               }}
             />
-            <span className="absolute bottom-1 right-1 w-3 h-3 bg-emerald-400 border-2 border-[#142E23] rounded-full"></span>
+            <span className="absolute bottom-1 right-1 w-3 h-3 bg-emerald-400 border-2 border-[#34312D] rounded-full"></span>
           </div>
           <div>
-            <h3 className="font-semibold text-base leading-tight tracking-wide flex items-center gap-1.5">
-              Björn AI <span className="text-[10px] bg-[#729860]/30 text-[#E4EEE1] px-2 py-0.5 rounded-full border border-[#729860]/40 font-normal">Hosting Verde</span>
+            <h3 className="font-semibold text-base leading-tight tracking-wide flex items-center gap-1.5 font-['Space_Grotesk',sans-serif]">
+              Björn AI <span className="text-[10px] bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] text-white px-2.5 py-0.5 rounded-full font-medium">Hosting Verde</span>
             </h3>
             <p className="text-xs text-[#919D97]">Asistente Ecológico • Bamboo Bjoern</p>
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-xs px-2.5 py-1 rounded-full bg-[#234E3C] text-[#E4EEE1] border border-white/10 font-medium">
-            100% Renewable 🍃
-          </span>
+          <button
+            onClick={startMailCreateFlow}
+            className="text-xs px-3 py-1.5 rounded-lg bg-[#789340] hover:bg-[#688235] text-white font-medium transition-all shadow-xs cursor-pointer flex items-center gap-1.5"
+          >
+            <span>+ Nuevo Correo Eco</span>
+          </button>
         </div>
       </header>
 
-      {/* Área de Mensajes */}
-      <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-gradient-to-b from-[#F7F8F4]/80 to-white/60 custom-scrollbar">
-        {messages.map((message) => {
-          const isAssistant = message.role === 'assistant';
-          return (
-            <div
-              key={message.id}
-              className={`flex items-end gap-3 ${
-                isAssistant ? 'justify-start' : 'justify-end'
-              }`}
-            >
+      {/* Área de Mensajes Stream */}
+      <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-gradient-to-b from-[#FAF8F5] to-[#F8F8F8] custom-scrollbar">
+        {messages.map((msg) => (
+          <ChatMessage key={msg.id} role={msg.role} content={msg.content} avatarPath={avatarPath} />
+        ))}
 
-
-              {/* Burbuja del mensaje */}
-              <div
-                className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed shadow-sm transition-all ${
-                  isAssistant
-                    ? 'bg-white border border-[#EBECE5] text-[#1C201D] rounded-bl-none shadow-stone-200/50'
-                    : 'bg-[#142E23] text-white rounded-br-none shadow-[#142E23]/20'
-                }`}
-              >
-                {/* Etiqueta distintiva del Panda */}
-                {isAssistant && (
-                  <div className="text-[11px] font-semibold text-[#729860] mb-1 flex items-center gap-1">
-                    <span>Björn</span>
-                    <span className="text-[9px] text-[#69756F] font-normal">• Bamboo Assistant</span>
-                  </div>
-                )}
-
-                <div className="whitespace-pre-wrap">{message.content}</div>
-              </div>
+        {/* Componente dinámico de Input de Texto en Línea (Incrustado en el flujo) */}
+        {flowState.activeFlow === 'mail.create' && flowState.step === 'ENTER_NAME' && !isLoading && (
+          <div className="ml-2 max-w-md animate-fade-in">
+            <div className="p-4 bg-white rounded-2xl border border-[#EBECE5] shadow-xs">
+              <span className="text-xs text-[#746E68] font-normal">Introduce el nombre deseado para tu nuevo buzón de correo eco:</span>
+              <InlineTextInput
+                placeholder="Nombre deseado (ej. contacto, hola)..."
+                buttonText="Continuar"
+                onSubmit={(val) => {
+                  const userMsg = { id: Date.now().toString(), role: 'user', content: val };
+                  setMessages((prev) => [...prev, userMsg]);
+                  processMailName(val);
+                }}
+              />
             </div>
-          );
-        })}
+          </div>
+        )}
 
-        {/* Indicador visual de "pensando..." */}
+        {/* Componente dinámico de Selección de Dominio */}
+        {flowState.activeFlow === 'mail.create' && flowState.step === 'SELECT_DOMAIN' && !isLoading && (
+          <div className="ml-2 animate-fade-in">
+            <OptionButtons
+              options={['bamboo-bjoern.eu', 'bamboo-eco.de', 'zero-carbon-mail.com']}
+              onSelect={handleSelectDomain}
+            />
+          </div>
+        )}
+
+        {/* Componente dinámico de Tarjeta de Confirmación */}
+        {flowState.activeFlow === 'mail.create' && flowState.step === 'CONFIRM' && !isLoading && (
+          <div className="ml-2 animate-fade-in max-w-md">
+            <ConfirmationCard
+              title="Resumen del Buzón Ecológico"
+              details={[
+                { label: 'Dirección completa', value: `${flowState.mailboxName}@${flowState.selectedDomain}` },
+                { label: 'Servidor', value: 'Frankfurt Solar Grid (EU)' },
+                { label: 'Seguridad', value: 'SSL Wildcard Gratuito' },
+                { label: 'Cero Carbono', value: '100% Energía Renovable' },
+              ]}
+              onConfirm={handleConfirmCreate}
+              onCancel={handleCancelFlow}
+            />
+          </div>
+        )}
+
+        {/* Componente dinámico de Estado de Carga / Creación */}
+        {flowState.activeFlow === 'mail.create' && flowState.step === 'CREATING' && (
+          <div className="ml-2 animate-fade-in max-w-sm">
+            <LoadingStatus message="Bjoern está aprovisionando tu buzón de correo 100% neutro en carbono..." />
+          </div>
+        )}
+
+        {/* Indicador visual de pensando */}
         {isLoading && (
           <div className="flex items-end gap-3 justify-start">
-
-            <div className="bg-white border border-[#EBECE5] px-4 py-3 rounded-2xl rounded-bl-none shadow-sm flex items-center gap-1.5">
-              <span className="text-xs text-[#69756F] font-medium mr-1">Björn está pensando</span>
-              <span className="w-1.5 h-1.5 bg-[#729860] rounded-full animate-bounce [animation-delay:-0.3s]"></span>
-              <span className="w-1.5 h-1.5 bg-[#729860] rounded-full animate-bounce [animation-delay:-0.15s]"></span>
-              <span className="w-1.5 h-1.5 bg-[#729860] rounded-full animate-bounce"></span>
+            <div className="bg-[#FAF8F5] border border-[#EBECE5] px-4 py-3 rounded-2xl rounded-bl-none shadow-xs flex items-center gap-1.5">
+              <span className="text-xs text-[#746E68] font-medium mr-1">Björn está pensando</span>
+              <span className="w-1.5 h-1.5 bg-[#789340] rounded-full animate-bounce [animation-delay:-0.3s]"></span>
+              <span className="w-1.5 h-1.5 bg-[#789340] rounded-full animate-bounce [animation-delay:-0.15s]"></span>
+              <span className="w-1.5 h-1.5 bg-[#CF614A] rounded-full animate-bounce"></span>
             </div>
           </div>
         )}
@@ -124,25 +469,29 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png', apiPath =
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Formulario de Entrada */}
+      {/* Formulario de Entrada de Texto Libre (TextInput siempre accesible) */}
       <form
-        onSubmit={handleSubmit}
-        className="p-4 bg-white/90 border-t border-[#EBECE5] flex items-center gap-2"
+        onSubmit={handleSend}
+        className="p-4 bg-[#FAF8F5]/90 border-t border-[#EBECE5] flex items-center gap-2"
       >
         <div className="relative flex-1">
           <input
             type="text"
             value={input}
-            onChange={handleInputChange}
-            placeholder="Pregunta sobre nuestros servidores eco, rendimiento..."
-            className="w-full pl-4 pr-10 py-3 bg-[#F7F8F4] border border-[#DCDDD4] rounded-xl text-sm text-[#1C201D] placeholder-[#69756F] focus:outline-none focus:ring-2 focus:ring-[#729860]/50 focus:border-[#729860] transition-all"
+            onChange={(e) => setInput(e.target.value)}
+            placeholder={
+              flowState.step === 'ENTER_NAME'
+                ? 'Escribe el nombre deseado (ej. contacto)...'
+                : 'Escribe un mensaje o pregunta sobre hosting verde...'
+            }
+            className="w-full pl-4 pr-10 py-3 bg-white border border-[#EBECE5] rounded-2xl text-sm text-[#34312D] placeholder-[#746E68]/70 focus:outline-none focus:ring-2 focus:ring-[#789340]/40 focus:border-[#789340] transition-all font-['Space_Grotesk',sans-serif]"
           />
         </div>
 
         <button
           type="submit"
           disabled={!input.trim() || isLoading}
-          className="px-4 py-3 bg-[#729860] hover:bg-[#5e804f] disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-medium rounded-xl text-sm flex items-center justify-center gap-2 shadow-md shadow-[#729860]/20 active:scale-95 transition-all"
+          className="px-5 py-3 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold rounded-lg text-sm flex items-center justify-center gap-2 shadow-md transition-all active:scale-95 cursor-pointer font-['Space_Grotesk',sans-serif]"
         >
           <span>Enviar</span>
           <svg

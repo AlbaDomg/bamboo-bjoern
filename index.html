@@ -4,16 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bamboo Bjoern — Grünes KI-Hosting</title>
-  <link rel="icon" type="image/png" href="assets/panda_logo.png">
+  <title>Bamboo Björn — Grünes KI-Hosting</title>
+  <link rel="icon" type="image/png" href="assets/bambulogo_clean.png">
   <meta name="description"
     content="Nachhaltige Web-Infrastruktur mit hoher Leistung. 100% erneuerbares Hosting, unterstützt durch Künstliche Intelligenz.">
 
-  <!-- Google Fonts: Plus Jakarta Sans, Alex Brush & Tangerine -->
+  <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans, Alex Brush & Tangerine -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Tangerine:wght@700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Alex+Brush&family=Tangerine:wght@700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
     rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
@@ -24,37 +24,38 @@
         extend: {
           colors: {
             stonecream: {
-              DEFAULT: '#F7F8F4',
+              DEFAULT: '#FAF8F5',
               50: '#FCFDF9',
-              100: '#F7F8F4',
+              100: '#FAF8F5',
               200: '#EBECE5',
               300: '#DCDDD4',
             },
             forest: {
-              DEFAULT: '#142E23',
-              50: '#E7EFEA',
-              500: '#234E3C',
-              800: '#142E23',
-              900: '#0B1B14',
+              DEFAULT: '#34312D',
+              50: '#F8F8F8',
+              500: '#789340',
+              800: '#34312D',
+              900: '#1C1A18',
             },
             bamboo: {
-              DEFAULT: '#729860',
-              light: '#E4EEE1',
-              soft: '#EFF4EC',
-              gold: '#D1E2BA',
+              DEFAULT: '#789340',
+              warm: '#CF614A',
+              light: '#FAF8F5',
+              soft: '#F8F8F8',
+              gold: '#CF614A',
             },
             charcoal: {
-              DEFAULT: '#1C201D',
-              muted: '#69756F',
+              DEFAULT: '#34312D',
+              muted: '#746E68',
               light: '#919D97',
             }
           },
           fontFamily: {
-            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+            sans: ['Space Grotesk', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
           },
           boxShadow: {
-            'apple-float': '0 30px 80px -20px rgba(20, 46, 35, 0.08), 0 0 1px 1px rgba(255, 255, 255, 0.9) inset',
-            'subtle-glow': '0 0 40px -5px rgba(114, 152, 96, 0.15)',
+            'apple-float': '0 30px 80px -20px rgba(52, 49, 45, 0.12), 0 0 1px 1px rgba(255, 255, 255, 0.9) inset',
+            'subtle-glow': '0 0 40px -5px rgba(120, 147, 64, 0.25)',
           }
         }
       }
@@ -77,37 +78,89 @@
     }
 
     .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-      background: #729860;
+      background: #789340;
     }
 
     /* Fondo sutil y brillante de bambú tecnológico */
     .bg-luxury-nature {
-      background-color: #F7F8F4;
+      background-color: #FAF8F5;
       background-image:
-        linear-gradient(to bottom, rgba(247, 248, 244, 0.55), rgba(247, 248, 244, 0.70)),
+        linear-gradient(to bottom, rgba(250, 248, 245, 0.45), rgba(250, 248, 245, 0.65)),
         url('assets/bamboo.jpeg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
     }
 
-
-
-    /* Contenedor Glassmorphic Flotante Luminoso con Opacidad Global */
+    /* Contenedor Flotante Cálido (#FAF8F5 / #F8F8F8) para Legibilidad Perfecta sobre el Bosque de Bambú */
     .glass-floating {
-      background: rgba(255, 255, 255, 0.48);
+      background: rgba(250, 248, 245, 0.92);
       backdrop-filter: blur(20px) saturate(140%);
       -webkit-backdrop-filter: blur(20px) saturate(140%);
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      box-shadow: 0 25px 70px -15px rgba(20, 46, 35, 0.08), inset 0 1px 1px 0 rgba(255, 255, 255, 0.85);
-      opacity: 0.85;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 25px 70px -15px rgba(52, 49, 45, 0.10), inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
     }
 
-    /* Efecto Glow de IA Verde Esmeralda Sutil */
+    /* Botón Principal (Primary) con Degradado Diagonal 55deg (#789340 -> #CF614A) */
+    .btn-bamboo-primary {
+      background: linear-gradient(55deg, #789340 38%, #CF614A 82%) !important;
+      color: #FFFFFF !important;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.75rem 1.5rem;
+      font-size: 0.875rem;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 14px rgba(120, 147, 64, 0.28);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      cursor: pointer;
+    }
+
+    .btn-bamboo-primary:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1.5px);
+      box-shadow: 0 6px 20px rgba(207, 97, 74, 0.35);
+    }
+
+    .btn-bamboo-primary:active {
+      transform: translateY(0);
+      filter: brightness(0.96);
+    }
+
+    /* Chips/Bubbles de Opciones Rápidas */
+    .btn-bamboo-chip {
+      background: #F8F8F8;
+      color: #34312D;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(120, 147, 64, 0.25);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    }
+
+    .btn-bamboo-chip:hover {
+      background: linear-gradient(55deg, #789340 38%, #CF614A 82%) !important;
+      color: #FFFFFF;
+      border-color: transparent;
+      box-shadow: 0 4px 12px rgba(120, 147, 64, 0.3);
+      transform: translateY(-1px);
+    }
+
+    /* Efecto Glow Sutil */
     .ai-glow {
-      box-shadow: 0 25px 70px -15px rgba(20, 46, 35, 0.08),
-                  0 0 35px 5px rgba(114, 152, 96, 0.22),
-                  inset 0 1px 1px 0 rgba(255, 255, 255, 0.85) !important;
+      box-shadow: 0 25px 70px -15px rgba(52, 49, 45, 0.12),
+                  0 0 35px 5px rgba(120, 147, 64, 0.18),
+                  inset 0 1px 1px 0 rgba(255, 255, 255, 0.95) !important;
       transition: box-shadow 0.5s ease-in-out;
     }
 
@@ -138,12 +191,12 @@
 
     <!-- Logo Bamboo Bjoern -->
     <div class="flex items-center space-x-5 group cursor-pointer">
-      <img src="assets/panda_logo.png" alt="Bamboo Bjoern Logo"
-        class="w-20 h-20 rounded-full shadow-md transition-transform duration-300 group-hover:scale-105 object-cover border border-white/60">
+      <img src="assets/bambulogo_clean.png" alt="Bamboo Bjoern Logo"
+        class="w-28 h-28 rounded-full shadow-md transition-transform duration-300 group-hover:scale-105 object-contain border border-white/60">
       <div class="flex flex-col justify-center">
         <span
           class="font-semibold text-3xl tracking-tight text-forest group-hover:text-bamboo transition-colors leading-tight">
-          Bamboo Bjoern
+          Bamboo Björn
         </span>
         <span class="text-xs tracking-[0.24em] uppercase text-forest font-semibold mt-0.5 opacity-90">
           Eco AI Infrastructure
@@ -178,7 +231,7 @@
             <span class="absolute bottom-1 right-1 w-3 h-3 bg-emerald-400 border-2 border-white rounded-full"></span>
           </div>
           <div>
-            <h2 class="text-sm font-semibold text-forest leading-tight">Bjoern KI-Assistent</h2>
+            <h2 class="text-sm font-semibold text-forest leading-tight">Björn KI-Assistent</h2>
             <p class="text-[11px] text-charcoal-muted font-normal">Ökologische Architektur &amp; Mistral KI Server (EU)</p>
           </div>
         </div>
@@ -202,8 +255,8 @@
         <div class="flex items-start max-w-2xl">
           <div class="space-y-4">
             <div
-              class="bg-white/45 backdrop-blur-md border border-white/70 text-forest p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs">
-              <p class="font-medium text-forest text-base mb-2">Willkommen bei Bamboo Bjoern!</p>
+              class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs">
+              <p class="font-semibold text-forest text-base mb-2">Willkommen bei Bamboo Björn!</p>
               <p id="welcome-text" class="text-charcoal-muted font-normal mb-4 min-h-[40px]">
               </p>
 
@@ -230,40 +283,43 @@
             <!-- Sugerencias Rápidas de Texto Puro Ultra-Elegantes -->
             <div class="flex flex-wrap gap-2.5 pt-1" id="suggestion-chips">
               <button onclick="sendQuickPrompt('Welches grüne Hosting brauche ich?')"
-                class="text-xs bg-white/55 backdrop-blur-md hover:bg-forest hover:text-white border border-white/70 text-charcoal px-4 py-2 rounded-full transition-all duration-300 font-normal shadow-xs">
-                Welches grüne Hosting brauche ich?
+                class="btn-bamboo-chip">
+                <svg class="w-3.5 h-3.5 text-[#789340]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                <span>Welches grüne Hosting brauche ich?</span>
               </button>
               <button onclick="sendQuickPrompt('Serverstatus und Leistung anzeigen')"
-                class="text-xs bg-white/55 backdrop-blur-md hover:bg-forest hover:text-white border border-white/70 text-charcoal px-4 py-2 rounded-full transition-all duration-300 font-normal shadow-xs">
-                Serverstatus anzeigen
+                class="btn-bamboo-chip">
+                <svg class="w-3.5 h-3.5 text-[#789340]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                <span>Serverstatus anzeigen</span>
               </button>
               <button onclick="sendQuickPrompt('Professionelles Öko-E-Mail-Konto erstellen')"
-                class="text-xs bg-white/55 backdrop-blur-md hover:bg-forest hover:text-white border border-white/70 text-charcoal px-4 py-2 rounded-full transition-all duration-300 font-normal shadow-xs">
-                E-Mail-Konto erstellen
+                class="btn-bamboo-chip">
+                <svg class="w-3.5 h-3.5 text-[#789340]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                <span>E-Mail-Konto erstellen</span>
               </button>
               <button onclick="sendQuickPrompt('Neue Domain registrieren')"
-                class="text-xs bg-white/55 backdrop-blur-md hover:bg-forest hover:text-white border border-white/70 text-charcoal px-4 py-2 rounded-full transition-all duration-300 font-normal shadow-xs">
-                Neue Domain registrieren
+                class="btn-bamboo-chip">
+                <svg class="w-3.5 h-3.5 text-[#789340]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+                <span>Neue Domain registrieren</span>
               </button>
               <button onclick="sendQuickPrompt('Bestehende Website migrieren')"
-                class="text-xs bg-white/55 backdrop-blur-md hover:bg-forest hover:text-white border border-white/70 text-charcoal px-4 py-2 rounded-full transition-all duration-300 font-normal shadow-xs">
-                Website migrieren
+                class="btn-bamboo-chip">
+                <svg class="w-3.5 h-3.5 text-[#789340]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                <span>Website migrieren</span>
               </button>
             </div>
           </div>
         </div>
 
-
-
       </div>
 
       <!-- Input del Chat Flotante e Impecable -->
-      <div class="p-6 bg-white/20 border-t border-white/40 backdrop-blur-md">
+      <div class="p-6 bg-[#FAF8F5]/80 border-t border-[#EBECE5] backdrop-blur-md">
         <form id="chat-form" onsubmit="handleFormSubmit(event)" class="relative flex items-center">
 
           <!-- Icono de micrófono -->
           <button type="button" title="Spracheingabe"
-            class="absolute left-4 z-10 p-2 text-charcoal-muted hover:text-forest transition-colors rounded-full flex items-center justify-center">
+            class="absolute left-4 z-10 p-2 text-charcoal-muted hover:text-bamboo transition-colors rounded-full flex items-center justify-center">
             <svg class="w-4.5 h-4.5 stroke-1.6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"
                 d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z">
@@ -273,15 +329,15 @@
 
           <!-- Campo de entrada con sangría pl-14 impecable -->
           <input type="text" id="chat-input" placeholder="Welche Art von grünem Hosting benötigen Sie?"
-            class="w-full pl-14 pr-16 py-4 bg-white/55 backdrop-blur-md border border-white/70 focus:border-bamboo focus:bg-white/70 rounded-2xl text-sm text-charcoal placeholder-charcoal-muted/60 focus:outline-none focus:ring-4 focus:ring-bamboo/15 transition-all shadow-xs"
+            class="w-full pl-14 pr-16 py-4 bg-white border border-[#EBECE5] focus:border-[#789340] focus:bg-white rounded-2xl text-sm text-charcoal placeholder-charcoal-muted/60 focus:outline-none focus:ring-4 focus:ring-[#789340]/15 transition-all shadow-xs"
             autocomplete="off" />
 
-          <!-- Botón de envío con hoja volando -->
+          <!-- Botón de envío con degradado de marca -->
           <button type="submit" title="Nachricht senden"
-            class="absolute right-3 z-10 p-3 bg-forest hover:bg-forest-500 text-bamboo-light rounded-xl transition-all duration-300 shadow-xs flex items-center justify-center group">
-            <svg class="w-4 h-4 transform rotate-45 text-bamboo-gold transition-transform group-hover:scale-110"
+            class="absolute right-3 z-10 p-3 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-105 text-white rounded-lg transition-all duration-300 shadow-sm flex items-center justify-center group">
+            <svg class="w-4 h-4 transform rotate-45 text-white transition-transform group-hover:scale-110"
               fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
                 d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
             </svg>
           </button>
@@ -345,7 +401,7 @@
     class="w-full px-10 py-4 text-xs text-charcoal-muted z-20 flex items-center justify-between flex-shrink-0">
     <div class="flex items-center space-x-2">
       <span class="w-1.5 h-1.5 rounded-full bg-bamboo"></span>
-      <p>© 2026 Bamboo Bjoern • Grünes Hosting &amp; Zero-Carbon KI-Infrastruktur</p>
+      <p>© 2026 Bamboo Björn • Grünes Hosting &amp; Zero-Carbon KI-Infrastruktur</p>
     </div>
     <div class="flex items-center space-x-6 text-charcoal-muted font-normal">
       <a href="#" onclick="toggleDatacenterModal(); return false;"
@@ -360,6 +416,14 @@
     const chatStream = document.getElementById('chat-stream');
     const chatInput = document.getElementById('chat-input');
     const modal = document.getElementById('datacenter-modal');
+
+    // Estado del flujo conversacional local ('mail.create')
+    let mailFlowState = {
+      activeFlow: null, // 'mail.create'
+      step: 'IDLE',     // 'ENTER_NAME' | 'SELECT_DOMAIN' | 'CONFIRM' | 'CREATING'
+      mailboxName: '',
+      selectedDomain: ''
+    };
 
     // Efecto Typewriter para el mensaje de bienvenida
     document.addEventListener('DOMContentLoaded', () => {
@@ -399,19 +463,26 @@
       chatInput.value = '';
 
       chatStream.scrollTop = chatStream.scrollHeight;
+
+      // Si estamos dentro del flujo 'mail.create' esperando el nombre del buzón
+      if (mailFlowState.activeFlow === 'mail.create' && mailFlowState.step === 'ENTER_NAME') {
+        processMailNameInput(text);
+        return;
+      }
+
       showTypingIndicator();
 
       setTimeout(() => {
         removeTypingIndicator();
         generateAiResponse(text);
         chatStream.scrollTop = chatStream.scrollHeight;
-      }, 1000);
+      }, 800);
     }
 
     function addUserMessage(messageText) {
       const userBubbleHtml = `
         <div class="flex items-start justify-end space-x-4 max-w-2xl ml-auto animate-fade-in">
-          <div class="bg-white/90 border border-forest/15 text-charcoal p-5 rounded-3xl rounded-tr-xs text-sm leading-relaxed shadow-xs font-normal">
+          <div class="bg-white border border-[#EBECE5] text-[#34312D] p-5 rounded-3xl rounded-tr-xs text-sm leading-relaxed shadow-xs font-normal">
             ${escapeHtml(messageText)}
           </div>
           <div class="w-8 h-8 rounded-xl bg-forest/10 border border-forest/15 text-forest flex-shrink-0 flex items-center justify-center text-xs font-semibold mt-1 shadow-xs">
@@ -442,85 +513,346 @@
       if (indicator) indicator.remove();
     }
 
+    // Iniciar Flujo Simulado de Creación de Correo Eco (Paso 1: Selección de Dominio)
+    function startMailCreateFlow() {
+      mailFlowState = { activeFlow: 'mail.create', step: 'SELECT_DOMAIN', mailboxName: '', selectedDomain: '' };
+      
+      const assistantHtml = `
+        <div class="flex items-start max-w-2xl animate-fade-in">
+          <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs space-y-4 w-full max-w-lg">
+            <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
+              <span>Björn</span>
+              <span class="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+            </div>
+            <p class="font-semibold text-forest text-sm">¡Excelente! Vamos a crear tu nuevo buzón de correo 100% ecológico 📧</p>
+            <p class="text-charcoal-muted font-normal text-xs">¿Para qué dominio deseas crear la nueva dirección de correo?</p>
+            
+            <!-- Componente OptionButtons de selección de dominio -->
+            <div class="flex flex-wrap gap-2.5 pt-1">
+              <button onclick="handleDomainSelection('bamboo-bjoern.eu')" class="px-4 py-2.5 bg-white hover:bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:border-transparent hover:text-white border border-[#789340]/30 text-[#34312D] rounded-xl text-xs font-semibold flex items-center gap-2 shadow-xs transition-all cursor-pointer group">
+                <span class="w-2 h-2 rounded-full bg-[#789340] group-hover:bg-white transition-colors"></span>
+                <span>bamboo-bjoern.eu</span>
+              </button>
+              <button onclick="handleDomainSelection('bamboo-eco.de')" class="px-4 py-2.5 bg-white hover:bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:border-transparent hover:text-white border border-[#789340]/30 text-[#34312D] rounded-xl text-xs font-semibold flex items-center gap-2 shadow-xs transition-all cursor-pointer group">
+                <span class="w-2 h-2 rounded-full bg-[#789340] group-hover:bg-white transition-colors"></span>
+                <span>bamboo-eco.de</span>
+              </button>
+              <button onclick="handleDomainSelection('zero-carbon-mail.com')" class="px-4 py-2.5 bg-white hover:bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:border-transparent hover:text-white border border-[#789340]/30 text-[#34312D] rounded-xl text-xs font-semibold flex items-center gap-2 shadow-xs transition-all cursor-pointer group">
+                <span class="w-2 h-2 rounded-full bg-[#789340] group-hover:bg-white transition-colors"></span>
+                <span>zero-carbon-mail.com</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+      chatStream.insertAdjacentHTML('beforeend', assistantHtml);
+      chatStream.scrollTop = chatStream.scrollHeight;
+    }
+
+    // Paso 1 -> 2: Guardar Dominio y Solicitar Nombre del Buzón con InlineTextInput
+    function handleDomainSelection(domain) {
+      mailFlowState.selectedDomain = domain;
+      mailFlowState.step = 'ENTER_NAME';
+      
+      addUserMessage(`Dominio seleccionado: ${domain}`);
+      
+      showTypingIndicator();
+      setTimeout(() => {
+        removeTypingIndicator();
+        const inlineInputCardHtml = `
+          <div class="flex items-start max-w-2xl animate-fade-in">
+            <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs space-y-3 w-full max-w-lg">
+              <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
+                <span>Björn</span>
+                <span class="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+              </div>
+              <p class="font-semibold text-forest text-sm">Perfecto, crearemos tu correo en <span class="text-[#789340] font-bold">@${escapeHtml(domain)}</span> 🌿</p>
+              <p class="text-charcoal-muted font-normal text-xs">Introduce el nombre deseado para tu buzón (ej. albadege94, contacto, info):</p>
+              
+              <!-- Componente InlineTextInput incrustado directamente en la tarjeta -->
+              <form onsubmit="handleInlineNameSubmit(event)" class="mt-3 flex items-center gap-2">
+                <input type="text" id="inline-mailbox-input" placeholder="Nombre deseado (ej. albadege94)..."
+                  class="flex-1 px-4 py-2.5 bg-white border border-[#EBECE5] focus:border-[#789340] rounded-xl text-xs text-[#34312D] placeholder-[#746E68]/60 focus:outline-none focus:ring-2 focus:ring-[#789340]/20 transition-all font-['Space_Grotesk',sans-serif]"
+                  autocomplete="off" autoFocus />
+                <button type="submit"
+                  class="px-4 py-2.5 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-lg shadow-sm transition-all cursor-pointer flex items-center gap-1 font-['Space_Grotesk',sans-serif]">
+                  <span>Continuar</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                  </svg>
+                </button>
+              </form>
+            </div>
+          </div>
+        `;
+        chatStream.insertAdjacentHTML('beforeend', inlineInputCardHtml);
+        chatStream.scrollTop = chatStream.scrollHeight;
+      }, 500);
+    }
+
+    function handleInlineNameSubmit(e) {
+      e.preventDefault();
+      const inputEl = document.getElementById('inline-mailbox-input');
+      const val = inputEl ? inputEl.value.trim() : '';
+      if (!val) return;
+
+      addUserMessage(val);
+      processMailNameInput(val);
+    }
+
+    // Paso 2 -> 3: Guardar Nombre del Buzón e Imprimir Tarjeta Resumen Final
+    function processMailNameInput(inputText) {
+      const cleanName = inputText.split('@')[0].toLowerCase().trim();
+      mailFlowState.step = 'CONFIRM';
+      mailFlowState.mailboxName = cleanName;
+      const fullEmail = `${cleanName}@${mailFlowState.selectedDomain || 'bamboo-bjoern.eu'}`;
+
+      showTypingIndicator();
+      setTimeout(() => {
+        removeTypingIndicator();
+        const confirmationCardHtml = `
+          <div class="flex items-start max-w-2xl animate-fade-in">
+            <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs space-y-4 w-full max-w-md">
+              <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
+                <span>Björn</span>
+                <span class="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+              </div>
+              <p class="font-semibold text-forest text-sm">¡Todo listo! Revisa la ficha de configuración para tu nuevo correo ecológico:</p>
+              
+              <!-- Tarjeta de Resumen Final (ConfirmationCard) -->
+              <div class="p-4 bg-white rounded-2xl border border-[#EBECE5] shadow-xs space-y-3">
+                <div class="flex items-center justify-between border-b border-[#EBECE5] pb-2">
+                  <h4 class="font-semibold text-xs text-[#34312D] flex items-center gap-1.5">
+                    <span class="text-emerald-500">🍃</span> Resumen del Buzón Eco
+                  </h4>
+                  <span class="text-[10px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-medium border border-emerald-200">-95% CO₂</span>
+                </div>
+                <div class="space-y-1.5 text-xs text-[#746E68]">
+                  <div class="flex justify-between items-center">
+                    <span class="font-normal">Dirección completa:</span>
+                    <span class="font-bold text-[#789340]">${escapeHtml(fullEmail)}</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="font-normal">Servidor:</span>
+                    <span class="font-medium text-[#34312D]">Frankfurt Solar Grid (EU)</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="font-normal">Seguridad:</span>
+                    <span class="font-medium text-[#34312D]">SSL Wildcard Gratuito</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="font-normal">Huella de Carbono:</span>
+                    <span class="font-medium text-[#34312D]">100% Energía Renovable</span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 pt-2 border-t border-[#EBECE5]">
+                  <button onclick="confirmMailCreation('${escapeHtml(fullEmail)}')" class="flex-1 px-4 py-2.5 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-lg shadow-sm transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    <span>Crear Buzón Eco</span>
+                  </button>
+                  <button onclick="cancelMailCreation()" class="px-3.5 py-2.5 bg-gray-100 hover:bg-gray-200 text-[#746E68] text-xs font-medium rounded-lg transition-all cursor-pointer">
+                    Cancelar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        chatStream.insertAdjacentHTML('beforeend', confirmationCardHtml);
+        chatStream.scrollTop = chatStream.scrollHeight;
+      }, 600);
+    }
+
+
+
+    // Paso 4: Confirmación y Simulación de Aprovisionamiento (LoadingStatus)
+    function confirmMailCreation() {
+      mailFlowState.step = 'CREATING';
+
+      const loadingHtml = `
+        <div id="creating-status" class="flex items-start max-w-md animate-fade-in">
+          <div class="flex items-center gap-2.5 p-4 bg-emerald-50/90 border border-emerald-200 text-emerald-800 rounded-2xl text-xs font-medium w-full shadow-xs">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping flex-shrink-0"></span>
+            <span>Björn está aprovisionando tu buzón <strong class="text-emerald-950">${mailFlowState.mailboxName}@${mailFlowState.selectedDomain}</strong> 100% neutro en carbono... 🍃</span>
+          </div>
+        </div>
+      `;
+      chatStream.insertAdjacentHTML('beforeend', loadingHtml);
+      chatStream.scrollTop = chatStream.scrollHeight;
+
+      // Simular tiempo de aprovisionamiento (1.5s)
+      setTimeout(() => {
+        const loadingEl = document.getElementById('creating-status');
+        if (loadingEl) loadingEl.remove();
+
+        const successHtml = `
+          <div class="flex items-start max-w-2xl animate-fade-in">
+            <div class="bg-[#FAF8F5] border border-emerald-300 text-[#34312D] p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs space-y-3">
+              <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
+                <span>Björn</span>
+                <span class="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+              </div>
+              <p class="font-bold text-emerald-800 text-sm flex items-center gap-1.5">
+                🎉 ¡Buzón ecológico creado con éxito!
+              </p>
+              <p class="text-charcoal-muted font-normal text-xs">
+                Tu nueva cuenta <strong class="text-[#789340]">${mailFlowState.mailboxName}@${mailFlowState.selectedDomain}</strong> ya se encuentra activa y lista para enviar/recibir correos de alta velocidad con impacto ambiental cero.
+              </p>
+            </div>
+          </div>
+        `;
+        chatStream.insertAdjacentHTML('beforeend', successHtml);
+        chatStream.scrollTop = chatStream.scrollHeight;
+
+        // Resetear estado local
+        mailFlowState = { activeFlow: null, step: 'IDLE', mailboxName: '', selectedDomain: '' };
+      }, 1500);
+    }
+
+    // Cancelar Flujo
+    function cancelMailCreation() {
+      addUserMessage("Cancelar creación");
+      mailFlowState = { activeFlow: null, step: 'IDLE', mailboxName: '', selectedDomain: '' };
+      
+      showTypingIndicator();
+      setTimeout(() => {
+        removeTypingIndicator();
+        const cancelHtml = `
+          <div class="flex items-start max-w-2xl animate-fade-in">
+            <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs">
+              <p class="text-charcoal-muted font-normal">Entendido, hemos cancelado la operación. ¿En qué más puedo ayudarte hoy?</p>
+            </div>
+          </div>
+        `;
+        chatStream.insertAdjacentHTML('beforeend', cancelHtml);
+        chatStream.scrollTop = chatStream.scrollHeight;
+      }, 500);
+    }
+
     function generateAiResponse(userQuery) {
       let aiText = "";
       const lower = userQuery.toLowerCase();
 
-      if (lower.includes("status") || lower.includes("leistung") || lower.includes("server") || lower.includes("rendimiento")) {
+      if (lower.includes("e-mail") || lower.includes("email") || lower.includes("konto") || lower.includes("correo") || lower.includes("crear")) {
+        startMailCreateFlow();
+        return;
+      } else if (lower.includes("vision") || lower.includes("que es") || lower.includes("bamboo") || lower.includes("uber") || lower.includes("visión")) {
         aiText = `
-          <div class="font-medium text-forest text-sm mb-1">Echtzeit-Server-Telemetrie</div>
-          <p class="text-charcoal-muted font-normal mb-3">Frankfurt Solar Grid Node arbeitet mit 100% Energieeffizienz und Flüssigkeitskühlung.</p>
-          <div>
-            <button onclick="toggleDatacenterModal()"
-              class="bg-forest hover:bg-forest-500 text-white text-xs font-medium px-5 py-2.5 rounded-full transition-all shadow-xs inline-flex items-center space-x-2 group">
-              <span>Live-Telemetrie anzeigen</span>
-              <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-              </svg>
+          <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
+            <span>Björn</span>
+            <span class="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+          </div>
+          <div class="font-semibold text-forest text-sm mb-1 flex items-center gap-1.5">
+            <span>🌿</span> Nuestra Visión Ecológica (Green AI-Hosting)
+          </div>
+          <p class="text-charcoal-muted font-normal text-xs mb-3 leading-relaxed">
+            BambooBjørn es la plataforma europea pionera en AI-Hosting de alta eficiencia. Nuestra misión es descarbonizar la nube mediante energía 100% renovable, refrigeración por inmersión líquida y servidores de IA de impacto cero.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="inline-flex items-center gap-1 text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2.5 py-1 rounded-lg">🌱 -95% CO₂</span>
+            <span class="inline-flex items-center gap-1 text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2.5 py-1 rounded-lg">☀️ 100% Energía Renovable</span>
+            <span class="inline-flex items-center gap-1 text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2.5 py-1 rounded-lg">💧 Liquid Cooling 38°C</span>
+          </div>
+          <div class="pt-2 border-t border-[#EBECE5] flex justify-end">
+            <button onclick="startMailCreateFlow()" class="px-4 py-2.5 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-lg shadow-sm transition-all flex items-center gap-1.5 cursor-pointer">
+              <span>Crear Buzón Eco</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </button>
           </div>
         `;
-      } else if (lower.includes("e-mail") || lower.includes("email") || lower.includes("konto") || lower.includes("correo")) {
+      } else if (lower.includes("sostenib") || lower.includes("energia") || lower.includes("co2") || lower.includes("carbono") || lower.includes("ecolog") || lower.includes("nachhaltig")) {
         aiText = `
-          <div class="font-medium text-forest text-sm mb-1">Professioneller Öko-E-Mail-Dienst</div>
-          <p class="text-charcoal-muted font-normal mb-3">Personalisierte Postfächer mit klimaneutraler Bilanz, fortgeschrittenem Spamfilter und universaler Kompatibilität.</p>
-          <div>
-            <button onclick="sendQuickPrompt('Öko-E-Mail-Einrichtung starten')"
-              class="bg-forest hover:bg-forest-500 text-white text-xs font-medium px-5 py-2.5 rounded-full transition-all shadow-xs inline-flex items-center space-x-2 group">
-              <span>E-Mail-Einrichtung starten</span>
-              <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-              </svg>
+          <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
+            <span>Björn</span>
+            <span class="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+          </div>
+          <div class="font-semibold text-forest text-sm mb-1 flex items-center gap-1.5">
+            <span>🍃</span> Sostenibilidad y Huella Neutral
+          </div>
+          <p class="text-charcoal-muted font-normal text-xs mb-3 leading-relaxed">
+            Nuestra arquitectura reduce las emisiones de carbono un 95% respecto a los centros de datos tradicionales. Toda la energía consumida proviene de fuentes renovables certificadas (solar y eólica) en Europa, y el calor residual se inyecta en redes térmicas urbanas.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="inline-flex items-center gap-1 text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2.5 py-1 rounded-lg">🔋 100% Solar &amp; Eólica</span>
+            <span class="inline-flex items-center gap-1 text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2.5 py-1 rounded-lg">♨️ Reutilización de Calor</span>
+          </div>
+          <div class="pt-2 border-t border-[#EBECE5] flex justify-end">
+            <button onclick="startMailCreateFlow()" class="px-4 py-2.5 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-lg shadow-sm transition-all flex items-center gap-1.5 cursor-pointer">
+              <span>Comenzar Orden Eco</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </button>
           </div>
         `;
-      } else if (lower.includes("migrier") || lower.includes("migration") || lower.includes("website") || lower.includes("migrar")) {
+      } else if (lower.includes("status") || lower.includes("leistung") || lower.includes("server") || lower.includes("rendimiento") || lower.includes("pue") || lower.includes("nodo") || lower.includes("frankfurt")) {
         aiText = `
-          <div class="font-medium text-forest text-sm mb-1">Kostenlose Zero-Downtime-Migration</div>
-          <p class="text-charcoal-muted font-normal mb-3">Betreuter Transfer Ihrer gesamten Website ohne Unterbrechung des Dienstes in unter 24 Stunden.</p>
-          <div>
-            <button onclick="sendQuickPrompt('Kostenlose Website-Migration anfordern')"
-              class="bg-forest hover:bg-forest-500 text-white text-xs font-medium px-5 py-2.5 rounded-full transition-all shadow-xs inline-flex items-center space-x-2 group">
-              <span>Kostenlose Migration starten</span>
-              <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-              </svg>
+          <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
+            <span>Björn</span>
+            <span class="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+          </div>
+          <div class="font-semibold text-forest text-sm mb-1 flex items-center gap-1.5">
+            <span>🖥️</span> Telemetría de Servidores &amp; Eficiencia PUE
+          </div>
+          <p class="text-charcoal-muted font-normal text-xs mb-3 leading-relaxed">
+            El nodo principal <strong class="text-forest">Frankfurt Solar Grid</strong> opera con un Power Usage Effectiveness (PUE) de 1.12 (vs. 1.6 de la media mundial), respaldado por sistemas de refrigeración líquida inteligente.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="inline-flex items-center gap-1 text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2.5 py-1 rounded-lg">⚡ PUE 1.12 Ultra-Eficiente</span>
+            <span class="inline-flex items-center gap-1 text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2.5 py-1 rounded-lg">🌍 Frankfurt Node (EU)</span>
+          </div>
+          <div class="pt-2 border-t border-[#EBECE5] flex items-center justify-between">
+            <button onclick="toggleDatacenterModal()" class="text-xs text-[#789340] font-semibold hover:underline cursor-pointer">
+              Ver detalles de telemetría →
+            </button>
+            <button onclick="startMailCreateFlow()" class="px-4 py-2.5 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-lg shadow-sm transition-all flex items-center gap-1.5 cursor-pointer">
+              <span>Crear Buzón Eco</span>
             </button>
           </div>
         `;
-      } else if (lower.includes("domain") || lower.includes("registrier") || lower.includes("name") || lower.includes("dominio")) {
+      } else if (lower.includes("ai") || lower.includes("ia") || lower.includes("inteligencia") || lower.includes("mistral")) {
         aiText = `
-          <div class="font-medium text-forest text-sm mb-1">Suchmaschine &amp; Registrierung grüner Domains</div>
-          <p class="text-charcoal-muted font-normal mb-3">Sofortige Registrierung von Domains (.de, .com, .eco) mit kostenlosem Wildcard-SSL-Zertifikat und Zero-Carbon-Infrastruktur.</p>
-          <div>
-            <button onclick="sendQuickPrompt('Domain-Verfügbarkeit prüfen')"
-              class="bg-forest hover:bg-forest-500 text-white text-xs font-medium px-5 py-2.5 rounded-full transition-all shadow-xs inline-flex items-center space-x-2 group">
-              <span>Domain-Verfügbarkeit prüfen</span>
-              <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-              </svg>
+          <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
+            <span>Björn</span>
+            <span class="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+          </div>
+          <div class="font-semibold text-forest text-sm mb-1 flex items-center gap-1.5">
+            <span>🤖</span> Green A.I.-Hosting (Mistral AI)
+          </div>
+          <p class="text-charcoal-muted font-normal text-xs mb-3 leading-relaxed">
+            BambooBjørn integra de forma nativa modelos de IA altamente optimizados como Mistral AI en hardware acelerado alimentado por energía 100% neutra en carbono, minimizando los vatios por consulta procesada.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="inline-flex items-center gap-1 text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2.5 py-1 rounded-lg">✨ Mistral AI Optimizado</span>
+            <span class="inline-flex items-center gap-1 text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2.5 py-1 rounded-lg">🛡️ Privacidad EU (GDPR)</span>
+          </div>
+          <div class="pt-2 border-t border-[#EBECE5] flex justify-end">
+            <button onclick="startMailCreateFlow()" class="px-4 py-2.5 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-lg shadow-sm transition-all flex items-center gap-1.5 cursor-pointer">
+              <span>Probar Correo Eco</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </button>
           </div>
         `;
       } else {
         aiText = `
-          <div class="font-medium text-forest text-sm mb-1">Bamboo Bjoern Öko-Hosting-Beratung</div>
-          <p class="text-charcoal-muted font-normal mb-3">Optimierte Tarife, angetrieben von 100% erneuerbarer Energie und nach europäischen Nullemissionsstandards auditiert.</p>
-          <div>
-            <button onclick="sendQuickPrompt('Öko-Hosting-Tarif konfigurieren')"
-              class="bg-forest hover:bg-forest-500 text-white text-xs font-medium px-5 py-2.5 rounded-full transition-all shadow-xs inline-flex items-center space-x-2 group">
-              <span>Jetzt starten</span>
-              <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-              </svg>
+          <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
+            <span>Björn</span>
+            <span class="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+          </div>
+          <div class="font-semibold text-forest text-sm mb-1">Bamboo Björn Öko-Hosting</div>
+          <p class="text-charcoal-muted font-normal text-xs mb-3 leading-relaxed">
+            Ofrecemos servicios de hosting web y correo electrónico 100% ecológicos respaldados por servidores neutros en carbono en la Unión Europea.
+          </p>
+          <div class="pt-2 border-t border-[#EBECE5] flex justify-end">
+            <button onclick="startMailCreateFlow()" class="px-4 py-2.5 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-lg shadow-sm transition-all flex items-center gap-1.5 cursor-pointer">
+              <span>Crear Buzón Eco</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </button>
           </div>
         `;
       }
 
       const aiBubbleHtml = `
-        <div class="flex items-start max-w-2xl">
-          <div class="bg-bamboo-soft/60 border border-bamboo/20 text-forest p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed">
+        <div class="flex items-start max-w-2xl animate-fade-in">
+          <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs space-y-2 w-full max-w-lg">
             ${aiText}
           </div>
         </div>
