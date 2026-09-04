@@ -148,10 +148,10 @@ export function CustomerProductsCard({ onConfigureDns, onAddMailbox, onViewTelem
       <div className="flex items-center justify-between border-b border-[#EBECE5] pb-3">
         <div className="flex items-center gap-2.5">
           <div className="w-9 h-9 rounded-full bg-[#789340]/15 text-[#789340] flex items-center justify-center font-bold text-xs border border-[#789340]/30 shadow-xs">
-            ER
+            AD
           </div>
           <div>
-            <h4 className="font-semibold text-xs sm:text-sm text-[#34312D]">Elena Rostova</h4>
+            <h4 className="font-semibold text-xs sm:text-sm text-[#34312D]">Alba Domínguez</h4>
             <p className="text-[10px] text-[#746E68]">Green Design Studio • Active Öko-Kundin</p>
           </div>
         </div>
@@ -371,7 +371,7 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
   const initialClientMessage = {
     id: 'welcome-client',
     role: 'assistant',
-    content: 'Willkommen zurück, Frau Rostova! 🌿 Schön, Sie wiederzusehen. Hier ist die Echtzeit-Übersicht Ihrer aktiven grünen Dienste bei Bamboo Bjørn:',
+    content: 'Willkommen zurück, Frau Domínguez! 🌿 Schön, Sie wiederzusehen. Hier ist die Echtzeit-Übersicht Ihrer aktiven grünen Dienste bei Bamboo Bjørn:',
     isCustomerCard: true,
   };
 
@@ -635,7 +635,7 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
             title="Klicken zum Umschalten zwischen Clienta Autenticada y Visitante"
           >
             <span className={`w-2 h-2 rounded-full ${isLoggedIn ? 'bg-emerald-400 animate-pulse' : 'bg-amber-400'}`}></span>
-            <span>{isLoggedIn ? '👤 Clienta (Elena)' : '🌐 Visitante'}</span>
+            <span>{isLoggedIn ? '👤 Clienta (Alba)' : '🌐 Visitante'}</span>
           </button>
 
           <button
