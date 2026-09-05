@@ -616,7 +616,7 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto h-[660px] flex flex-col rounded-3xl overflow-hidden shadow-2xl bg-[#FAF8F5]/95 backdrop-blur-xl border border-white/80 font-['Space_Grotesk',sans-serif] text-[#34312D] transition-all">
+    <div className="w-full max-w-3xl mx-auto h-[660px] flex flex-col rounded-3xl overflow-hidden shadow-2xl bg-[#FAF8F5]/95 backdrop-blur-xl border border-white/80 font-['Space_Grotesk',sans-serif] text-[#34312D]">
       {/* Inline styles para animación del avatar */}
       <style>{`
         @keyframes pandaFloat {
