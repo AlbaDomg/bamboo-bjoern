@@ -787,7 +787,7 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
             placeholder={
               flowState.step === 'ENTER_NAME'
                 ? 'Gewünschten Namen eingeben (z. B. kontakt)...'
-                : 'Schreiben Sie eine Nachricht oder Frage zum grünen Hosting...'
+                : 'Frage Björn etwas...'
             }
             className="w-full pl-4 pr-10 py-3 bg-white border border-[#EBECE5] rounded-2xl text-sm text-[#34312D] placeholder-[#746E68]/70 focus:outline-none focus:ring-2 focus:ring-[#789340]/40 focus:border-[#789340] transition-all font-['Space_Grotesk',sans-serif]"
           />
