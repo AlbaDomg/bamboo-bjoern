@@ -448,7 +448,7 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
   const handleShowDns = () => {
     setMessages((prev) => [
       ...prev,
-      { id: Date.now().toString(), role: 'user', content: '⚙️ DNS für bamboo-bjoern.eu konfigurieren' },
+      { id: Date.now().toString(), role: 'user', content: 'DNS für bamboo-bjoern.eu konfigurieren' },
       {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
@@ -461,7 +461,7 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
   const handleShowTelemetry = () => {
     setMessages((prev) => [
       ...prev,
-      { id: Date.now().toString(), role: 'user', content: '📊 KVM-Server-Telemetrie anzeigen' },
+      { id: Date.now().toString(), role: 'user', content: 'KVM-Server-Telemetrie anzeigen' },
       {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
@@ -515,7 +515,7 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
 
       let responseContent = '';
       if (lower.includes('vision') || lower.includes('was ist') || lower.includes('bamboo') || lower.includes('wer')) {
-        responseContent = `BambooBjørn ist Europas führende Plattform für hochleistungsfähiges Grünes KI-Hosting. Unsere Mission ist die Dekarbonisierung der Cloud durch 100% erneuerbare Energie, Flüssigkeitskühlung und klimaneutrale KI-Server.`;
+        responseContent = `BambooBjörn ist Europas führende Plattform für hochleistungsfähiges Grünes KI-Hosting. Unsere Mission ist die Dekarbonisierung der Cloud durch 100% erneuerbare Energie, Flüssigkeitskühlung und klimaneutrale KI-Server.`;
       } else if (lower.includes('nachhaltig') || lower.includes('energie') || lower.includes('co2') || lower.includes('kohlenstoff') || lower.includes('oeko')) {
         responseContent = `Unsere Architektur reduziert die Kohlenstoffemissionen im Vergleich zu herkömmlichen Rechenzentren um bis zu 95%. Unser gesamter Strom stammt direkt aus zertifizierten Solar- und Windquellen in Europa.`;
       } else if (lower.includes('server') || lower.includes('knoten') || lower.includes('frankfurt')) {
@@ -523,7 +523,7 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
       } else if (lower.includes('ai') || lower.includes('ki') || lower.includes('intelligenz') || lower.includes('mistral')) {
         responseContent = `Das Grüne KI-Hosting von BambooBjørn nutzt optimierte Modelle wie Mistral AI auf beschleunigter, CO₂-neutraler Hardware, um die Energieeffizienz pro Anfrage zu maximieren.`;
       } else {
-        responseContent = `BambooBjørn kombiniert ökologische Infrastruktur und Spitzentechnologie für 100% CO₂-neutrale Web- und E-Mail-Dienste. Möchten Sie ein neues Öko-Postfach erstellen, Ihre DNS konfigurieren oder die Server-Telemetrie prüfen?`;
+        responseContent = `BambooBjörn kombiniert ökologische Infrastruktur und Spitzentechnologie für 100% CO₂-neutrale Web- und E-Mail-Dienste. Möchten Sie ein neues Öko-Postfach erstellen, Ihre DNS konfigurieren oder die Server-Telemetrie prüfen?`;
       }
 
       setMessages((prev) => [
