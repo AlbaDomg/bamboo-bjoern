@@ -167,8 +167,11 @@ export function CustomerProductsCard({ onConfigureDns, onAddMailbox, onViewTelem
         <div className="p-3 bg-[#FAF8F5] rounded-xl border border-[#EBECE5] flex flex-col justify-between space-y-3 hover:border-[#789340]/40 transition-all shadow-2xs">
           <div>
             <div className="flex items-center justify-between">
-              <span className="text-[11px] font-semibold text-[#746E68] flex items-center gap-1">
-                <span>🌐</span> Active Domain
+              <span className="text-[11px] font-semibold text-[#746E68] flex items-center gap-1.5">
+                <svg className="w-3.5 h-3.5 text-[#746E68] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                </svg>
+                <span>Active Domain</span>
               </span>
               <span className="text-[9px] bg-emerald-100/80 text-emerald-800 px-1.5 py-0.5 rounded font-medium border border-emerald-200">
                 SSL OK
@@ -193,8 +196,11 @@ export function CustomerProductsCard({ onConfigureDns, onAddMailbox, onViewTelem
         <div className="p-3 bg-[#FAF8F5] rounded-xl border border-[#EBECE5] flex flex-col justify-between space-y-3 hover:border-[#789340]/40 transition-all shadow-2xs">
           <div>
             <div className="flex items-center justify-between">
-              <span className="text-[11px] font-semibold text-[#746E68] flex items-center gap-1">
-                <span>✉️</span> Öko-Postfächer
+              <span className="text-[11px] font-semibold text-[#746E68] flex items-center gap-1.5">
+                <svg className="w-3.5 h-3.5 text-[#746E68] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <span>Öko-Postfächer</span>
               </span>
               <span className="text-[9px] bg-emerald-100/80 text-emerald-800 px-1.5 py-0.5 rounded font-medium border border-emerald-200">
                 2 / 5
@@ -228,8 +234,11 @@ export function CustomerProductsCard({ onConfigureDns, onAddMailbox, onViewTelem
         <div className="p-3 bg-[#FAF8F5] rounded-xl border border-[#EBECE5] flex flex-col justify-between space-y-3 hover:border-[#789340]/40 transition-all shadow-2xs">
           <div>
             <div className="flex items-center justify-between">
-              <span className="text-[11px] font-semibold text-[#746E68] flex items-center gap-1">
-                <span>⚡</span> KI-KVM Server
+              <span className="text-[11px] font-semibold text-[#746E68] flex items-center gap-1.5">
+                <svg className="w-3.5 h-3.5 text-[#746E68] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <span>KI-KVM Server</span>
               </span>
               <span className="text-[9px] bg-emerald-100/80 text-emerald-800 px-1.5 py-0.5 rounded font-medium border border-emerald-200">
                 PUE 1.12
@@ -654,7 +663,23 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
             title="Klicken, um zwischen Kundin und Besucher umzuschalten"
           >
             <span className={`w-2 h-2 rounded-full ${isLoggedIn ? 'bg-emerald-400 animate-pulse' : 'bg-amber-400'}`}></span>
-            <span>{isLoggedIn ? '👤 Kundin (Alba)' : '🌐 Besucher'}</span>
+            <span className="flex items-center gap-1">
+              {isLoggedIn ? (
+                <>
+                  <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  <span>Kundin (Alba)</span>
+                </>
+              ) : (
+                <>
+                  <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                  </svg>
+                  <span>Besucher</span>
+                </>
+              )}
+            </span>
           </button>
 
           <button
