@@ -467,6 +467,16 @@
       selectedDomain: ''
     };
 
+    function scrollToBottomHtml() {
+      if (chatStream) {
+        chatStream.scrollTop = chatStream.scrollHeight;
+      }
+      const formInput = document.getElementById('chat-form');
+      if (formInput) {
+        formInput.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       renderInitialStream();
     });
@@ -739,7 +749,7 @@
           </div>
         `;
         chatStream.insertAdjacentHTML('beforeend', dnsCardHtml);
-        chatStream.scrollTop = chatStream.scrollHeight;
+        scrollToBottomHtml();
       }, 500);
     }
 
@@ -808,7 +818,7 @@
           </div>
         `;
         chatStream.insertAdjacentHTML('beforeend', telemetryCardHtml);
-        chatStream.scrollTop = chatStream.scrollHeight;
+        scrollToBottomHtml();
       }, 500);
     }
 
@@ -829,7 +839,7 @@
       addUserMessage(text);
       chatInput.value = '';
 
-      chatStream.scrollTop = chatStream.scrollHeight;
+      scrollToBottomHtml();
 
       if (mailFlowState.activeFlow === 'mail.create' && mailFlowState.step === 'ENTER_NAME') {
         processMailNameInput(text);
@@ -852,7 +862,7 @@
         }
 
         generateAiResponse(text);
-        chatStream.scrollTop = chatStream.scrollHeight;
+        scrollToBottomHtml();
       }, 800);
     }
 
@@ -883,7 +893,7 @@
         </div>
       `;
       chatStream.insertAdjacentHTML('beforeend', typingHtml);
-      chatStream.scrollTop = chatStream.scrollHeight;
+      scrollToBottomHtml();
     }
 
     function removeTypingIndicator() {
@@ -924,7 +934,7 @@
         </div>
       `;
       chatStream.insertAdjacentHTML('beforeend', assistantHtml);
-      chatStream.scrollTop = chatStream.scrollHeight;
+      scrollToBottomHtml();
     }
 
     // Paso 1 -> 2: Guardar Dominio y Solicitar Nombre del Buzón con InlineTextInput
@@ -964,7 +974,7 @@
           </div>
         `;
         chatStream.insertAdjacentHTML('beforeend', inlineInputCardHtml);
-        chatStream.scrollTop = chatStream.scrollHeight;
+        scrollToBottomHtml();
       }, 500);
     }
 
@@ -988,7 +998,7 @@
       showTypingIndicator();
       setTimeout(() => {
         removeTypingIndicator();
-        const confirmationCardHtml = `
+        const confirmCardHtml = `
           <div class="flex items-start max-w-2xl animate-fade-in">
             <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-xs sm:text-sm leading-relaxed shadow-xs space-y-4 w-full max-w-md">
               <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
@@ -1036,8 +1046,8 @@
             </div>
           </div>
         `;
-        chatStream.insertAdjacentHTML('beforeend', confirmationCardHtml);
-        chatStream.scrollTop = chatStream.scrollHeight;
+        chatStream.insertAdjacentHTML('beforeend', confirmCardHtml);
+        scrollToBottomHtml();
       }, 600);
     }
 
@@ -1047,7 +1057,7 @@
     function confirmMailCreation() {
       mailFlowState.step = 'CREATING';
 
-      const loadingHtml = `
+      const creatingCardHtml = `
         <div id="creating-status" class="flex items-start max-w-md animate-fade-in">
           <div class="flex items-center gap-2.5 p-4 bg-emerald-50/90 border border-emerald-200 text-emerald-800 rounded-2xl text-xs font-medium w-full shadow-xs">
             <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping flex-shrink-0"></span>
@@ -1055,8 +1065,8 @@
           </div>
         </div>
       `;
-      chatStream.insertAdjacentHTML('beforeend', loadingHtml);
-      chatStream.scrollTop = chatStream.scrollHeight;
+      chatStream.insertAdjacentHTML('beforeend', creatingCardHtml);
+      scrollToBottomHtml();
 
       // Simular tiempo de aprovisionamiento (1.5s)
       setTimeout(() => {
@@ -1080,7 +1090,7 @@
           </div>
         `;
         chatStream.insertAdjacentHTML('beforeend', successHtml);
-        chatStream.scrollTop = chatStream.scrollHeight;
+        scrollToBottomHtml();
 
         // Resetear estado local
         mailFlowState = { activeFlow: null, step: 'IDLE', mailboxName: '', selectedDomain: '' };
@@ -1095,16 +1105,16 @@
       showTypingIndicator();
       setTimeout(() => {
         removeTypingIndicator();
-        const cancelHtml = `
+        const flowStartHtml = `
           <div class="flex items-start max-w-2xl animate-fade-in">
             <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs">
               <p class="text-charcoal-muted font-normal">Verstanden, die Operation wurde abgebrochen. Wie kann ich Ihnen heute weiterhelfen?</p>
             </div>
           </div>
         `;
-        chatStream.insertAdjacentHTML('beforeend', cancelHtml);
-        chatStream.scrollTop = chatStream.scrollHeight;
-      }, 500);
+        chatStream.insertAdjacentHTML('beforeend', flowStartHtml);
+        scrollToBottomHtml();
+      }, 600);
     }
 
     function generateAiResponse(userQuery) {

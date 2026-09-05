@@ -427,6 +427,9 @@ export default function BambooChat({ avatarPath = '/panda-avatar.png' }) {
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (window.innerWidth < 640 || window.innerHeight < 600) {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
   }, [messages, isLoading, flowState]);
 
   // Cambiar entre el modo Clienta Autenticada y Modo Visitante
