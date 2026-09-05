@@ -92,6 +92,13 @@
       background-attachment: fixed;
     }
 
+    /* Evitar parpadeos y rebotes de fondo en móviles por background-attachment: fixed */
+    @media (max-width: 640px) {
+      .bg-luxury-nature {
+        background-attachment: scroll;
+      }
+    }
+
     /* Contenedor Flotante Cálido (#FAF8F5 / #F8F8F8) para Legibilidad Perfecta sobre el Bosque de Bambú */
     .glass-floating {
       background: rgba(250, 248, 245, 0.92);
