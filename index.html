@@ -106,6 +106,15 @@
       pointer-events: none;
     }
 
+    /* Permitir scroll vertical libre en teléfonos en modo horizontal (Landscape / poca altura) */
+    @media (max-height: 600px) {
+      body {
+        height: auto !important;
+        min-height: 100dvh !important;
+        overflow-y: auto !important;
+      }
+    }
+
     /* Contenedor Flotante Cálido (#FAF8F5 / #F8F8F8) para Legibilidad Perfecta sobre el Bosque de Bambú */
     .glass-floating {
       background: rgba(250, 248, 245, 0.92);
