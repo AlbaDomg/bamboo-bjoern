@@ -81,22 +81,29 @@
       background: #789340;
     }
 
-    /* Fondo sutil y brillante de bambú tecnológico */
+    /* Fondo sutil y brillante de bambú tecnológico mediante capa fija (Sin cortes ni saltos en móvil/desktop) */
     .bg-luxury-nature {
+      background-color: #FAF8F5;
+      position: relative;
+    }
+
+    .bg-luxury-nature::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -10;
       background-color: #FAF8F5;
       background-image:
         linear-gradient(to bottom, rgba(250, 248, 245, 0.45), rgba(250, 248, 245, 0.65)),
         url('assets/bamboo.jpeg');
       background-size: cover;
       background-position: center;
-      background-attachment: fixed;
-    }
-
-    /* Evitar parpadeos y rebotes de fondo en móviles por background-attachment: fixed */
-    @media (max-width: 640px) {
-      .bg-luxury-nature {
-        background-attachment: scroll;
-      }
+      pointer-events: none;
     }
 
     /* Contenedor Flotante Cálido (#FAF8F5 / #F8F8F8) para Legibilidad Perfecta sobre el Bosque de Bambú */
