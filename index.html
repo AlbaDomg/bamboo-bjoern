@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bamboo Björn — Grünes KI-Hosting</title>
-  <link rel="icon" type="image/png" href="assets/bambulogo_clean.png">
+  <title>Bamboo Bjørn — Grünes KI-Hosting</title>
+  <link rel="icon" type="image/png" href="assets/bambusbjørn-logo.png">
   <meta name="description"
     content="Nachhaltige Web-Infrastruktur mit hoher Leistung. 100% erneuerbares Hosting, unterstützt durch Künstliche Intelligenz.">
 
@@ -145,12 +145,10 @@
 
     .btn-bamboo-primary:hover {
       filter: brightness(1.08);
-      transform: translateY(-1.5px);
       box-shadow: 0 6px 20px rgba(207, 97, 74, 0.35);
     }
 
     .btn-bamboo-primary:active {
-      transform: translateY(0);
       filter: brightness(0.96);
     }
 
@@ -176,22 +174,29 @@
       color: #FFFFFF;
       border-color: transparent;
       box-shadow: 0 4px 12px rgba(120, 147, 64, 0.3);
-      transform: translateY(-1px);
     }
 
     /* Efecto Glow Sutil */
     .ai-glow {
       box-shadow: 0 25px 70px -15px rgba(52, 49, 45, 0.12),
-                  0 0 35px 5px rgba(120, 147, 64, 0.18),
-                  inset 0 1px 1px 0 rgba(255, 255, 255, 0.95) !important;
+        0 0 35px 5px rgba(120, 147, 64, 0.18),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.95) !important;
       transition: box-shadow 0.5s ease-in-out;
     }
 
     /* Animación sutil flotante para el avatar del Panda */
     @keyframes pandaFloat {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-3px) rotate(1deg); }
+
+      0%,
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-3px) rotate(1deg);
+      }
     }
+
     .panda-avatar {
       animation: pandaFloat 3.5s ease-in-out infinite;
     }
@@ -212,16 +217,20 @@
   <!-- Header Absolutamente Limpio (Alineado al Extremo Izquierdo) -->
   <header class="w-full px-4 sm:px-10 py-3 sm:py-5 flex items-center justify-between z-20 flex-shrink-0">
 
-    <!-- Logo Bamboo Bjoern -->
+    <!-- Logo Bamboo Bjørn -->
     <div class="flex items-center space-x-3 sm:space-x-5 group cursor-pointer">
-      <img src="assets/bambulogo_clean.png" alt="Bamboo Bjoern Logo"
-        class="w-16 h-16 sm:w-28 sm:h-28 rounded-full shadow-md transition-transform duration-300 group-hover:scale-105 object-contain border border-white/60">
+      <div
+        class="w-16 h-16 sm:w-28 sm:h-28 rounded-full shadow-md border border-white/60 overflow-hidden flex items-center justify-center bg-white/20">
+        <img src="assets/bambusbjørn-logo.png" alt="Bamboo Bjørn Logo"
+          class="w-full h-full object-contain scale-[1.35] translate-y-1.5 transition-transform duration-300">
+      </div>
       <div class="flex flex-col justify-center">
         <span
           class="font-semibold text-2xl sm:text-4xl tracking-tight text-forest group-hover:bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] group-hover:bg-clip-text group-hover:text-transparent transition-all leading-tight">
-          Bamboo Björn
+          Bamboo Bjørn
         </span>
-        <span class="text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.24em] uppercase text-forest font-semibold mt-0.5 opacity-90">
+        <span
+          class="text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.24em] uppercase text-forest font-semibold mt-0.5 opacity-90">
           Eco AI Infrastructure
         </span>
       </div>
@@ -247,15 +256,19 @@
       class="glass-floating ai-glow rounded-2xl sm:rounded-3xl shadow-apple-float flex-1 flex flex-col h-full overflow-hidden border border-white/70 relative min-h-0">
 
       <!-- Cabecera Interior Minimalista del Chat -->
-      <div class="px-4 sm:px-8 py-3 sm:py-4 border-b border-white/40 flex flex-wrap items-center justify-between gap-2 bg-white/25 backdrop-blur-md">
+      <div
+        class="px-4 sm:px-8 py-3 sm:py-4 border-b border-white/40 flex flex-wrap items-center justify-between gap-2 bg-white/25 backdrop-blur-md">
         <div class="flex items-center space-x-2.5 sm:space-x-3">
           <div class="relative flex items-center">
-            <img src="./assets/panda-avatar.png" alt="Bjoern Panda" class="w-10 h-10 sm:w-14 sm:h-14 object-contain panda-avatar filter drop-shadow-md">
-            <span class="absolute bottom-0.5 right-0.5 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-emerald-400 border-2 border-white rounded-full"></span>
+            <img src="./assets/LaptopPanda_transparent.png" alt="Bjoern Panda"
+              class="w-10 h-10 sm:w-14 sm:h-14 object-contain panda-avatar filter drop-shadow-md">
+            <span
+              class="absolute bottom-0.5 right-0.5 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-emerald-400 border-2 border-white rounded-full"></span>
           </div>
           <div>
-            <h2 class="text-xs sm:text-sm font-semibold text-forest leading-tight">Björn KI-Assistent</h2>
-            <p class="text-[10px] sm:text-[11px] text-charcoal-muted font-normal">Ökologische Architektur &amp; Mistral KI Server (EU)</p>
+            <h2 class="text-xs sm:text-sm font-semibold text-forest leading-tight">Bjørn KI-Assistent</h2>
+            <p class="text-[10px] sm:text-[11px] text-charcoal-muted font-normal">Ökologische Architektur &amp; Mistral
+              KI Server (EU)</p>
           </div>
         </div>
 
@@ -267,7 +280,8 @@
             <span id="auth-status-dot" class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             <span id="auth-toggle-text" class="flex items-center gap-1">
               <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
               <span>Kundin (Alba)</span>
             </span>
@@ -275,7 +289,8 @@
 
           <button onclick="toggleDatacenterModal()"
             class="text-[11px] sm:text-xs text-charcoal-muted hover:text-forest transition-colors flex items-center space-x-1 sm:space-x-1.5 font-normal">
-            <svg class="w-3.5 h-3.5 text-bamboo flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+            <svg class="w-3.5 h-3.5 text-bamboo flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.6"
+              viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
               <path stroke-linecap="round" stroke-linejoin="round"
                 d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
@@ -289,14 +304,15 @@
 
 
       <!-- Stream de Mensajes con Gran Espaciado y Aire -->
-      <div id="chat-stream" class="flex-1 overflow-y-auto px-4 sm:px-8 py-4 sm:py-8 space-y-4 sm:space-y-8 custom-scrollbar">
+      <div id="chat-stream"
+        class="flex-1 overflow-y-auto px-4 sm:px-8 py-4 sm:py-8 space-y-4 sm:space-y-8 custom-scrollbar">
 
         <!-- Mensaje de Bienvenida -->
         <div class="flex items-start max-w-2xl">
           <div class="space-y-4">
             <div
               class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs">
-              <p class="font-semibold text-forest text-base mb-2">Willkommen bei Bamboo Björn!</p>
+              <p class="font-semibold text-forest text-base mb-2">Willkommen bei Bamboo Bjørn! 🌿</p>
               <p id="welcome-text" class="text-charcoal-muted font-normal mb-4 min-h-[40px]">
               </p>
 
@@ -322,29 +338,39 @@
 
             <!-- Sugerencias Rápidas de Texto Puro Ultra-Elegantes -->
             <div class="flex flex-wrap gap-2.5 pt-1" id="suggestion-chips">
-              <button onclick="sendQuickPrompt('Welches grüne Hosting brauche ich?')"
-                class="btn-bamboo-chip">
-                <svg class="w-3.5 h-3.5 text-[#789340]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              <button onclick="sendQuickPrompt('Welches grüne Hosting brauche ich?')" class="btn-bamboo-chip">
+                <svg class="w-3.5 h-3.5 text-[#789340]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
                 <span>Welches grüne Hosting brauche ich?</span>
               </button>
-              <button onclick="sendQuickPrompt('Serverstatus und Leistung anzeigen')"
-                class="btn-bamboo-chip">
-                <svg class="w-3.5 h-3.5 text-[#789340]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+              <button onclick="sendQuickPrompt('Serverstatus und Leistung anzeigen')" class="btn-bamboo-chip">
+                <svg class="w-3.5 h-3.5 text-[#789340]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
                 <span>Serverstatus anzeigen</span>
               </button>
-              <button onclick="sendQuickPrompt('Professionelles Öko-E-Mail-Konto erstellen')"
-                class="btn-bamboo-chip">
-                <svg class="w-3.5 h-3.5 text-[#789340]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <button onclick="sendQuickPrompt('Professionelles Öko-E-Mail-Konto erstellen')" class="btn-bamboo-chip">
+                <svg class="w-3.5 h-3.5 text-[#789340]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
                 <span>E-Mail-Konto erstellen</span>
               </button>
-              <button onclick="sendQuickPrompt('Neue Domain registrieren')"
-                class="btn-bamboo-chip">
-                <svg class="w-3.5 h-3.5 text-[#789340]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+              <button onclick="sendQuickPrompt('Neue Domain registrieren')" class="btn-bamboo-chip">
+                <svg class="w-3.5 h-3.5 text-[#789340]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                </svg>
                 <span>Neue Domain registrieren</span>
               </button>
-              <button onclick="sendQuickPrompt('Bestehende Website migrieren')"
-                class="btn-bamboo-chip">
-                <svg class="w-3.5 h-3.5 text-[#789340]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+              <button onclick="sendQuickPrompt('Bestehende Website migrieren')" class="btn-bamboo-chip">
+                <svg class="w-3.5 h-3.5 text-[#789340]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                </svg>
                 <span>Website migrieren</span>
               </button>
             </div>
@@ -368,15 +394,15 @@
           </button>
 
           <!-- Campo de entrada con sangría adaptativa limpia pl-4 sm:pl-14 -->
-          <input type="text" id="chat-input" placeholder="Fragen Sie Björn etwas..."
+          <input type="text" id="chat-input" placeholder="Fragen Sie Bjørn etwas..."
             class="w-full pl-4 sm:pl-14 pr-12 sm:pr-14 py-3 sm:py-4 bg-white border border-[#EBECE5] focus:border-[#789340] focus:bg-white rounded-2xl text-xs sm:text-sm text-charcoal placeholder-charcoal-muted/60 focus:outline-none focus:ring-4 focus:ring-[#789340]/15 transition-all shadow-xs"
             autocomplete="off" />
 
           <!-- Botón de envío con degradado de marca encajado a la derecha -->
           <button type="submit" title="Nachricht senden"
             class="absolute right-1.5 sm:right-2 z-10 p-2.5 sm:p-3 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-105 text-white rounded-xl transition-all duration-300 shadow-sm flex items-center justify-center group">
-            <svg class="w-4 h-4 transform rotate-45 text-white transition-transform group-hover:scale-110"
-              fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 transform rotate-45 text-white transition-transform group-hover:scale-110" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
                 d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
             </svg>
@@ -413,7 +439,8 @@
       </button>
       <div class="mb-4">
         <h3 class="text-base font-medium text-forest">Immersionskühlungstechnologie</h3>
-        <p class="text-xs text-charcoal-muted mt-0.5">Direkte Wärmeabfuhr mit biologisch abbaubarer dielektrischer Flüssigkeit
+        <p class="text-xs text-charcoal-muted mt-0.5">Direkte Wärmeabfuhr mit biologisch abbaubarer dielektrischer
+          Flüssigkeit
         </p>
       </div>
       <div class="rounded-2xl overflow-hidden mb-5 border border-forest/10">
@@ -440,7 +467,7 @@
   <footer
     class="w-full px-4 sm:px-10 pt-3 pb-12 sm:py-4 text-[11px] sm:text-xs text-charcoal-muted z-20 flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-4 flex-shrink-0 text-center sm:text-left">
     <div class="flex items-center justify-center">
-      <p>© 2026 Bamboo Björn • Grünes Hosting &amp; Zero-Carbon KI-Infrastruktur</p>
+      <p>© 2026 Bamboo Bjørn • Grünes Hosting &amp; Zero-Carbon KI-Infrastruktur</p>
     </div>
     <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-charcoal-muted font-normal">
       <a href="#" onclick="toggleDatacenterModal(); return false;"
@@ -457,7 +484,8 @@
     const chatInput = document.getElementById('chat-input');
     const modal = document.getElementById('datacenter-modal');
 
-    let isUserLoggedIn = true;
+    let isRoleSelected = false;
+    let isUserLoggedIn = false;
 
     // Estado del flujo conversacional local ('mail.create')
     let mailFlowState = {
@@ -481,8 +509,21 @@
       renderInitialStream();
     });
 
-    function toggleAuthModeHtml() {
-      isUserLoggedIn = !isUserLoggedIn;
+    function selectInitialRoleHtml(isKundin) {
+      isRoleSelected = true;
+      isUserLoggedIn = isKundin;
+
+      addUserMessage(isKundin ? "Ich bin bereits Kundin" : "Ich möchte mich informieren");
+      updateAuthHeaderHtml();
+
+      showTypingIndicator();
+      setTimeout(() => {
+        removeTypingIndicator();
+        renderInitialStream();
+      }, 600);
+    }
+
+    function updateAuthHeaderHtml() {
       const toggleText = document.getElementById('auth-toggle-text');
       const toggleDot = document.getElementById('auth-status-dot');
 
@@ -493,6 +534,12 @@
         if (toggleText) toggleText.innerHTML = '<svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg> <span>Besucher</span>';
         if (toggleDot) toggleDot.className = 'w-2 h-2 rounded-full bg-amber-400';
       }
+    }
+
+    function toggleAuthModeHtml() {
+      isRoleSelected = true;
+      isUserLoggedIn = !isUserLoggedIn;
+      updateAuthHeaderHtml();
 
       mailFlowState = { activeFlow: null, step: 'IDLE', mailboxName: '', selectedDomain: '' };
       renderInitialStream();
@@ -501,6 +548,42 @@
     function renderInitialStream() {
       if (!chatStream) return;
 
+      if (!isRoleSelected) {
+        chatStream.innerHTML = `
+          <!-- Saludo Inicial Conversacional con Bifurcación de Roles -->
+          <div class="flex items-start max-w-2xl animate-fade-in">
+            <div class="space-y-4 w-full">
+              <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs w-full font-['Space_Grotesk',sans-serif]">
+                <div class="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4 mb-4">
+                  <div class="flex-1">
+                    <div class="text-[11px] font-semibold text-[#789340] mb-1.5 flex items-center gap-1.5">
+                      <span>Bjørn</span>
+                      <span class="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
+                    </div>
+                    <p class="font-semibold text-forest text-base mb-1">Willkommen bei Bamboo Bjørn! 🌿</p>
+                    <p class="text-charcoal-muted font-normal text-xs sm:text-sm">
+                      Bitte wählen Sie Ihren Zugangsmodus, um fortzufahren:
+                    </p>
+                  </div>
+                  <img src="assets/panda-avatar.png" alt="Bjørn KI-Assistent" class="w-24 h-24 sm:w-28 sm:h-28 object-contain flex-shrink-0 drop-shadow-xs self-center sm:self-start">
+                </div>
+                
+                <!-- Botones de Decisión Rápida (Pastillas) -->
+                <div class="flex flex-col sm:flex-row gap-3 pt-1">
+                  <button onclick="selectInitialRoleHtml(true)" class="flex-1 min-h-[44px] px-4 py-3 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white rounded-xl text-xs sm:text-sm font-semibold shadow-xs transition-all cursor-pointer flex items-center justify-center gap-2">
+                    <span>Ich bin bereits Kundin</span>
+                  </button>
+                  <button onclick="selectInitialRoleHtml(false)" class="flex-1 min-h-[44px] px-4 py-3 bg-white hover:bg-emerald-50 hover:border-emerald-300 border border-[#EBECE5] text-[#34312D] rounded-xl text-xs sm:text-sm font-semibold shadow-2xs transition-all cursor-pointer flex items-center justify-center gap-2">
+                    <span>Ich möchte mich informieren</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
       if (isUserLoggedIn) {
         chatStream.innerHTML = `
           <!-- Mensaje de Bienvenida a Clienta Autenticada (Fase 3) -->
@@ -508,12 +591,12 @@
             <div class="space-y-4 w-full">
               <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs w-full">
                 <div class="text-[11px] font-semibold text-[#789340] mb-1.5 flex items-center gap-1.5">
-                  <span>Björn</span>
-                  <span class="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+                  <span>Bjørn</span>
+                  <span class="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
                 </div>
                 <p class="font-semibold text-forest text-base mb-1">Willkommen zurück, Frau Domínguez! 🌿</p>
                 <p class="text-charcoal-muted font-normal text-xs sm:text-sm mb-3">
-                  Schön, Sie wiederzusehen. Hier ist die Echtzeit-Übersicht Ihrer aktiven grünen Dienste bei Bamboo Björn:
+                  Schön, Sie wiederzusehen. Hier ist die Echtzeit-Übersicht Ihrer aktiven grünen Dienste bei Bamboo Bjørn:
                 </p>
 
                 <!-- Tarjeta de Productos Activos (CustomerProductsCard) -->
@@ -545,18 +628,29 @@
                             </svg>
                             <span>Active Domain</span>
                           </span>
-                          <span class="text-[9px] bg-emerald-100/80 text-emerald-800 px-1.5 py-0.5 rounded font-medium border border-emerald-200">SSL OK</span>
+                          <span class="text-[9px] bg-emerald-100/80 text-emerald-800 px-1.5 py-0.5 rounded font-medium border border-emerald-200 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span>SSL OK</span>
+                          </span>
                         </div>
                         <p class="text-xs sm:text-sm font-semibold text-[#34312D] mt-1.5 truncate">bamboo-bjoern.eu</p>
                         <p class="text-[10px] text-[#746E68] mt-0.5">Frankfurt Solar Node 1</p>
                       </div>
-                      <button onclick="showDnsCardHtml()" class="w-full min-h-[36px] px-3 py-2 bg-white hover:bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:text-white hover:border-transparent border border-[#789340]/30 text-[#34312D] text-[11px] font-semibold rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1.5 group active:scale-[0.98]">
-                        <svg class="w-3.5 h-3.5 text-[#789340] group-hover:text-white transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        <span>DNS konfigurieren</span>
-                      </button>
+                      <div class="flex items-center gap-1.5">
+                        <button onclick="showDnsCardHtml()" class="flex-1 min-h-[32px] px-2 py-1.5 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-[10px] font-semibold rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1 shadow-xs">
+                          <svg class="w-3 h-3 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          <span>DNS verwalten</span>
+                        </button>
+                        <button onclick="startDomainRenewFlowHtml('bamboo-bjoern.eu')" class="flex-1 min-h-[32px] px-2 py-1.5 bg-white hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-800 border border-[#EBECE5] text-[#34312D] text-[10px] font-semibold rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1 shadow-2xs">
+                          <svg class="w-3 h-3 text-stone-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                          </svg>
+                          <span>Verlängern</span>
+                        </button>
+                      </div>
                     </div>
 
                     <!-- Producto 2: Buzones -->
@@ -582,7 +676,7 @@
                           </div>
                         </div>
                       </div>
-                      <button onclick="startMailCreateFlow()" class="w-full min-h-[36px] px-3 py-2 bg-white hover:bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:text-white hover:border-transparent border border-[#789340]/30 text-[#34312D] text-[11px] font-semibold rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1.5 group active:scale-[0.98]">
+                      <button onclick="startMailCreateFlow()" class="w-full min-h-[36px] px-3 py-2 bg-white hover:bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:text-white hover:border-transparent border border-[#789340]/30 text-[#34312D] text-[11px] font-semibold rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1.5 group">
                         <svg class="w-3.5 h-3.5 text-[#789340] group-hover:text-white transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                         </svg>
@@ -590,27 +684,39 @@
                       </button>
                     </div>
 
-                    <!-- Producto 3: Servidor KVM -->
+                    <!-- Producto 3: Servidor KVM Ecológico -->
                     <div class="p-3 bg-[#FAF8F5] rounded-xl border border-[#EBECE5] flex flex-col justify-between space-y-3">
                       <div>
                         <div class="flex items-center justify-between">
                           <span class="text-[11px] font-semibold text-[#746E68] flex items-center gap-1.5">
                             <svg class="w-3.5 h-3.5 text-[#746E68] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
                             </svg>
-                            <span>KI-KVM Server</span>
+                            <span>Server KVM-01</span>
                           </span>
-                          <span class="text-[9px] bg-emerald-100/80 text-emerald-800 px-1.5 py-0.5 rounded font-medium border border-emerald-200">PUE 1.12</span>
+                          <span class="text-[9px] bg-emerald-100/80 text-emerald-800 px-1.5 py-0.5 rounded font-medium border border-emerald-200 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                            Online
+                          </span>
                         </div>
-                        <p class="text-xs sm:text-sm font-semibold text-[#34312D] mt-1.5 truncate">Frankfurt Solar Node</p>
-                        <p class="text-[10px] text-[#746E68] mt-0.5">2 vCPU • 4GB RAM • 100% Öko</p>
+                        <p class="text-xs sm:text-sm font-semibold text-[#34312D] mt-1.5 truncate">Frankfurt - Solar Powered</p>
+                        <p class="text-[10px] text-[#746E68] mt-0.5">8 vCPU • 16 GB RAM • 160 GB NVMe</p>
                       </div>
-                      <button onclick="showTelemetryCardHtml()" class="w-full min-h-[36px] px-3 py-2 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-[11px] font-semibold rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1.5 shadow-xs active:scale-[0.98]">
-                        <svg class="w-3.5 h-3.5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                        </svg>
-                        <span>Telemetrie anzeigen</span>
-                      </button>
+                      <div class="flex items-center gap-1.5">
+                        <button onclick="requestKvmRebootHtml('KVM-01')" class="flex-1 min-h-[32px] px-2 py-1.5 bg-white hover:bg-rose-50 hover:border-rose-300 hover:text-rose-700 border border-[#EBECE5] text-[#34312D] text-[10px] font-semibold rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1 shadow-2xs">
+                          <svg class="w-3 h-3 text-stone-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                          </svg>
+                          <span>Neustarten</span>
+                        </button>
+                        <button onclick="showKvmConfigPanelHtml('KVM-01')" class="flex-1 min-h-[32px] px-2 py-1.5 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-[10px] font-semibold rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1 shadow-xs">
+                          <svg class="w-3 h-3 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          <span>Konfigurieren</span>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -618,17 +724,13 @@
 
               <!-- Sugerencias Rápidas de Texto -->
               <div class="flex flex-wrap gap-2.5 pt-1" id="suggestion-chips">
-                <button onclick="showDnsCardHtml()" class="btn-bamboo-chip">
-                  <svg class="w-3.5 h-3.5 text-[#789340]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/></svg>
-                  <span>DNS konfigurieren</span>
+                <button onclick="startDomainSearchFlowHtml()" class="btn-bamboo-chip">
+                  <svg class="w-3.5 h-3.5 text-[#789340]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+                  <span>Neues Domain registrieren</span>
                 </button>
                 <button onclick="showTelemetryCardHtml()" class="btn-bamboo-chip">
                   <svg class="w-3.5 h-3.5 text-[#789340]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
                   <span>Server-Telemetrie</span>
-                </button>
-                <button onclick="startMailCreateFlow()" class="btn-bamboo-chip">
-                  <svg class="w-3.5 h-3.5 text-[#789340]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                  <span>Neues Postfach hinzufügen</span>
                 </button>
               </div>
             </div>
@@ -640,7 +742,7 @@
           <div class="flex items-start max-w-2xl animate-fade-in">
             <div class="space-y-4">
               <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs">
-                <p class="font-semibold text-forest text-base mb-2">Willkommen bei Bamboo Björn!</p>
+                <p class="font-semibold text-forest text-base mb-2">Willkommen bei Bamboo Bjørn! 🌿</p>
                 <p id="welcome-text" class="text-charcoal-muted font-normal mb-4 min-h-[40px]">
                   Wir entwickeln nachhaltige Hochleistungs-Webinfrastruktur, angetrieben von 100% erneuerbarer Energie und optimiert durch Mistral AI.
                 </p>
@@ -682,15 +784,18 @@
           <div class="flex items-start max-w-2xl animate-fade-in">
             <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-xs sm:text-sm leading-relaxed shadow-xs space-y-3 w-full max-w-xl">
               <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
-                <span>Björn</span>
-                <span class="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+                <span>Bjørn</span>
+                <span class="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
               </div>
               <p class="font-semibold text-forest text-xs sm:text-sm">Hier ist die aktuelle DNS-Konfiguration für Ihre aktive Domain <span class="font-mono text-[#789340]">bamboo-bjoern.eu</span>:</p>
 
               <div class="p-4 bg-white rounded-2xl border border-[#EBECE5] shadow-xs space-y-3 w-full text-[#34312D]">
                 <div class="flex items-center justify-between border-b border-[#EBECE5] pb-2">
                   <h4 class="font-semibold text-xs text-[#34312D] flex items-center gap-1.5">DNS-Zone: bamboo-bjoern.eu</h4>
-                  <span class="text-[10px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-medium border border-emerald-200">DNSSEC Aktiv</span>
+                  <span class="text-[10px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-medium border border-emerald-200 flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>DNSSEC Aktiv</span>
+                  </span>
                 </div>
                 <div class="overflow-x-auto">
                   <table class="w-full text-left border-collapse text-[11px]">
@@ -707,40 +812,34 @@
                         <td class="py-2 px-2 font-bold text-[#789340]">A</td>
                         <td class="py-2 px-2 text-[#34312D]">@</td>
                         <td class="py-2 px-2 text-[#746E68]">185.199.108.153</td>
-                        <td class="py-2 px-2 text-right"><span class="bg-emerald-50 text-emerald-800 px-1.5 py-0.5 rounded text-[9px] font-sans font-medium border border-emerald-200">Aktiv</span></td>
+                        <td class="py-2 px-2 text-right"><span class="bg-emerald-50 text-emerald-800 px-1.5 py-0.5 rounded text-[9px] font-sans font-medium border border-emerald-200 inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>Aktiv</span></td>
                       </tr>
                       <tr class="hover:bg-[#FAF8F5]">
                         <td class="py-2 px-2 font-bold text-[#789340]">AAAA</td>
                         <td class="py-2 px-2 text-[#34312D]">@</td>
                         <td class="py-2 px-2 text-[#746E68]">2a04:4e42::644</td>
-                        <td class="py-2 px-2 text-right"><span class="bg-emerald-50 text-emerald-800 px-1.5 py-0.5 rounded text-[9px] font-sans font-medium border border-emerald-200">Aktiv</span></td>
+                        <td class="py-2 px-2 text-right"><span class="bg-emerald-50 text-emerald-800 px-1.5 py-0.5 rounded text-[9px] font-sans font-medium border border-emerald-200 inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>Aktiv</span></td>
                       </tr>
                       <tr class="hover:bg-[#FAF8F5]">
                         <td class="py-2 px-2 font-bold text-[#789340]">MX</td>
                         <td class="py-2 px-2 text-[#34312D]">@</td>
                         <td class="py-2 px-2 text-[#746E68]">10 mail.bamboo-bjoern.eu</td>
-                        <td class="py-2 px-2 text-right"><span class="bg-emerald-50 text-emerald-800 px-1.5 py-0.5 rounded text-[9px] font-sans font-medium border border-emerald-200">Aktiv</span></td>
+                        <td class="py-2 px-2 text-right"><span class="bg-emerald-50 text-emerald-800 px-1.5 py-0.5 rounded text-[9px] font-sans font-medium border border-emerald-200 inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>Aktiv</span></td>
                       </tr>
                       <tr class="hover:bg-[#FAF8F5]">
                         <td class="py-2 px-2 font-bold text-[#789340]">TXT</td>
                         <td class="py-2 px-2 text-[#34312D]">_spf</td>
                         <td class="py-2 px-2 text-[#746E68]">v=spf1 include:_spf.bamboo-bjoern.eu ~all</td>
-                        <td class="py-2 px-2 text-right"><span class="bg-emerald-50 text-emerald-800 px-1.5 py-0.5 rounded text-[9px] font-sans font-medium border border-emerald-200">Aktiv</span></td>
+                        <td class="py-2 px-2 text-right"><span class="bg-emerald-50 text-emerald-800 px-1.5 py-0.5 rounded text-[9px] font-sans font-medium border border-emerald-200 inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>Aktiv</span></td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
                 <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-[#EBECE5]">
-                  <button onclick="startMailCreateFlow()" class="flex-1 sm:flex-none min-h-[36px] px-3 py-1.5 bg-[#789340] hover:bg-[#688235] text-white text-xs font-semibold rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1.5">
-                    <svg class="w-3.5 h-3.5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                    </svg>
-                    <span>Neue DNS-Record</span>
+                  <button onclick="requestDnsChangeHtml('bamboo-bjoern.eu')" class="flex-1 sm:flex-none min-h-[36px] px-3.5 py-2 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-xl shadow-xs transition-all cursor-pointer flex items-center justify-center gap-1.5">
+                    <span>DNS-Zone speichern</span>
                   </button>
-                  <button class="flex-1 sm:flex-none min-h-[36px] px-3 py-1.5 bg-emerald-50 border border-emerald-200 text-emerald-800 hover:bg-emerald-100 text-xs font-medium rounded-lg transition-all cursor-pointer flex items-center justify-center gap-1.5">
-                    <svg class="w-3.5 h-3.5 text-emerald-800 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                    </svg>
+                  <button onclick="showDnsCardHtml()" class="flex-1 sm:flex-none min-h-[36px] px-3.5 py-2 bg-emerald-50 border border-emerald-200 text-emerald-800 hover:bg-emerald-100 text-xs font-medium rounded-xl transition-all cursor-pointer flex items-center justify-center gap-1.5">
                     <span>DNS-Prüfung</span>
                   </button>
                 </div>
@@ -762,8 +861,8 @@
           <div class="flex items-start max-w-2xl animate-fade-in">
             <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-xs sm:text-sm leading-relaxed shadow-xs space-y-3 w-full max-w-xl">
               <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
-                <span>Björn</span>
-                <span class="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+                <span>Bjørn</span>
+                <span class="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
               </div>
               <p class="font-semibold text-forest text-xs sm:text-sm">Hier sind die Live-Messwerte Ihres ökologischen Servers im Rechenzentrum Frankfurt Solar Node:</p>
 
@@ -850,7 +949,7 @@
 
       setTimeout(() => {
         removeTypingIndicator();
-        
+
         const lower = text.toLowerCase();
         if (lower.includes('dns') || lower.includes('domain') || lower.includes('registro')) {
           showDnsCardHtml();
@@ -888,7 +987,7 @@
             <span class="w-1.5 h-1.5 bg-bamboo rounded-full animate-bounce" style="animation-delay: 0ms"></span>
             <span class="w-1.5 h-1.5 bg-bamboo rounded-full animate-bounce" style="animation-delay: 150ms"></span>
             <span class="w-1.5 h-1.5 bg-bamboo rounded-full animate-bounce" style="animation-delay: 300ms"></span>
-            <span class="ml-2 text-charcoal-muted font-normal">Björn analysiert Anforderungen...</span>
+            <span class="ml-2 text-charcoal-muted font-normal">Bjørn analysiert Anforderungen...</span>
           </div>
         </div>
       `;
@@ -904,28 +1003,28 @@
     // Iniciar Flujo Simulado de Creación de Correo Eco (Paso 1: Selección de Dominio)
     function startMailCreateFlow() {
       mailFlowState = { activeFlow: 'mail.create', step: 'SELECT_DOMAIN', mailboxName: '', selectedDomain: '' };
-      
+
       const assistantHtml = `
         <div class="flex items-start max-w-2xl animate-fade-in">
           <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs space-y-4 w-full max-w-lg">
             <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
-              <span>Björn</span>
-              <span class="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+              <span>Bjørn</span>
+              <span class="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
             </div>
             <p class="font-semibold text-forest text-sm">Ausgezeichnet! Wir erstellen Ihr neues 100% ökologisches E-Mail-Postfach</p>
             <p class="text-charcoal-muted font-normal text-xs">Für welche Domain möchten Sie die neue E-Mail-Adresse erstellen?</p>
             
             <!-- Componente OptionButtons de selección de dominio -->
             <div class="flex flex-col sm:flex-row flex-wrap gap-2.5 pt-1 w-full">
-              <button onclick="handleDomainSelection('bamboo-bjoern.eu')" class="w-full sm:w-auto min-h-[44px] px-4 py-3 bg-white hover:bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:border-transparent hover:text-white border border-[#789340]/30 text-[#34312D] rounded-xl text-xs font-semibold flex items-center justify-center sm:justify-start gap-2 shadow-xs transition-all cursor-pointer group active:scale-[0.98]">
+              <button onclick="handleDomainSelection('bamboo-bjoern.eu')" class="w-full sm:w-auto min-h-[44px] px-4 py-3 bg-white hover:bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:border-transparent hover:text-white border border-[#789340]/30 text-[#34312D] rounded-xl text-xs font-semibold flex items-center justify-center sm:justify-start gap-2 shadow-xs transition-all cursor-pointer group">
                 <span class="w-2 h-2 rounded-full bg-[#789340] group-hover:bg-white transition-colors flex-shrink-0"></span>
                 <span>bamboo-bjoern.eu</span>
               </button>
-              <button onclick="handleDomainSelection('bamboo-eco.de')" class="w-full sm:w-auto min-h-[44px] px-4 py-3 bg-white hover:bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:border-transparent hover:text-white border border-[#789340]/30 text-[#34312D] rounded-xl text-xs font-semibold flex items-center justify-center sm:justify-start gap-2 shadow-xs transition-all cursor-pointer group active:scale-[0.98]">
+              <button onclick="handleDomainSelection('bamboo-eco.de')" class="w-full sm:w-auto min-h-[44px] px-4 py-3 bg-white hover:bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:border-transparent hover:text-white border border-[#789340]/30 text-[#34312D] rounded-xl text-xs font-semibold flex items-center justify-center sm:justify-start gap-2 shadow-xs transition-all cursor-pointer group">
                 <span class="w-2 h-2 rounded-full bg-[#789340] group-hover:bg-white transition-colors flex-shrink-0"></span>
                 <span>bamboo-eco.de</span>
               </button>
-              <button onclick="handleDomainSelection('zero-carbon-mail.com')" class="w-full sm:w-auto min-h-[44px] px-4 py-3 bg-white hover:bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:border-transparent hover:text-white border border-[#789340]/30 text-[#34312D] rounded-xl text-xs font-semibold flex items-center justify-center sm:justify-start gap-2 shadow-xs transition-all cursor-pointer group active:scale-[0.98]">
+              <button onclick="handleDomainSelection('zero-carbon-mail.com')" class="w-full sm:w-auto min-h-[44px] px-4 py-3 bg-white hover:bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:border-transparent hover:text-white border border-[#789340]/30 text-[#34312D] rounded-xl text-xs font-semibold flex items-center justify-center sm:justify-start gap-2 shadow-xs transition-all cursor-pointer group">
                 <span class="w-2 h-2 rounded-full bg-[#789340] group-hover:bg-white transition-colors flex-shrink-0"></span>
                 <span>zero-carbon-mail.com</span>
               </button>
@@ -941,9 +1040,9 @@
     function handleDomainSelection(domain) {
       mailFlowState.selectedDomain = domain;
       mailFlowState.step = 'ENTER_NAME';
-      
+
       addUserMessage(`Ausgewählte Domain: ${domain}`);
-      
+
       showTypingIndicator();
       setTimeout(() => {
         removeTypingIndicator();
@@ -951,8 +1050,8 @@
           <div class="flex items-start max-w-2xl animate-fade-in">
             <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-xs sm:text-sm leading-relaxed shadow-xs space-y-3 w-full max-w-lg">
               <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
-                <span>Björn</span>
-                <span class="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+                <span>Bjørn</span>
+                <span class="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
               </div>
               <p class="font-semibold text-forest text-xs sm:text-sm">Perfekt, wir erstellen Ihre E-Mail unter <span class="text-[#789340] font-bold">@${escapeHtml(domain)}</span> 🌿</p>
               <p class="text-charcoal-muted font-normal text-xs">Geben Sie den gewünschten Namen für Ihr Postfach ein (z. B. kontakt, hallo, info):</p>
@@ -963,7 +1062,7 @@
                   class="w-full sm:flex-1 min-h-[44px] px-4 py-2.5 bg-white border border-[#EBECE5] focus:border-[#789340] rounded-xl text-xs sm:text-sm text-[#34312D] placeholder-[#746E68]/60 focus:outline-none focus:ring-2 focus:ring-[#789340]/20 transition-all font-['Space_Grotesk',sans-serif]"
                   autocomplete="off" autoFocus />
                 <button type="submit"
-                  class="w-full sm:w-auto min-h-[44px] px-5 py-2.5 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-lg shadow-sm transition-all cursor-pointer flex items-center justify-center gap-1 font-['Space_Grotesk',sans-serif] active:scale-[0.98]">
+                  class="w-full sm:w-auto min-h-[44px] px-5 py-2.5 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-lg shadow-sm transition-all cursor-pointer flex items-center justify-center gap-1 font-['Space_Grotesk',sans-serif]">
                   <span>Weiter</span>
                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
@@ -1002,8 +1101,8 @@
           <div class="flex items-start max-w-2xl animate-fade-in">
             <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-xs sm:text-sm leading-relaxed shadow-xs space-y-4 w-full max-w-md">
               <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
-                <span>Björn</span>
-                <span class="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+                <span>Bjørn</span>
+                <span class="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
               </div>
               <p class="font-semibold text-forest text-xs sm:text-sm">Alles bereit! Wir haben das Konfigurationsblatt für Ihre neue Öko-E-Mail vorbereitet:</p>
               
@@ -1034,7 +1133,7 @@
                   </div>
                 </div>
                 <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-2 border-t border-[#EBECE5]">
-                  <button onclick="confirmMailCreation('${escapeHtml(fullEmail)}')" class="flex-1 min-h-[44px] px-4 py-3 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-lg shadow-sm transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-[0.98]">
+                  <button onclick="confirmMailCreation('${escapeHtml(fullEmail)}')" class="flex-1 min-h-[44px] px-4 py-3 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-lg shadow-sm transition-all flex items-center justify-center gap-1.5 cursor-pointer">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                     <span>Öko-Postfach erstellen</span>
                   </button>
@@ -1061,7 +1160,7 @@
         <div id="creating-status" class="flex items-start max-w-md animate-fade-in">
           <div class="flex items-center gap-2.5 p-4 bg-emerald-50/90 border border-emerald-200 text-emerald-800 rounded-2xl text-xs font-medium w-full shadow-xs">
             <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping flex-shrink-0"></span>
-            <span>Björn richtet Ihr 100% CO₂-neutrales Postfach <strong class="text-emerald-950">${mailFlowState.mailboxName}@${mailFlowState.selectedDomain}</strong> ein... 🍃</span>
+            <span>Bjørn richtet Ihr 100% CO₂-neutrales Postfach <strong class="text-emerald-950">${mailFlowState.mailboxName}@${mailFlowState.selectedDomain}</strong> ein... 🍃</span>
           </div>
         </div>
       `;
@@ -1077,8 +1176,8 @@
           <div class="flex items-start max-w-2xl animate-fade-in">
             <div class="bg-[#FAF8F5] border border-emerald-300 text-[#34312D] p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs space-y-3">
               <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
-                <span>Björn</span>
-                <span class="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+                <span>Bjørn</span>
+                <span class="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
               </div>
               <p class="font-bold text-emerald-800 text-sm flex items-center gap-1.5">
                 🎉 Öko-Postfach erfolgreich erstellt!
@@ -1101,7 +1200,7 @@
     function cancelMailCreation() {
       addUserMessage("Erstellung abbrechen");
       mailFlowState = { activeFlow: null, step: 'IDLE', mailboxName: '', selectedDomain: '' };
-      
+
       showTypingIndicator();
       setTimeout(() => {
         removeTypingIndicator();
@@ -1117,9 +1216,690 @@
       }, 600);
     }
 
+    // Acciones y Flujo KVM en HTML
+    function showKvmCardHtml() {
+      addUserMessage("Informationen zum Server KVM-01 anzeigen");
+      showTypingIndicator();
+      setTimeout(() => {
+        removeTypingIndicator();
+        const kvmCardHtml = `
+          <div class="flex items-start max-w-2xl animate-fade-in">
+            <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-xs sm:text-sm leading-relaxed shadow-xs space-y-3 w-full max-w-lg font-['Space_Grotesk',sans-serif]">
+              <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
+                <span>Bjørn</span>
+                <span class="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
+              </div>
+              <p class="font-semibold text-forest text-xs sm:text-sm">Hier sind die technischen Details und Echtzeit-Verwaltungsoptionen Ihres KVM-Servers:</p>
+
+              <div class="p-4 bg-white rounded-2xl border border-[#EBECE5] shadow-xs space-y-3.5 w-full text-[#34312D]">
+                <div class="flex items-start justify-between border-b border-[#EBECE5] pb-3 gap-2">
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <h4 class="font-bold text-sm text-[#34312D]">Server KVM-01</h4>
+                      <span class="text-[10px] bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2.5 py-0.5 rounded-full font-semibold flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        Online
+                      </span>
+                    </div>
+                    <p class="text-xs text-[#746E68] mt-1 flex items-center gap-1">
+                      Frankfurt - Solar Powered
+                    </p>
+                  </div>
+                  <span class="text-[10px] bg-[#789340]/10 text-[#789340] px-2.5 py-1 rounded-full font-semibold border border-[#789340]/20">
+                    100% Öko-Energie
+                  </span>
+                </div>
+
+                <div class="grid grid-cols-3 gap-2 text-center">
+                  <div class="p-2 bg-[#FAF8F5] rounded-xl border border-[#EBECE5]">
+                    <span class="text-[10px] text-[#746E68] block">vCPU</span>
+                    <span class="text-xs font-bold text-[#34312D] block">8 vCPU</span>
+                  </div>
+                  <div class="p-2 bg-[#FAF8F5] rounded-xl border border-[#EBECE5]">
+                    <span class="text-[10px] text-[#746E68] block">RAM</span>
+                    <span class="text-xs font-bold text-[#34312D] block">16 GB RAM</span>
+                  </div>
+                  <div class="p-2 bg-[#FAF8F5] rounded-xl border border-[#EBECE5]">
+                    <span class="text-[10px] text-[#746E68] block">NVMe</span>
+                    <span class="text-xs font-bold text-[#34312D] block">160 GB NVMe</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-2 pt-1">
+                  <button onclick="requestKvmRebootHtml('KVM-01')" class="flex-1 min-h-[38px] px-3.5 py-2 bg-white hover:bg-rose-50 hover:border-rose-300 hover:text-rose-700 border border-[#EBECE5] text-[#34312D] text-xs font-semibold rounded-xl transition-all cursor-pointer flex items-center justify-center gap-1.5 shadow-2xs">
+                    <span>Server neustarten</span>
+                  </button>
+                  <button onclick="showKvmConfigPanelHtml('KVM-01')" class="flex-1 min-h-[38px] px-3.5 py-2 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-xl transition-all cursor-pointer flex items-center justify-center gap-1.5 shadow-xs">
+                    <svg class="w-3.5 h-3.5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <span>Konfigurieren</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        chatStream.insertAdjacentHTML('beforeend', kvmCardHtml);
+        scrollToBottomHtml();
+      }, 500);
+    }
+
+    function requestKvmRebootHtml(serverName = 'KVM-01') {
+      addUserMessage(`Server ${serverName} neustarten`);
+      showTypingIndicator();
+      setTimeout(() => {
+        removeTypingIndicator();
+        const confirmCardHtml = `
+          <div class="flex items-start max-w-2xl animate-fade-in" id="kvm-confirmation-msg">
+            <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-xs sm:text-sm leading-relaxed shadow-xs space-y-3 w-full max-w-md font-['Space_Grotesk',sans-serif]">
+              <div class="border-b border-[#EBECE5] pb-2.5">
+                <h4 class="font-semibold text-xs sm:text-sm text-[#34312D]">
+                  Möchten Sie den Server ${serverName} jetzt neustarten?
+                </h4>
+                <p class="text-[11px] text-[#746E68] mt-1 leading-normal">
+                  Diese Aktion meidet ein Neustart-Signal und setzt aktive Verbindungen während des Vorgangs zurück.
+                </p>
+              </div>
+
+              <div class="space-y-1.5 text-xs text-[#746E68] bg-white p-3 rounded-xl border border-[#EBECE5]">
+                <div class="flex justify-between items-center">
+                  <span>Server:</span>
+                  <span class="font-semibold text-[#34312D]">${serverName}</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span>Standort:</span>
+                  <span class="font-medium text-[#789340]">Frankfurt - Solar Powered</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span>Spezifikationen:</span>
+                  <span class="font-medium text-[#34312D]">8 vCPU • 16 GB RAM • 160 GB NVMe</span>
+                </div>
+              </div>
+
+              <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-1 border-t border-[#EBECE5]">
+                <button onclick="confirmKvmRebootHtml('${serverName}')" class="flex-1 min-h-[42px] px-4 py-2.5 bg-[#CF614A] hover:bg-[#b8523c] text-white text-xs font-semibold rounded-xl shadow-xs transition-all flex items-center justify-center cursor-pointer">
+                  Ja, neustarten
+                </button>
+                <button onclick="cancelKvmRebootHtml()" class="min-h-[42px] px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-[#34312D] text-xs font-medium rounded-xl transition-all cursor-pointer text-center">
+                  Abbrechen
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+        chatStream.insertAdjacentHTML('beforeend', confirmCardHtml);
+        scrollToBottomHtml();
+      }, 500);
+    }
+
+    function confirmKvmRebootHtml(serverName = 'KVM-01') {
+      const progressHtml = `
+        <div class="flex items-start max-w-2xl animate-fade-in" id="kvm-progress-msg">
+          <div class="flex flex-col gap-2.5 p-4 bg-amber-50/90 border border-amber-200/80 text-amber-900 rounded-2xl text-xs font-medium font-['Space_Grotesk',sans-serif] w-full max-w-md">
+            <div class="flex items-center gap-2.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-ping flex-shrink-0"></span>
+              <span class="font-semibold text-amber-900">Neustart von ${serverName}...</span>
+            </div>
+            <div class="w-full h-1.5 bg-amber-200/70 rounded-full overflow-hidden">
+              <div class="h-full bg-amber-500 rounded-full w-2/3 animate-pulse"></div>
+            </div>
+            <span class="text-[10px] text-amber-800/80 font-normal">
+              Sauberes Neustart-Signal wird an den Knoten Frankfurt - Solar Powered gesendet...
+            </span>
+          </div>
+        </div>
+      `;
+      chatStream.insertAdjacentHTML('beforeend', progressHtml);
+      scrollToBottomHtml();
+
+      setTimeout(() => {
+        const progressEl = document.getElementById('kvm-progress-msg');
+        if (progressEl) progressEl.remove();
+
+        const successHtml = `
+          <div class="flex items-start max-w-2xl animate-fade-in">
+            <div class="bg-[#FAF8F5] border border-emerald-300 text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs">
+              <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
+                <span>Bjørn</span>
+                <span class="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
+              </div>
+              <p class="font-semibold text-emerald-800 text-sm">
+                Der Server ${serverName} wurde erfolgreich neu gestartet. Alle Dienste auf dem Knoten Frankfurt - Solar Powered sind wieder online und zu 100% betriebsbereit.
+              </p>
+            </div>
+          </div>
+        `;
+        chatStream.insertAdjacentHTML('beforeend', successHtml);
+        scrollToBottomHtml();
+      }, 2500);
+    }
+
+    function cancelKvmRebootHtml() {
+      addUserMessage("Abbrechen");
+      showTypingIndicator();
+      setTimeout(() => {
+        removeTypingIndicator();
+        const cancelHtml = `
+          <div class="flex items-start max-w-2xl animate-fade-in">
+            <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs">
+              <p class="text-charcoal-muted font-normal text-xs sm:text-sm">Vorgang abgebrochen. Der Server KVM-01 bleibt ohne Unterbrechung aktiv.</p>
+            </div>
+          </div>
+        `;
+        chatStream.insertAdjacentHTML('beforeend', cancelHtml);
+        scrollToBottomHtml();
+      }, 500);
+    }
+
+    // Panel de Reconfiguración KVM (Opción 2: Selector Integrado)
+    let currentKvmSpecs = { vcpu: '8 vCPU', ram: '16 GB RAM', nvme: '160 GB NVMe' };
+    let tempKvmSpecs = { ...currentKvmSpecs };
+
+    function showKvmConfigPanelHtml(serverName = 'KVM-01') {
+      addUserMessage(`Konfigurieren ${serverName}`);
+      showTypingIndicator();
+      setTimeout(() => {
+        removeTypingIndicator();
+        tempKvmSpecs = { ...currentKvmSpecs };
+        const panelHtml = `
+          <div class="flex items-start max-w-2xl animate-fade-in" id="kvm-config-panel-container">
+            <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-xs sm:text-sm leading-relaxed shadow-xs space-y-3.5 w-full max-w-md font-['Space_Grotesk',sans-serif]">
+              <div class="flex items-center justify-between border-b border-[#EBECE5] pb-2.5">
+                <div>
+                  <h4 class="font-semibold text-xs sm:text-sm text-[#34312D]">
+                    ${serverName} Konfiguration
+                  </h4>
+                  <p class="text-[10px] text-[#746E68] mt-0.5">Skalierung der Ressourcen für den Server Frankfurt - Solar Powered</p>
+                </div>
+                <span class="text-[10px] bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2 py-0.5 rounded font-medium flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span>Hot-Plug Aktiv</span>
+                </span>
+              </div>
+
+              <!-- Selector vCPU -->
+              <div class="space-y-1.5">
+                <label class="text-[11px] font-semibold text-[#746E68] block">vCPU Prozessor</label>
+                <div class="grid grid-cols-4 gap-1.5" id="vcpu-options">
+                  ${['2 vCPU', '4 vCPU', '8 vCPU', '16 vCPU'].map(opt => `
+                    <button type="button" onclick="selectKvmOptionHtml('vcpu', '${opt}')" id="btn-vcpu-${opt.replace(/\s+/g, '')}" class="py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer text-center ${tempKvmSpecs.vcpu === opt ? 'bg-[#789340] text-white border-[#789340]' : 'bg-white text-[#34312D] border-[#EBECE5] hover:border-[#789340]/40'}">
+                      ${opt}
+                    </button>
+                  `).join('')}
+                </div>
+              </div>
+
+              <!-- Selector RAM -->
+              <div class="space-y-1.5">
+                <label class="text-[11px] font-semibold text-[#746E68] block">Arbeitsspeicher (RAM)</label>
+                <div class="grid grid-cols-4 gap-1.5" id="ram-options">
+                  ${['4 GB RAM', '8 GB RAM', '16 GB RAM', '32 GB RAM'].map(opt => `
+                    <button type="button" onclick="selectKvmOptionHtml('ram', '${opt}')" id="btn-ram-${opt.replace(/\s+/g, '')}" class="py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer text-center ${tempKvmSpecs.ram === opt ? 'bg-[#789340] text-white border-[#789340]' : 'bg-white text-[#34312D] border-[#EBECE5] hover:border-[#789340]/40'}">
+                      ${opt}
+                    </button>
+                  `).join('')}
+                </div>
+              </div>
+
+              <!-- Selector NVMe -->
+              <div class="space-y-1.5">
+                <label class="text-[11px] font-semibold text-[#746E68] block">NVMe-Speicher</label>
+                <div class="grid grid-cols-4 gap-1.5" id="nvme-options">
+                  ${['100 GB NVMe', '160 GB NVMe', '320 GB NVMe', '640 GB NVMe'].map(opt => `
+                    <button type="button" onclick="selectKvmOptionHtml('nvme', '${opt}')" id="btn-nvme-${opt.replace(/\s+/g, '')}" class="py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer text-center ${tempKvmSpecs.nvme === opt ? 'bg-[#789340] text-white border-[#789340]' : 'bg-white text-[#34312D] border-[#EBECE5] hover:border-[#789340]/40'}">
+                      ${opt}
+                    </button>
+                  `).join('')}
+                </div>
+              </div>
+
+              <!-- Acciones del formulario -->
+              <div class="flex items-center gap-2 pt-2 border-t border-[#EBECE5]">
+                <button onclick="saveKvmConfigHtml('${serverName}')" class="flex-1 min-h-[38px] px-4 py-2 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-xl shadow-xs transition-all cursor-pointer flex items-center justify-center gap-1.5">
+                  <span>Konfiguration speichern</span>
+                </button>
+                <button onclick="cancelKvmConfigHtml()" class="min-h-[38px] px-4 py-2 bg-gray-100 hover:bg-gray-200 text-[#746E68] text-xs font-medium rounded-xl transition-all cursor-pointer">
+                  Abbrechen
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+        chatStream.insertAdjacentHTML('beforeend', panelHtml);
+        scrollToBottomHtml();
+      }, 500);
+    }
+
+    function selectKvmOptionHtml(type, val) {
+      tempKvmSpecs[type] = val;
+      const opts = type === 'vcpu' ? ['2 vCPU', '4 vCPU', '8 vCPU', '16 vCPU']
+        : type === 'ram' ? ['4 GB RAM', '8 GB RAM', '16 GB RAM', '32 GB RAM']
+          : ['100 GB NVMe', '160 GB NVMe', '320 GB NVMe', '640 GB NVMe'];
+
+      opts.forEach(opt => {
+        const btn = document.getElementById(`btn-${type}-${opt.replace(/\s+/g, '')}`);
+        if (btn) {
+          if (opt === val) {
+            btn.className = 'py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer text-center bg-[#789340] text-white border-[#789340]';
+          } else {
+            btn.className = 'py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer text-center bg-white text-[#34312D] border-[#EBECE5] hover:border-[#789340]/40';
+          }
+        }
+      });
+    }
+
+    // Flujos de Dominios y DNS en HTML
+    function requestDnsChangeHtml(domain = 'bamboo-bjoern.eu') {
+      addUserMessage(`DNS-Zone für ${domain} speichern`);
+      showTypingIndicator();
+      setTimeout(() => {
+        removeTypingIndicator();
+        const confirmCardHtml = `
+          <div class="flex items-start max-w-2xl animate-fade-in" id="dns-confirmation-msg">
+            <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-xs sm:text-sm leading-relaxed shadow-xs space-y-3.5 w-full max-w-md font-['Space_Grotesk',sans-serif]">
+              <div class="border-b border-[#EBECE5] pb-2.5">
+                <h4 class="font-semibold text-xs sm:text-sm text-[#34312D]">
+                  Möchten Sie die Änderungen an der DNS-Zone für ${domain} anwenden?
+                </h4>
+                <p class="text-[11px] text-[#746E68] mt-1 leading-normal">
+                  Die DNSSEC-Signatur wird aktualisiert und weltweit auf den Solar Nodes propagiert.
+                </p>
+              </div>
+
+              <div class="space-y-1.5 text-xs text-[#746E68] bg-white p-3 rounded-xl border border-[#EBECE5]">
+                <div class="flex justify-between items-center">
+                  <span>Domain:</span>
+                  <span class="font-semibold text-[#34312D]">${domain}</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span>Geänderte Records:</span>
+                  <span class="font-semibold text-[#789340]">A-Record @ ➔ 185.199.108.153</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span>TTL / DNSSEC:</span>
+                  <span class="font-medium text-[#34312D]">3600 s • Aktiv</span>
+                </div>
+              </div>
+
+              <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-1 border-t border-[#EBECE5]">
+                <button onclick="confirmDnsChangeHtml('${domain}')" class="flex-1 min-h-[42px] px-4 py-2.5 bg-[#789340] hover:bg-[#688235] text-white text-xs font-semibold rounded-xl shadow-xs transition-all flex items-center justify-center cursor-pointer">
+                  Ja, DNS-Zone aktualisieren
+                </button>
+                <button onclick="cancelKvmConfigHtml()" class="min-h-[42px] px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-[#34312D] text-xs font-medium rounded-xl transition-all cursor-pointer text-center">
+                  Abbrechen
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+        chatStream.insertAdjacentHTML('beforeend', confirmCardHtml);
+        scrollToBottomHtml();
+      }, 500);
+    }
+
+    function confirmDnsChangeHtml(domain = 'bamboo-bjoern.eu') {
+      const progressHtml = `
+        <div class="flex items-start max-w-2xl animate-fade-in" id="dns-progress-msg">
+          <div class="flex flex-col gap-2.5 p-4 bg-emerald-50/90 border border-emerald-200/80 text-emerald-900 rounded-2xl text-xs font-medium font-['Space_Grotesk',sans-serif] w-full max-w-md shadow-xs">
+            <div class="flex items-center gap-2.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping flex-shrink-0"></span>
+              <span class="font-semibold text-emerald-900">DNSSEC wird aktualisiert für ${domain}...</span>
+            </div>
+            <div class="w-full h-1.5 bg-emerald-200/70 rounded-full overflow-hidden">
+              <div class="h-full bg-emerald-500 rounded-full w-3/4 animate-pulse"></div>
+            </div>
+            <span class="text-[10px] text-emerald-800/80 font-normal">
+              Änderungen werden weltweit auf den Solar Nodes propagiert...
+            </span>
+          </div>
+        </div>
+      `;
+      chatStream.insertAdjacentHTML('beforeend', progressHtml);
+      scrollToBottomHtml();
+
+      setTimeout(() => {
+        const progressEl = document.getElementById('dns-progress-msg');
+        if (progressEl) progressEl.remove();
+
+        const successHtml = `
+          <div class="flex items-start max-w-2xl animate-fade-in">
+            <div class="bg-[#FAF8F5] border border-emerald-300 text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs">
+              <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
+                <span>Bjørn</span>
+                <span class="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
+              </div>
+              <p class="font-semibold text-emerald-800 text-sm mb-1.5">
+                🎉 DNS-Zone für ${domain} erfolgreich aktualisiert!
+              </p>
+              <p class="text-charcoal-muted font-normal text-xs leading-relaxed">
+                Die neuen DNSSEC-signierten Einträge sind nun global aktiv.
+              </p>
+            </div>
+          </div>
+        `;
+        chatStream.insertAdjacentHTML('beforeend', successHtml);
+        scrollToBottomHtml();
+      }, 2000);
+    }
+
+    // Renovación de Dominio
+    function startDomainRenewFlowHtml(domain = 'bamboo-bjoern.eu') {
+      addUserMessage(`Domain ${domain} verlängern`);
+      showTypingIndicator();
+      setTimeout(() => {
+        removeTypingIndicator();
+        const confirmCardHtml = `
+          <div class="flex items-start max-w-2xl animate-fade-in">
+            <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-xs sm:text-sm leading-relaxed shadow-xs space-y-3.5 w-full max-w-md font-['Space_Grotesk',sans-serif]">
+              <div class="border-b border-[#EBECE5] pb-2.5">
+                <h4 class="font-semibold text-xs sm:text-sm text-[#34312D]">
+                  Möchten Sie die Registrierung der Domain ${domain} verlängern?
+                </h4>
+                <p class="text-[11px] text-[#746E68] mt-1 leading-normal">
+                  Die Laufzeit wird um 12 Monate erweitert inkl. kostenlosem Wildcard-SSL & DNSSEC.
+                </p>
+              </div>
+
+              <div class="space-y-1.5 text-xs text-[#746E68] bg-white p-3 rounded-xl border border-[#EBECE5]">
+                <div class="flex justify-between items-center">
+                  <span>Domain:</span>
+                  <span class="font-semibold text-[#34312D]">${domain}</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span>Verlängerungsdauer:</span>
+                  <span class="font-semibold text-[#789340]">+ 1 Jahr (bis Sep 2027)</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span>Preis (Öko-Tarif):</span>
+                  <span class="font-medium text-[#34312D]">12,00 € / Jahr</span>
+                </div>
+              </div>
+
+              <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-1 border-t border-[#EBECE5]">
+                <button onclick="confirmDomainRenewHtml('${domain}')" class="flex-1 min-h-[42px] px-4 py-2.5 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-xl shadow-xs transition-all flex items-center justify-center cursor-pointer">
+                  Ja, jetzt verlängern
+                </button>
+                <button onclick="cancelKvmConfigHtml()" class="min-h-[42px] px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-[#34312D] text-xs font-medium rounded-xl transition-all cursor-pointer text-center">
+                  Abbrechen
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+        chatStream.insertAdjacentHTML('beforeend', confirmCardHtml);
+        scrollToBottomHtml();
+      }, 500);
+    }
+
+    function confirmDomainRenewHtml(domain = 'bamboo-bjoern.eu') {
+      addUserMessage("Ja, jetzt verlängern");
+      showTypingIndicator();
+      setTimeout(() => {
+        removeTypingIndicator();
+        const successHtml = `
+          <div class="flex items-start max-w-2xl animate-fade-in">
+            <div class="bg-[#FAF8F5] border border-emerald-300 text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs">
+              <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
+                <span>Bjørn</span>
+                <span class="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
+              </div>
+              <p class="font-semibold text-emerald-800 text-sm mb-1.5">
+                🎉 Registrierung für ${domain} erfolgreich um 1 Jahr verlängert!
+              </p>
+              <p class="text-charcoal-muted font-normal text-xs leading-relaxed">
+                Neue Gültigkeit: bis September 2027. Vielen Dank für Ihre Unterstützung von nachhaltigem KI-Hosting.
+              </p>
+            </div>
+          </div>
+        `;
+        chatStream.insertAdjacentHTML('beforeend', successHtml);
+        scrollToBottomHtml();
+      }, 1200);
+    }
+
+    // Búsqueda y Registro de Nuevos Dominios
+    function startDomainSearchFlowHtml() {
+      addUserMessage("Neues Domain registrieren");
+      showTypingIndicator();
+      setTimeout(() => {
+        removeTypingIndicator();
+        const searchInputHtml = `
+          <div class="flex items-start max-w-2xl animate-fade-in">
+            <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-xs sm:text-sm leading-relaxed shadow-xs space-y-3 w-full max-w-lg">
+              <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
+                <span>Bjørn</span>
+                <span class="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
+              </div>
+              <p class="font-semibold text-forest text-xs sm:text-sm">Geben Sie Ihren Wunschdomain-Namen ein, um Verfügbarkeit und Öko-Tarif zu prüfen:</p>
+              
+              <form onsubmit="handleDomainSearchSubmit(event)" class="mt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+                <input type="text" id="domain-search-input" placeholder="z. B. mein-eco-projekt.de..."
+                  class="w-full sm:flex-1 min-h-[44px] px-4 py-2.5 bg-white border border-[#EBECE5] focus:border-[#789340] rounded-xl text-xs sm:text-sm text-[#34312D] placeholder-[#746E68]/60 focus:outline-none focus:ring-2 focus:ring-[#789340]/20 transition-all font-['Space_Grotesk',sans-serif]"
+                  autocomplete="off" autoFocus />
+                <button type="submit"
+                  class="w-full sm:w-auto min-h-[44px] px-5 py-2.5 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-lg shadow-sm transition-all cursor-pointer flex items-center justify-center gap-1.5 font-['Space_Grotesk',sans-serif]">
+                  <span>Prüfen</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                  </svg>
+                </button>
+              </form>
+            </div>
+          </div>
+        `;
+        chatStream.insertAdjacentHTML('beforeend', searchInputHtml);
+        scrollToBottomHtml();
+      }, 500);
+    }
+
+    function handleDomainSearchSubmit(e) {
+      e.preventDefault();
+      const inputEl = document.getElementById('domain-search-input');
+      const domainQuery = inputEl ? inputEl.value.trim() : '';
+      if (!domainQuery) return;
+
+      addUserMessage(domainQuery);
+      showTypingIndicator();
+      setTimeout(() => {
+        removeTypingIndicator();
+        const cleanDomain = domainQuery.includes('.') ? domainQuery.toLowerCase() : `${domainQuery.toLowerCase()}.de`;
+        const resultCardHtml = `
+          <div class="flex items-start max-w-2xl animate-fade-in">
+            <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-xs sm:text-sm leading-relaxed shadow-xs space-y-3.5 w-full max-w-md font-['Space_Grotesk',sans-serif]">
+              <div class="flex items-center justify-between border-b border-[#EBECE5] pb-2.5">
+                <div>
+                  <h4 class="font-bold text-sm text-[#34312D]">${escapeHtml(cleanDomain)}</h4>
+                  <p class="text-[10px] text-[#746E68] mt-0.5">Frankfurt Solar Node 1 • DNSSEC Inklusive</p>
+                </div>
+                <span class="text-[10px] bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2.5 py-0.5 rounded-full font-semibold flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  Verfügbar
+                </span>
+              </div>
+
+              <div class="space-y-1.5 text-xs text-[#746E68] bg-white p-3 rounded-xl border border-[#EBECE5]">
+                <div class="flex justify-between items-center">
+                  <span>Öko-Jahrestarif:</span>
+                  <span class="font-bold text-[#789340]">12,00 € / Jahr</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span>CO₂-Fußabdruck:</span>
+                  <span class="font-medium text-[#34312D]">100% Klimaneutral</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span>SSL-Zertifikat:</span>
+                  <span class="font-medium text-[#34312D]">Wildcard SSL Gratuit</span>
+                </div>
+              </div>
+
+              <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-1 border-t border-[#EBECE5]">
+                <button onclick="confirmDomainRegistrationHtml('${escapeHtml(cleanDomain)}')" class="flex-1 min-h-[42px] px-4 py-2.5 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-xl shadow-xs transition-all flex items-center justify-center cursor-pointer">
+                  Jetzt registrieren
+                </button>
+                <button onclick="cancelKvmConfigHtml()" class="min-h-[42px] px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-[#34312D] text-xs font-medium rounded-xl transition-all cursor-pointer text-center">
+                  Abbrechen
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+        chatStream.insertAdjacentHTML('beforeend', resultCardHtml);
+        scrollToBottomHtml();
+      }, 700);
+    }
+
+    function confirmDomainRegistrationHtml(domain) {
+      addUserMessage(`Jetzt registrieren: ${domain}`);
+      showTypingIndicator();
+      setTimeout(() => {
+        removeTypingIndicator();
+        const successHtml = `
+          <div class="flex items-start max-w-2xl animate-fade-in">
+            <div class="bg-[#FAF8F5] border border-emerald-300 text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs">
+              <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
+                <span>Bjørn</span>
+                <span class="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
+              </div>
+              <p class="font-semibold text-emerald-800 text-sm mb-1.5">
+                🎉 Domain ${domain} erfolgreich registriert!
+              </p>
+              <p class="text-charcoal-muted font-normal text-xs leading-relaxed">
+                Ihre neue grüne Domain ist nun aktiv und mit automatischem DNSSEC & Wildcard-SSL auf den Frankfurt Solar Nodes geschaltet.
+              </p>
+            </div>
+          </div>
+        `;
+        chatStream.insertAdjacentHTML('beforeend', successHtml);
+        scrollToBottomHtml();
+      }, 1500);
+    }
+
+    function saveKvmConfigHtml(serverName = 'KVM-01') {
+      addUserMessage(`Konfiguration für ${serverName} speichern`);
+      showTypingIndicator();
+      setTimeout(() => {
+        removeTypingIndicator();
+        const confirmCardHtml = `
+          <div class="flex items-start max-w-2xl animate-fade-in" id="kvm-config-confirmation-msg">
+            <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-xs sm:text-sm leading-relaxed shadow-xs space-y-3.5 w-full max-w-md font-['Space_Grotesk',sans-serif]">
+              <div class="border-b border-[#EBECE5] pb-2.5">
+                <h4 class="font-semibold text-xs sm:text-sm text-[#34312D]">
+                  Möchten Sie die neue Konfiguration auf den Server ${serverName} anwenden?
+                </h4>
+                <p class="text-[11px] text-[#746E68] mt-1 leading-normal">
+                  Die Ressourcen werden dynamisch auf dem Knoten Frankfurt - Solar Powered zugewiesen.
+                </p>
+              </div>
+
+              <div class="space-y-1.5 text-xs text-[#746E68] bg-white p-3 rounded-xl border border-[#EBECE5]">
+                <div class="flex justify-between items-center">
+                  <span>Server:</span>
+                  <span class="font-semibold text-[#34312D]">${serverName}</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span>Neue Ressourcen:</span>
+                  <span class="font-semibold text-[#789340]">
+                    ${tempKvmSpecs.vcpu} • ${tempKvmSpecs.ram} • ${tempKvmSpecs.nvme}
+                  </span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span>Knoten:</span>
+                  <span class="font-medium text-[#34312D]">Frankfurt - Solar Powered</span>
+                </div>
+              </div>
+
+              <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-1 border-t border-[#EBECE5]">
+                <button onclick="confirmKvmConfigHtml('${serverName}')" class="flex-1 min-h-[42px] px-4 py-2.5 bg-[#789340] hover:bg-[#688235] text-white text-xs font-semibold rounded-xl shadow-xs transition-all flex items-center justify-center cursor-pointer">
+                  Ja, Änderungen anwenden
+                </button>
+                <button onclick="cancelKvmConfigHtml()" class="min-h-[42px] px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-[#34312D] text-xs font-medium rounded-xl transition-all cursor-pointer text-center">
+                  Abbrechen
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+        chatStream.insertAdjacentHTML('beforeend', confirmCardHtml);
+        scrollToBottomHtml();
+      }, 500);
+    }
+
+    function confirmKvmConfigHtml(serverName = 'KVM-01') {
+      currentKvmSpecs = { ...tempKvmSpecs };
+      const progressHtml = `
+        <div class="flex items-start max-w-2xl animate-fade-in" id="kvm-config-progress-msg">
+          <div class="flex flex-col gap-2.5 p-4 bg-emerald-50/90 border border-emerald-200/80 text-emerald-900 rounded-2xl text-xs font-medium font-['Space_Grotesk',sans-serif] w-full max-w-md shadow-xs">
+            <div class="flex items-center gap-2.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping flex-shrink-0"></span>
+              <span class="font-semibold text-emerald-900">Neue Konfiguration wird auf ${serverName} angewendet...</span>
+            </div>
+            <div class="w-full h-1.5 bg-emerald-200/70 rounded-full overflow-hidden">
+              <div class="h-full bg-emerald-500 rounded-full w-3/4 animate-pulse"></div>
+            </div>
+            <span class="text-[10px] text-emerald-800/80 font-normal">
+              vCPU-Kerne, Arbeitsspeicher und NVMe-Speicher werden auf dem Knoten Frankfurt - Solar Powered neu zugewiesen...
+            </span>
+          </div>
+        </div>
+      `;
+      chatStream.insertAdjacentHTML('beforeend', progressHtml);
+      scrollToBottomHtml();
+
+      setTimeout(() => {
+        const progressEl = document.getElementById('kvm-config-progress-msg');
+        if (progressEl) progressEl.remove();
+
+        const successHtml = `
+          <div class="flex items-start max-w-2xl animate-fade-in">
+            <div class="bg-[#FAF8F5] border border-emerald-300 text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs">
+              <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
+                <span>Bjørn</span>
+                <span class="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
+              </div>
+              <p class="font-semibold text-emerald-800 text-sm mb-1.5">
+                🎉 Konfiguration für ${serverName} erfolgreich aktualisiert!
+              </p>
+              <p class="text-charcoal-muted font-normal text-xs leading-relaxed">
+                Die neuen Ressourcen (<strong class="text-[#789340]">${currentKvmSpecs.vcpu} • ${currentKvmSpecs.ram} • ${currentKvmSpecs.nvme}</strong>) wurden ohne Ausfallzeit auf dem Knoten Frankfurt - Solar Powered zugewiesen.
+              </p>
+            </div>
+          </div>
+        `;
+        chatStream.insertAdjacentHTML('beforeend', successHtml);
+        scrollToBottomHtml();
+      }, 2500);
+    }
+
+    function cancelKvmConfigHtml() {
+      addUserMessage("Abbrechen");
+      showTypingIndicator();
+      setTimeout(() => {
+        removeTypingIndicator();
+        const cancelHtml = `
+          <div class="flex items-start max-w-2xl animate-fade-in">
+            <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs">
+              <p class="text-charcoal-muted font-normal text-xs sm:text-sm">Konfiguration abgebrochen. Der Server KVM-01 läuft mit den bisherigen Spezifikationen weiter.</p>
+            </div>
+          </div>
+        `;
+        chatStream.insertAdjacentHTML('beforeend', cancelHtml);
+        scrollToBottomHtml();
+      }, 500);
+    }
+
     function generateAiResponse(userQuery) {
       let aiText = "";
       const lower = userQuery.toLowerCase();
+
+      if (lower.includes("reiniciar") || lower.includes("reboot") || lower.includes("reinicia")) {
+        requestKvmRebootHtml('KVM-01');
+        return;
+      } else if (lower.includes("kvm") || lower.includes("vps") || lower.includes("servidor virtual")) {
+        showKvmCardHtml();
+        return;
+      }
 
       if (lower.includes("e-mail") || lower.includes("email") || lower.includes("konto") || lower.includes("erstellen")) {
         startMailCreateFlow();
@@ -1127,8 +1907,8 @@
       } else if (lower.includes("vision") || lower.includes("was ist") || lower.includes("bamboo") || lower.includes("wer")) {
         aiText = `
           <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
-            <span>Björn</span>
-            <span class="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+            <span>Bjørn</span>
+            <span class="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
           </div>
           <div class="font-semibold text-forest text-sm mb-1 flex items-center gap-1.5">
             <span>🌿</span> Unsere ökologische Vision (Grünes KI-Hosting)
@@ -1151,8 +1931,8 @@
       } else if (lower.includes("nachhaltig") || lower.includes("energie") || lower.includes("co2") || lower.includes("kohlenstoff") || lower.includes("oeko")) {
         aiText = `
           <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
-            <span>Björn</span>
-            <span class="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+            <span>Bjørn</span>
+            <span class="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
           </div>
           <div class="font-semibold text-forest text-sm mb-1 flex items-center gap-1.5">
             <span>🍃</span> Nachhaltigkeit &amp; CO₂-Neutralität
@@ -1174,8 +1954,8 @@
       } else if (lower.includes("status") || lower.includes("leistung") || lower.includes("server") || lower.includes("pue") || lower.includes("knoten") || lower.includes("frankfurt")) {
         aiText = `
           <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
-            <span>Björn</span>
-            <span class="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+            <span>Bjørn</span>
+            <span class="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
           </div>
           <div class="font-semibold text-forest text-sm mb-1 flex items-center gap-1.5">
             <span>🖥️</span> Server-Telemetrie &amp; PUE-Effizienz
@@ -1199,8 +1979,8 @@
       } else if (lower.includes("ai") || lower.includes("ki") || lower.includes("intelligenz") || lower.includes("mistral")) {
         aiText = `
           <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
-            <span>Björn</span>
-            <span class="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+            <span>Bjørn</span>
+            <span class="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
           </div>
           <div class="font-semibold text-forest text-sm mb-1 flex items-center gap-1.5">
             <span>🤖</span> Grünes KI-Hosting (Mistral AI)
@@ -1222,10 +2002,10 @@
       } else {
         aiText = `
           <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
-            <span>Björn</span>
-            <span class="text-[9px] text-[#746E68] font-normal">• Bamboo Assistant</span>
+            <span>Bjørn</span>
+            <span class="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
           </div>
-          <div class="font-semibold text-forest text-sm mb-1">Bamboo Björn Öko-Hosting</div>
+          <div class="font-semibold text-forest text-sm mb-1">Bamboo Bjørn Öko-Hosting</div>
           <p class="text-charcoal-muted font-normal text-xs mb-3 leading-relaxed">
             Wir bieten 100% ökologische Webhosting- und E-Mail-Dienste, unterstützt durch klimaneutrale Server in der Europäischen Union.
           </p>
