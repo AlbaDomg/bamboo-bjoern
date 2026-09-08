@@ -1266,7 +1266,7 @@ export default function BambooChat({ avatarPath = 'assets/LaptopPanda_transparen
       </header>
 
       {/* Área de Mensajes Stream */}
-      <div ref={chatStreamRef} className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 bg-gradient-to-b from-[#FAF8F5] to-[#F8F8F8] custom-scrollbar overscroll-y-contain">
+      <div ref={chatStreamRef} className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 bg-gradient-to-b from-[#FAF8F5] to-[#F8F8F8] custom-scrollbar overscroll-y-contain touch-pan-y">
         {messages.map((msg) => (
           <ChatMessage key={msg.id} role={msg.role} content={msg.content} avatarPath={avatarPath}>
             {msg.isRoleSelectionCard && !isRoleSelected && (
