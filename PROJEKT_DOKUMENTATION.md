@@ -4,12 +4,12 @@ Diese Dokumentation bietet eine prägnante und strukturierte Übersicht über da
 
 ---
 
-## 📌 1. Projektbeschreibung
+## 1. Projektbeschreibung
 **Bamboo Bjørn** ist eine moderne, interaktive Webanwendung für ökologisches Hosting und KI-gestützte Infrastrukturdienste (Mistral KI). Über ein intuitives und elegantes Konversations-Interface können Nutzer grüne KI-Server (KVM), Domain-Registrierungen, 100% CO₂-neutrale E-Mail-Postfächer und Echtzeit-Telemetriedaten verwalten.
 
 ---
 
-## 🚀 2. Übersicht der durchgeführten Arbeiten
+## 2. Übersicht der durchgeführten Arbeiten
 
 ### A. Visuelle Identität & Avatar-System
 - **Transparente Grafik-Assets**: Erstellung und Konvertierung hochauflösender PNG-Avatare (**Bjørn** in den Rollen Admin, Hacker und Pathfinder) mit transparenter Hintergrundfreistellung.
@@ -32,7 +32,7 @@ Diese Dokumentation bietet eine prägnante und strukturierte Übersicht über da
 
 ---
 
-## 🛠️ 3. Eingesetzte Technologien und deren Zweck
+## 3. Eingesetzte Technologien und deren Zweck
 
 | Technologie | Zweck / Einsatzbereich |
 | :--- | :--- |
