@@ -159,7 +159,7 @@ export function RoleSelectionCard({ onSelectRole }) {
           </div>
 
           {/* Botones de Decisión Rápida (Pastillas en vertical) */}
-          <div className="flex flex-col gap-2.5 pt-3 w-full">
+          <div className="flex flex-col gap-2.5 pt-6 w-full">
             <button
               onClick={() => onSelectRole(true)}
               className="w-full min-h-[44px] px-4 py-3 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white rounded-xl text-xs sm:text-sm font-semibold shadow-xs transition-all cursor-pointer flex items-center justify-center gap-2"
