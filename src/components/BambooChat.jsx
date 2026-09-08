@@ -419,7 +419,12 @@ export function KvmConfigPanel({ initialSpecs, onSave, onCancel }) {
         <span className="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
       </div>
       <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4">
-        <div className="flex-1 space-y-4 w-full">
+        {/* Avatar AdminPanda grande arriba en responsive / derecho en desktop */}
+        <div className="sm:order-last mx-auto sm:mx-0 self-center sm:self-start pt-2 flex-shrink-0">
+          <BjornAvatar pose="admin" altText="AdminPanda KVM Konfiguration" className="w-40 h-40 sm:w-52 sm:h-52" animationType="zoom" />
+        </div>
+
+        <div className="flex-1 space-y-4 w-full sm:order-first">
           <div className="flex items-center justify-between border-b border-[#EBECE5] pb-2.5">
             <div>
               <h4 className="font-semibold text-xs sm:text-sm text-[#34312D]">
@@ -510,11 +515,6 @@ export function KvmConfigPanel({ initialSpecs, onSave, onCancel }) {
               </button>
             )}
           </div>
-        </div>
-
-        {/* Avatar AdminPanda grande en el lateral derecho / arriba en responsive */}
-        <div className="order-first sm:order-last mx-auto sm:mx-0 self-center sm:self-start pt-2 flex-shrink-0">
-          <BjornAvatar pose="admin" altText="AdminPanda KVM Konfiguration" className="w-40 h-40 sm:w-52 sm:h-52" animationType="zoom" />
         </div>
       </div>
     </div>
