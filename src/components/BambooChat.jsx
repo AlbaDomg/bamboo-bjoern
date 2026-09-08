@@ -416,6 +416,10 @@ export function KvmConfigPanel({ initialSpecs, onSave, onCancel }) {
 
   return (
     <div className="mt-3 p-4 sm:p-5 bg-white/95 backdrop-blur-md rounded-2xl border border-[#789340]/30 shadow-sm w-full text-[#34312D] font-['Space_Grotesk',sans-serif] animate-fade-in">
+      <div className="text-[11px] font-semibold text-[#789340] mb-3 flex items-center gap-1.5">
+        <span>Bjørn</span>
+        <span className="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
+      </div>
       <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4">
         <div className="flex-1 space-y-4 w-full">
           <div className="flex items-center justify-between border-b border-[#EBECE5] pb-2.5">
@@ -513,8 +517,8 @@ export function KvmConfigPanel({ initialSpecs, onSave, onCancel }) {
           </div>
         </div>
 
-        {/* Avatar AdminPanda grande en el lateral derecho */}
-        <div className="self-center sm:self-start pt-2">
+        {/* Avatar AdminPanda grande en el lateral derecho / arriba en responsive */}
+        <div className="order-first sm:order-last mx-auto sm:mx-0 self-center sm:self-start pt-2 flex-shrink-0">
           <BjornAvatar pose="admin" altText="AdminPanda KVM Konfiguration" className="w-40 h-40 sm:w-52 sm:h-52" animationType="zoom" />
         </div>
       </div>
@@ -705,8 +709,8 @@ export function DnsConfigCard({ domain = 'bamboo-bjoern.eu' }) {
           </div>
         </div>
 
-        {/* HackerPanda avatar grande en el lateral derecho */}
-        <div className="self-center sm:self-start pt-1">
+        {/* HackerPanda avatar grande en el lateral derecho / arriba en responsive */}
+        <div className="order-first sm:order-last mx-auto sm:mx-0 self-center sm:self-start pt-1 flex-shrink-0">
           <BjornAvatar pose="hacker" altText="HackerPanda DNSSEC Security" className="w-40 h-40 sm:w-52 sm:h-52" animationType="float" />
         </div>
       </div>
