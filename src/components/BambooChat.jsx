@@ -265,7 +265,7 @@ export function CustomerProductsCard({ onConfigureDns, onRenewDomain, onAddMailb
                 2 / 5
               </span>
             </div>
-            <p className="text-xs sm:text-sm font-semibold text-[#34312D] mt-1.5 truncate">hallo@ / kontakt@</p>
+            <p className="text-xs sm:text-sm font-semibold text-[#34312D] mt-1.5 truncate">2 von 5 Postfächern aktiv</p>
 
             {/* Indicator de Almacenamiento */}
             <div className="mt-2 space-y-1">
