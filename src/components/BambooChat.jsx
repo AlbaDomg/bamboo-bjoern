@@ -135,6 +135,8 @@ export function InlineTextInput({ placeholder = "Gewünschter Name (z. B. kontak
         <span>{buttonText}</span>
         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </button>
     </form>
   );
 }
@@ -143,13 +145,13 @@ export function InlineTextInput({ placeholder = "Gewünschter Name (z. B. kontak
 export function RoleSelectionCard({ onSelectRole }) {
   return (
     <div className="mt-3 p-5 sm:p-6 bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs w-full font-['Space_Grotesk',sans-serif] animate-fade-in">
+      <div className="text-[11px] font-semibold text-[#789340] mb-3 flex items-center gap-1.5">
+        <span>Bjørn</span>
+        <span className="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
+      </div>
       <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4">
         <div className="flex-1 space-y-3 w-full">
           <div>
-            <div className="text-[11px] font-semibold text-[#789340] mb-1.5 flex items-center gap-1.5">
-              <span>Bjørn</span>
-              <span className="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
-            </div>
             <p className="font-semibold text-forest text-base mb-1">Willkommen bei Bamboo Bjørn! 🌿</p>
             <p className="text-charcoal-muted font-normal text-xs sm:text-sm">
               Bitte wählen Sie Ihren Zugangsmodus, um fortzufahren:
@@ -178,7 +180,7 @@ export function RoleSelectionCard({ onSelectRole }) {
           loop
           muted
           playsInline
-          className="w-40 h-40 sm:w-52 sm:h-52 object-contain flex-shrink-0 drop-shadow-xs self-center sm:self-start"
+          className="w-28 h-28 sm:w-32 sm:h-32 lg:w-48 lg:h-48 object-contain flex-shrink-0 drop-shadow-xs order-first sm:order-last mx-auto sm:mx-0 self-center sm:self-start"
         />
       </div>
     </div>
@@ -1264,21 +1266,33 @@ export default function BambooChat({ avatarPath = 'assets/LaptopPanda_transparen
       </header>
 
       {/* Área de Mensajes Stream */}
-      <div ref={chatStreamRef} className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 bg-gradient-to-b from-[#FAF8F5] to-[#F8F8F8] custom-scrollbar">
+      <div ref={chatStreamRef} className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 bg-gradient-to-b from-[#FAF8F5] to-[#F8F8F8] custom-scrollbar overscroll-y-contain">
         {messages.map((msg) => (
           <ChatMessage key={msg.id} role={msg.role} content={msg.content} avatarPath={avatarPath}>
             {msg.isRoleSelectionCard && !isRoleSelected && (
               <RoleSelectionCard onSelectRole={handleSelectInitialRole} />
             )}
             {msg.isCustomerCard && (
-              <CustomerProductsCard
-                onConfigureDns={handleShowDns}
-                onRenewDomain={() => handleStartDomainRenew('bamboo-bjoern.eu')}
-                onAddMailbox={handleAddMailboxAction}
-                onConfigureKvm={() => handleShowKvmConfigPanel('KVM-01')}
-                onRebootKvm={() => handleRequestRebootKvm('KVM-01')}
-                kvmSpecs={kvmSpecs}
-              />
+              <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-5 w-full">
+                <div className="flex-1 w-full">
+                  <CustomerProductsCard
+                    onConfigureDns={handleShowDns}
+                    onRenewDomain={() => handleStartDomainRenew('bamboo-bjoern.eu')}
+                    onAddMailbox={handleAddMailboxAction}
+                    onConfigureKvm={() => handleShowKvmConfigPanel('KVM-01')}
+                    onRebootKvm={() => handleRequestRebootKvm('KVM-01')}
+                    kvmSpecs={kvmSpecs}
+                  />
+                </div>
+                <video
+                  src="assets/PandaVideo_sin_fondo.webm"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-28 h-28 sm:w-32 sm:h-32 lg:w-48 lg:h-48 object-contain flex-shrink-0 drop-shadow-xs order-first lg:order-last mx-auto lg:mx-0 self-center lg:self-start mt-2 lg:mt-0"
+                />
+              </div>
             )}
             {msg.customComponent === 'dns_config' && <DnsConfigCard domain="bamboo-bjoern.eu" />}
             {msg.customComponent === 'telemetry' && <TelemetryCard serverName="Frankfurt Solar Node (KVM-01)" />}
