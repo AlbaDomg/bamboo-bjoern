@@ -10,16 +10,14 @@ export function ChatMessage({ role, content, children, avatarPath = 'assets/Lapt
   const isAssistant = role === 'assistant';
   return (
     <div
-      className={`flex items-end gap-2.5 sm:gap-3 transition-all animate-fade-in ${
-        isAssistant ? 'justify-start' : 'justify-end'
-      }`}
+      className={`flex items-end gap-2.5 sm:gap-3 transition-all animate-fade-in ${isAssistant ? 'justify-start' : 'justify-end'
+        }`}
     >
       <div
-        className={`max-w-[92%] sm:max-w-[85%] px-4 sm:px-5 py-3 sm:py-3.5 rounded-2xl text-xs sm:text-sm leading-relaxed shadow-xs ${
-          isAssistant
-            ? 'bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] rounded-bl-none'
-            : 'bg-white border border-[#EBECE5] text-[#34312D] font-normal rounded-br-none shadow-xs'
-        }`}
+        className={`max-w-[92%] sm:max-w-[85%] px-4 sm:px-5 py-3 sm:py-3.5 rounded-2xl text-xs sm:text-sm leading-relaxed shadow-xs ${isAssistant
+          ? 'bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] rounded-bl-none'
+          : 'bg-white border border-[#EBECE5] text-[#34312D] font-normal rounded-br-none shadow-xs'
+          }`}
       >
         {isAssistant && (
           <div className="text-[11px] font-semibold text-[#789340] mb-1.5 flex items-center gap-1.5">
@@ -444,11 +442,10 @@ export function KvmConfigPanel({ initialSpecs, onSave, onCancel }) {
                   key={opt}
                   type="button"
                   onClick={() => setVcpu(opt)}
-                  className={`py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer text-center ${
-                    vcpu === opt
-                      ? 'bg-[#789340] text-white border-[#789340]'
-                      : 'bg-[#FAF8F5] text-[#34312D] border-[#EBECE5] hover:border-[#789340]/40'
-                  }`}
+                  className={`py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer text-center ${vcpu === opt
+                    ? 'bg-[#789340] text-white border-[#789340]'
+                    : 'bg-[#FAF8F5] text-[#34312D] border-[#EBECE5] hover:border-[#789340]/40'
+                    }`}
                 >
                   {opt}
                 </button>
@@ -465,11 +462,10 @@ export function KvmConfigPanel({ initialSpecs, onSave, onCancel }) {
                   key={opt}
                   type="button"
                   onClick={() => setRam(opt)}
-                  className={`py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer text-center ${
-                    ram === opt
-                      ? 'bg-[#789340] text-white border-[#789340]'
-                      : 'bg-[#FAF8F5] text-[#34312D] border-[#EBECE5] hover:border-[#789340]/40'
-                  }`}
+                  className={`py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer text-center ${ram === opt
+                    ? 'bg-[#789340] text-white border-[#789340]'
+                    : 'bg-[#FAF8F5] text-[#34312D] border-[#EBECE5] hover:border-[#789340]/40'
+                    }`}
                 >
                   {opt}
                 </button>
@@ -486,11 +482,10 @@ export function KvmConfigPanel({ initialSpecs, onSave, onCancel }) {
                   key={opt}
                   type="button"
                   onClick={() => setNvme(opt)}
-                  className={`py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer text-center ${
-                    nvme === opt
-                      ? 'bg-[#789340] text-white border-[#789340]'
-                      : 'bg-[#FAF8F5] text-[#34312D] border-[#EBECE5] hover:border-[#789340]/40'
-                  }`}
+                  className={`py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer text-center ${nvme === opt
+                    ? 'bg-[#789340] text-white border-[#789340]'
+                    : 'bg-[#FAF8F5] text-[#34312D] border-[#EBECE5] hover:border-[#789340]/40'
+                    }`}
                 >
                   {opt}
                 </button>
@@ -1165,7 +1160,7 @@ export default function BambooChat({ avatarPath = 'assets/LaptopPanda_transparen
   // Confirmar creación final (Simulación)
   const handleConfirmCreate = () => {
     setFlowState((prev) => ({ ...prev, step: 'CREATING' }));
-    
+
     // Simular tiempo de aprovisionamiento en servidor (1.5s)
     setTimeout(() => {
       setFlowState({ activeFlow: null, step: 'IDLE', mailboxName: '', selectedDomain: '', kvmServer: 'KVM-01' });
@@ -1233,11 +1228,10 @@ export default function BambooChat({ avatarPath = 'assets/LaptopPanda_transparen
         <div className="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-end">
           <button
             onClick={toggleAuthMode}
-            className={`text-xs px-3 py-1.5 rounded-xl font-medium transition-all shadow-xs cursor-pointer flex items-center gap-1.5 border ${
-              isLoggedIn
-                ? 'bg-emerald-950/80 border-emerald-500/40 text-emerald-200 hover:bg-emerald-900'
-                : 'bg-stone-800/80 border-stone-600/40 text-stone-300 hover:bg-stone-700'
-            }`}
+            className={`text-xs px-3 py-1.5 rounded-xl font-medium transition-all shadow-xs cursor-pointer flex items-center gap-1.5 border ${isLoggedIn
+              ? 'bg-emerald-950/80 border-emerald-500/40 text-emerald-200 hover:bg-emerald-900'
+              : 'bg-stone-800/80 border-stone-600/40 text-stone-300 hover:bg-stone-700'
+              }`}
             title="Klicken, um zwischen Kundin und Besucher umzuschalten"
           >
             <span className={`w-2 h-2 rounded-full ${isLoggedIn ? 'bg-emerald-400 animate-pulse' : 'bg-amber-400'}`}></span>
