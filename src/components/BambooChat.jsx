@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import BjornAvatar from './BjornAvatar';
 
 /**
  * Componentes Semánticos Reutilizables (Conversation API)
@@ -142,37 +143,43 @@ export function InlineTextInput({ placeholder = "Gewünschter Name (z. B. kontak
 export function RoleSelectionCard({ onSelectRole }) {
   return (
     <div className="mt-3 p-5 sm:p-6 bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs w-full font-['Space_Grotesk',sans-serif] animate-fade-in">
-      <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4 mb-4">
-        <div className="flex-1">
-          <div className="text-[11px] font-semibold text-[#789340] mb-1.5 flex items-center gap-1.5">
-            <span>Bjørn</span>
-            <span className="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
+      <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4">
+        <div className="flex-1 space-y-3 w-full">
+          <div>
+            <div className="text-[11px] font-semibold text-[#789340] mb-1.5 flex items-center gap-1.5">
+              <span>Bjørn</span>
+              <span className="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
+            </div>
+            <p className="font-semibold text-forest text-base mb-1">Willkommen bei Bamboo Bjørn! 🌿</p>
+            <p className="text-charcoal-muted font-normal text-xs sm:text-sm">
+              Bitte wählen Sie Ihren Zugangsmodus, um fortzufahren:
+            </p>
           </div>
-          <p className="font-semibold text-forest text-base mb-1">Willkommen bei Bamboo Bjørn! 🌿</p>
-          <p className="text-charcoal-muted font-normal text-xs sm:text-sm">
-            Bitte wählen Sie Ihren Zugangsmodus, um fortzufahren:
-          </p>
-        </div>
-        <img
-          src="assets/panda-avatar.png"
-          alt="Bjørn KI-Assistent"
-          className="w-24 h-24 sm:w-28 sm:h-28 object-contain flex-shrink-0 drop-shadow-xs self-center sm:self-start"
-        />
-      </div>
 
-      <div className="flex flex-col sm:flex-row gap-3 pt-1">
-        <button
-          onClick={() => onSelectRole(true)}
-          className="flex-1 min-h-[44px] px-4 py-3 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white rounded-xl text-xs sm:text-sm font-semibold shadow-xs transition-all cursor-pointer flex items-center justify-center gap-2"
-        >
-          <span>Ich bin bereits Kundin</span>
-        </button>
-        <button
-          onClick={() => onSelectRole(false)}
-          className="flex-1 min-h-[44px] px-4 py-3 bg-white hover:bg-emerald-50 hover:border-emerald-300 border border-[#EBECE5] text-[#34312D] rounded-xl text-xs sm:text-sm font-semibold shadow-2xs transition-all cursor-pointer flex items-center justify-center gap-2"
-        >
-          <span>Ich möchte mich informieren</span>
-        </button>
+          {/* Botones de Decisión Rápida (Pastillas en vertical) */}
+          <div className="flex flex-col gap-2.5 pt-3 w-full">
+            <button
+              onClick={() => onSelectRole(true)}
+              className="w-full min-h-[44px] px-4 py-3 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white rounded-xl text-xs sm:text-sm font-semibold shadow-xs transition-all cursor-pointer flex items-center justify-center gap-2"
+            >
+              <span>Ich bin bereits Kunde</span>
+            </button>
+            <button
+              onClick={() => onSelectRole(false)}
+              className="w-full min-h-[44px] px-4 py-3 bg-white hover:bg-emerald-50 hover:border-emerald-300 border border-[#EBECE5] text-[#34312D] rounded-xl text-xs sm:text-sm font-semibold shadow-2xs transition-all cursor-pointer flex items-center justify-center gap-2"
+            >
+              <span>Ich möchte mich informieren</span>
+            </button>
+          </div>
+        </div>
+        <video
+          src="assets/PandaVideo_sin_fondo.webm"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-40 h-40 sm:w-52 sm:h-52 object-contain flex-shrink-0 drop-shadow-xs self-center sm:self-start"
+        />
       </div>
     </div>
   );
@@ -348,7 +355,7 @@ export function KvmServerCard({ serverName = "KVM-01", kvmSpecs, onReboot, onCon
             Frankfurt - Solar Powered
           </p>
         </div>
-        <span className="text-[10px] bg-[#789340]/10 text-[#789340] px-2.5 py-1 rounded-full font-semibold border border-[#789340]/20">
+        <span className="text-[10px] bg-[#789340]/10 text-[#789340] px-2.5 py-1 rounded-full font-semibold border border-[#789340]/20 flex-shrink-0">
           100% Öko-Energie
         </span>
       </div>
@@ -406,99 +413,108 @@ export function KvmConfigPanel({ initialSpecs, onSave, onCancel }) {
   const nvmeOptions = ['100 GB NVMe', '160 GB NVMe', '320 GB NVMe', '640 GB NVMe'];
 
   return (
-    <div className="mt-3 p-4 sm:p-5 bg-white/95 backdrop-blur-md rounded-2xl border border-[#789340]/30 shadow-sm space-y-4 w-full text-[#34312D] font-['Space_Grotesk',sans-serif] animate-fade-in">
-      <div className="flex items-center justify-between border-b border-[#EBECE5] pb-2.5">
-        <div>
-          <h4 className="font-semibold text-xs sm:text-sm text-[#34312D]">
-            KVM-01 Konfiguration
-          </h4>
-          <p className="text-[10px] text-[#746E68] mt-0.5">Skalierung der Ressourcen für den Server Frankfurt - Solar Powered</p>
-        </div>
-        <span className="text-[10px] bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2 py-0.5 rounded font-medium flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span>Hot-Plug Aktiv</span>
-        </span>
-      </div>
+    <div className="mt-3 p-4 sm:p-5 bg-white/95 backdrop-blur-md rounded-2xl border border-[#789340]/30 shadow-sm w-full text-[#34312D] font-['Space_Grotesk',sans-serif] animate-fade-in">
+      <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4">
+        <div className="flex-1 space-y-4 w-full">
+          <div className="flex items-center justify-between border-b border-[#EBECE5] pb-2.5">
+            <div>
+              <h4 className="font-semibold text-xs sm:text-sm text-[#34312D]">
+                KVM-01 Konfiguration
+              </h4>
+              <p className="text-[10px] text-[#746E68] mt-0.5">Skalierung der Ressourcen für den Server Frankfurt - Solar Powered</p>
+            </div>
+            <span className="text-[10px] bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2 py-0.5 rounded font-medium flex items-center gap-1.5 flex-shrink-0">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span>Hot-Plug Aktiv</span>
+            </span>
+          </div>
 
-      {/* Selector vCPU */}
-      <div className="space-y-1.5">
-        <label className="text-[11px] font-semibold text-[#746E68] block">vCPU Prozessor</label>
-        <div className="grid grid-cols-4 gap-1.5">
-          {vcpuOptions.map((opt) => (
+          {/* Selector vCPU */}
+          <div className="space-y-1.5">
+            <label className="text-[11px] font-semibold text-[#746E68] block">vCPU Prozessor</label>
+            <div className="grid grid-cols-4 gap-1.5">
+              {vcpuOptions.map((opt) => (
+                <button
+                  key={opt}
+                  type="button"
+                  onClick={() => setVcpu(opt)}
+                  className={`py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer text-center ${
+                    vcpu === opt
+                      ? 'bg-[#789340] text-white border-[#789340]'
+                      : 'bg-[#FAF8F5] text-[#34312D] border-[#EBECE5] hover:border-[#789340]/40'
+                  }`}
+                >
+                  {opt}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Selector RAM */}
+          <div className="space-y-1.5">
+            <label className="text-[11px] font-semibold text-[#746E68] block">Arbeitsspeicher (RAM)</label>
+            <div className="grid grid-cols-4 gap-1.5">
+              {ramOptions.map((opt) => (
+                <button
+                  key={opt}
+                  type="button"
+                  onClick={() => setRam(opt)}
+                  className={`py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer text-center ${
+                    ram === opt
+                      ? 'bg-[#789340] text-white border-[#789340]'
+                      : 'bg-[#FAF8F5] text-[#34312D] border-[#EBECE5] hover:border-[#789340]/40'
+                  }`}
+                >
+                  {opt}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Selector NVMe */}
+          <div className="space-y-1.5">
+            <label className="text-[11px] font-semibold text-[#746E68] block">NVMe-Speicher</label>
+            <div className="grid grid-cols-4 gap-1.5">
+              {nvmeOptions.map((opt) => (
+                <button
+                  key={opt}
+                  type="button"
+                  onClick={() => setNvme(opt)}
+                  className={`py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer text-center ${
+                    nvme === opt
+                      ? 'bg-[#789340] text-white border-[#789340]'
+                      : 'bg-[#FAF8F5] text-[#34312D] border-[#EBECE5] hover:border-[#789340]/40'
+                  }`}
+                >
+                  {opt}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Acciones del formulario */}
+          <div className="flex items-center gap-2 pt-2 border-t border-[#EBECE5]">
             <button
-              key={opt}
-              type="button"
-              onClick={() => setVcpu(opt)}
-              className={`py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer text-center ${
-                vcpu === opt
-                  ? 'bg-[#789340] text-white border-[#789340]'
-                  : 'bg-[#FAF8F5] text-[#34312D] border-[#EBECE5] hover:border-[#789340]/40'
-              }`}
+              onClick={() => onSave({ vcpu, ram, nvme })}
+              className="flex-1 min-h-[38px] px-4 py-2 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-xl shadow-xs transition-all cursor-pointer flex items-center justify-center gap-1.5"
             >
-              {opt}
+              <span>Konfiguration speichern</span>
             </button>
-          ))}
+            {onCancel && (
+              <button
+                onClick={onCancel}
+                className="min-h-[38px] px-4 py-2 bg-gray-100 hover:bg-gray-200 text-[#746E68] text-xs font-medium rounded-xl transition-all cursor-pointer"
+              >
+                Abbrechen
+              </button>
+            )}
+          </div>
         </div>
-      </div>
 
-      {/* Selector RAM */}
-      <div className="space-y-1.5">
-        <label className="text-[11px] font-semibold text-[#746E68] block">Arbeitsspeicher (RAM)</label>
-        <div className="grid grid-cols-4 gap-1.5">
-          {ramOptions.map((opt) => (
-            <button
-              key={opt}
-              type="button"
-              onClick={() => setRam(opt)}
-              className={`py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer text-center ${
-                ram === opt
-                  ? 'bg-[#789340] text-white border-[#789340]'
-                  : 'bg-[#FAF8F5] text-[#34312D] border-[#EBECE5] hover:border-[#789340]/40'
-              }`}
-            >
-              {opt}
-            </button>
-          ))}
+        {/* Avatar AdminPanda grande en el lateral derecho */}
+        <div className="self-center sm:self-start pt-2">
+          <BjornAvatar pose="admin" altText="AdminPanda KVM Konfiguration" className="w-40 h-40 sm:w-52 sm:h-52" animationType="zoom" />
         </div>
-      </div>
-
-      {/* Selector NVMe */}
-      <div className="space-y-1.5">
-        <label className="text-[11px] font-semibold text-[#746E68] block">NVMe-Speicher</label>
-        <div className="grid grid-cols-4 gap-1.5">
-          {nvmeOptions.map((opt) => (
-            <button
-              key={opt}
-              type="button"
-              onClick={() => setNvme(opt)}
-              className={`py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer text-center ${
-                nvme === opt
-                  ? 'bg-[#789340] text-white border-[#789340]'
-                  : 'bg-[#FAF8F5] text-[#34312D] border-[#EBECE5] hover:border-[#789340]/40'
-              }`}
-            >
-              {opt}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Acciones del formulario */}
-      <div className="flex items-center gap-2 pt-2 border-t border-[#EBECE5]">
-        <button
-          onClick={() => onSave({ vcpu, ram, nvme })}
-          className="flex-1 min-h-[38px] px-4 py-2 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-xl shadow-xs transition-all cursor-pointer flex items-center justify-center gap-1.5"
-        >
-          <span>Konfiguration speichern</span>
-        </button>
-        {onCancel && (
-          <button
-            onClick={onCancel}
-            className="min-h-[38px] px-4 py-2 bg-gray-100 hover:bg-gray-200 text-[#746E68] text-xs font-medium rounded-xl transition-all cursor-pointer"
-          >
-            Abbrechen
-          </button>
-        )}
       </div>
     </div>
   );
@@ -645,43 +661,52 @@ export function DnsConfigCard({ domain = 'bamboo-bjoern.eu' }) {
   ];
 
   return (
-    <div className="mt-3 p-4 sm:p-5 bg-white rounded-2xl border border-[#EBECE5] shadow-xs space-y-3 w-full text-[#34312D]">
-      <div className="flex items-center justify-between border-b border-[#EBECE5] pb-2">
-        <h4 className="font-semibold text-xs sm:text-sm text-[#34312D] flex items-center gap-1.5">
-          <span>⚙️</span> DNS-Zone: <span className="text-[#789340] font-mono">{domain}</span>
-        </h4>
-        <span className="text-[10px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-medium border border-emerald-200 flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span>DNSSEC Aktiv</span>
-        </span>
-      </div>
+    <div className="mt-3 p-4 sm:p-5 bg-white rounded-2xl border border-[#EBECE5] shadow-xs w-full text-[#34312D]">
+      <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4">
+        <div className="flex-1 space-y-3 w-full">
+          <div className="flex items-center justify-between border-b border-[#EBECE5] pb-2">
+            <h4 className="font-semibold text-xs sm:text-sm text-[#34312D] flex items-center gap-1.5">
+              <span>⚙️</span> DNS-Zone: <span className="text-[#789340] font-mono">{domain}</span>
+            </h4>
+            <span className="text-[10px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-medium border border-emerald-200 flex items-center gap-1.5 flex-shrink-0">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span>DNSSEC Aktiv</span>
+            </span>
+          </div>
 
-      <div className="overflow-x-auto">
-        <table className="w-full text-left border-collapse text-[11px]">
-          <thead>
-            <tr className="border-b border-[#EBECE5] text-[#746E68]">
-              <th className="py-1.5 px-2 font-semibold">Typ</th>
-              <th className="py-1.5 px-2 font-semibold">Host</th>
-              <th className="py-1.5 px-2 font-semibold">Wert</th>
-              <th className="py-1.5 px-2 font-semibold text-right">Status</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-[#EBECE5]/60 font-mono text-[10px]">
-            {records.map((r, idx) => (
-              <tr key={idx} className="hover:bg-[#FAF8F5]">
-                <td className="py-2 px-2 font-bold text-[#789340]">{r.type}</td>
-                <td className="py-2 px-2 text-[#34312D]">{r.host}</td>
-                <td className="py-2 px-2 text-[#746E68] truncate max-w-[140px] sm:max-w-[200px]">{r.value}</td>
-                <td className="py-2 px-2 text-right">
-                  <span className="bg-emerald-50 text-emerald-800 px-1.5 py-0.5 rounded text-[9px] font-sans font-medium border border-emerald-200 inline-flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span>Aktiv</span>
-                  </span>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse text-[11px]">
+              <thead>
+                <tr className="border-b border-[#EBECE5] text-[#746E68]">
+                  <th className="py-1.5 px-2 font-semibold">Typ</th>
+                  <th className="py-1.5 px-2 font-semibold">Host</th>
+                  <th className="py-1.5 px-2 font-semibold">Wert</th>
+                  <th className="py-1.5 px-2 font-semibold text-right">Status</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[#EBECE5]/60 font-mono text-[10px]">
+                {records.map((r, idx) => (
+                  <tr key={idx} className="hover:bg-[#FAF8F5]">
+                    <td className="py-2 px-2 font-bold text-[#789340]">{r.type}</td>
+                    <td className="py-2 px-2 text-[#34312D]">{r.host}</td>
+                    <td className="py-2 px-2 text-[#746E68] truncate max-w-[140px] sm:max-w-[200px]">{r.value}</td>
+                    <td className="py-2 px-2 text-right">
+                      <span className="bg-emerald-50 text-emerald-800 px-1.5 py-0.5 rounded text-[9px] font-sans font-medium border border-emerald-200 inline-flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span>Aktiv</span>
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* HackerPanda avatar grande en el lateral derecho */}
+        <div className="self-center sm:self-start pt-1">
+          <BjornAvatar pose="hacker" altText="HackerPanda DNSSEC Security" className="w-40 h-40 sm:w-52 sm:h-52" animationType="float" />
+        </div>
       </div>
 
       <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-2 border-t border-[#EBECE5]">
@@ -704,7 +729,7 @@ export function DnsConfigCard({ domain = 'bamboo-bjoern.eu' }) {
   );
 }
 
-// 8. Componente TelemetryCard (Métricas y estado en tiempo real del servidor ecológico)
+// 8. Component TelemetryCard
 export function TelemetryCard({ serverName = 'Frankfurt Solar Node (KVM-01)' }) {
   return (
     <div className="mt-3 p-4 sm:p-5 bg-white rounded-2xl border border-[#EBECE5] shadow-xs space-y-3 w-full text-[#34312D]">
@@ -718,7 +743,7 @@ export function TelemetryCard({ serverName = 'Frankfurt Solar Node (KVM-01)' }) 
           </h4>
           <p className="text-[10px] text-[#746E68]">Echtzeit-Daten vom Grünen Rechenzentrum Frankfurt</p>
         </div>
-        <span className="text-[10px] bg-emerald-50 text-emerald-700 px-2.5 py-0.5 rounded-full font-medium border border-emerald-200 flex items-center gap-1.5">
+        <span className="text-[10px] bg-emerald-50 text-emerald-700 px-2.5 py-0.5 rounded-full font-medium border border-emerald-200 flex items-center gap-1.5 flex-shrink-0">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
           Live
         </span>
@@ -812,11 +837,24 @@ export default function BambooChat({ avatarPath = 'assets/LaptopPanda_transparen
   });
 
   const messagesEndRef = useRef(null);
+  const chatStreamRef = useRef(null);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-    if (window.innerWidth < 640 || window.innerHeight < 600) {
-      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    if (chatStreamRef.current) {
+      const children = chatStreamRef.current.children;
+      if (children && children.length > 0) {
+        let target = children[children.length - 1];
+        if (target.id === 'scroll-bottom-marker' && children.length > 1) {
+          target = children[children.length - 2];
+        }
+        const containerRect = chatStreamRef.current.getBoundingClientRect();
+        const targetRect = target.getBoundingClientRect();
+        const offsetTop = targetRect.top - containerRect.top + chatStreamRef.current.scrollTop - 12;
+        chatStreamRef.current.scrollTo({
+          top: Math.max(0, offsetTop),
+          behavior: 'smooth'
+        });
+      }
     }
   }, [messages, isLoading, flowState]);
 
@@ -1226,7 +1264,7 @@ export default function BambooChat({ avatarPath = 'assets/LaptopPanda_transparen
       </header>
 
       {/* Área de Mensajes Stream */}
-      <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 bg-gradient-to-b from-[#FAF8F5] to-[#F8F8F8] custom-scrollbar">
+      <div ref={chatStreamRef} className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 bg-gradient-to-b from-[#FAF8F5] to-[#F8F8F8] custom-scrollbar">
         {messages.map((msg) => (
           <ChatMessage key={msg.id} role={msg.role} content={msg.content} avatarPath={avatarPath}>
             {msg.isRoleSelectionCard && !isRoleSelected && (
@@ -1361,7 +1399,7 @@ export default function BambooChat({ avatarPath = 'assets/LaptopPanda_transparen
           </div>
         )}
 
-        <div ref={messagesEndRef} />
+        <div ref={messagesEndRef} id="scroll-bottom-marker" />
       </div>
 
       {/* Formulario de Entrada de Texto Libre */}

@@ -495,13 +495,16 @@
       selectedDomain: ''
     };
 
-    function scrollToBottomHtml() {
-      if (chatStream) {
+    function scrollToBottomHtml(targetElement = null) {
+      if (!chatStream) return;
+      const el = targetElement || chatStream.lastElementChild;
+      if (el && chatStream.children.length > 0) {
+        const containerRect = chatStream.getBoundingClientRect();
+        const targetRect = el.getBoundingClientRect();
+        const offsetTop = targetRect.top - containerRect.top + chatStream.scrollTop - 12;
+        chatStream.scrollTo({ top: Math.max(0, offsetTop), behavior: 'smooth' });
+      } else {
         chatStream.scrollTop = chatStream.scrollHeight;
-      }
-      const formInput = document.getElementById('chat-form');
-      if (formInput) {
-        formInput.scrollIntoView({ behavior: 'smooth', block: 'end' });
       }
     }
 
@@ -554,28 +557,30 @@
           <div class="flex items-start max-w-2xl animate-fade-in">
             <div class="space-y-4 w-full">
               <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-sm leading-relaxed shadow-xs w-full font-['Space_Grotesk',sans-serif]">
-                <div class="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4 mb-4">
-                  <div class="flex-1">
-                    <div class="text-[11px] font-semibold text-[#789340] mb-1.5 flex items-center gap-1.5">
-                      <span>Bjørn</span>
-                      <span class="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
+                <div class="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4">
+                  <div class="flex-1 space-y-3 w-full">
+                    <div>
+                      <div class="text-[11px] font-semibold text-[#789340] mb-1.5 flex items-center gap-1.5">
+                        <span>Bjørn</span>
+                        <span class="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
+                      </div>
+                      <p class="font-semibold text-forest text-base mb-1">Willkommen bei Bamboo Bjørn! 🌿</p>
+                      <p class="text-charcoal-muted font-normal text-xs sm:text-sm">
+                        Bitte wählen Sie Ihren Zugangsmodus, um fortzufahren:
+                      </p>
                     </div>
-                    <p class="font-semibold text-forest text-base mb-1">Willkommen bei Bamboo Bjørn! 🌿</p>
-                    <p class="text-charcoal-muted font-normal text-xs sm:text-sm">
-                      Bitte wählen Sie Ihren Zugangsmodus, um fortzufahren:
-                    </p>
+                    
+                    <!-- Botones de Decisión Rápida (Pastillas en vertical) -->
+                    <div class="flex flex-col gap-2.5 pt-3 w-full">
+                      <button onclick="selectInitialRoleHtml(true)" class="w-full min-h-[44px] px-4 py-3 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white rounded-xl text-xs sm:text-sm font-semibold shadow-xs transition-all cursor-pointer flex items-center justify-center gap-2">
+                        <span>Ich bin bereits Kunde</span>
+                      </button>
+                      <button onclick="selectInitialRoleHtml(false)" class="w-full min-h-[44px] px-4 py-3 bg-white hover:bg-emerald-50 hover:border-emerald-300 border border-[#EBECE5] text-[#34312D] rounded-xl text-xs sm:text-sm font-semibold shadow-2xs transition-all cursor-pointer flex items-center justify-center gap-2">
+                        <span>Ich möchte mich informieren</span>
+                      </button>
+                    </div>
                   </div>
-                  <img src="assets/panda-avatar.png" alt="Bjørn KI-Assistent" class="w-24 h-24 sm:w-28 sm:h-28 object-contain flex-shrink-0 drop-shadow-xs self-center sm:self-start">
-                </div>
-                
-                <!-- Botones de Decisión Rápida (Pastillas) -->
-                <div class="flex flex-col sm:flex-row gap-3 pt-1">
-                  <button onclick="selectInitialRoleHtml(true)" class="flex-1 min-h-[44px] px-4 py-3 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white rounded-xl text-xs sm:text-sm font-semibold shadow-xs transition-all cursor-pointer flex items-center justify-center gap-2">
-                    <span>Ich bin bereits Kundin</span>
-                  </button>
-                  <button onclick="selectInitialRoleHtml(false)" class="flex-1 min-h-[44px] px-4 py-3 bg-white hover:bg-emerald-50 hover:border-emerald-300 border border-[#EBECE5] text-[#34312D] rounded-xl text-xs sm:text-sm font-semibold shadow-2xs transition-all cursor-pointer flex items-center justify-center gap-2">
-                    <span>Ich möchte mich informieren</span>
-                  </button>
+                  <video src="assets/PandaVideo_sin_fondo.webm" autoplay loop muted playsinline class="w-40 h-40 sm:w-52 sm:h-52 object-contain flex-shrink-0 drop-shadow-xs self-center sm:self-start"></video>
                 </div>
               </div>
             </div>
@@ -782,66 +787,75 @@
         removeTypingIndicator();
         const dnsCardHtml = `
           <div class="flex items-start max-w-2xl animate-fade-in">
-            <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-xs sm:text-sm leading-relaxed shadow-xs space-y-3 w-full max-w-xl">
-              <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
-                <span>Bjørn</span>
-                <span class="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
-              </div>
-              <p class="font-semibold text-forest text-xs sm:text-sm">Hier ist die aktuelle DNS-Konfiguration für Ihre aktive Domain <span class="font-mono text-[#789340]">bamboo-bjoern.eu</span>:</p>
+            <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-xs sm:text-sm leading-relaxed shadow-xs w-full font-['Space_Grotesk',sans-serif]">
+              <div class="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4">
+                <div class="flex-1 space-y-3 w-full">
+                  <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
+                    <span>Bjørn</span>
+                    <span class="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
+                  </div>
+                  <p class="font-semibold text-forest text-xs sm:text-sm">Hier ist die aktuelle DNS-Konfiguration für Ihre aktive Domain <span class="font-mono text-[#789340]">bamboo-bjoern.eu</span>:</p>
 
-              <div class="p-4 bg-white rounded-2xl border border-[#EBECE5] shadow-xs space-y-3 w-full text-[#34312D]">
-                <div class="flex items-center justify-between border-b border-[#EBECE5] pb-2">
-                  <h4 class="font-semibold text-xs text-[#34312D] flex items-center gap-1.5">DNS-Zone: bamboo-bjoern.eu</h4>
-                  <span class="text-[10px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-medium border border-emerald-200 flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span>DNSSEC Aktiv</span>
-                  </span>
+                  <div class="p-4 bg-white rounded-2xl border border-[#EBECE5] shadow-xs space-y-3 w-full text-[#34312D]">
+                    <div class="flex items-center justify-between border-b border-[#EBECE5] pb-2">
+                      <h4 class="font-semibold text-xs text-[#34312D] flex items-center gap-1.5">DNS-Zone: bamboo-bjoern.eu</h4>
+                      <span class="text-[10px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-medium border border-emerald-200 flex items-center gap-1.5 flex-shrink-0">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span>DNSSEC Aktiv</span>
+                      </span>
+                    </div>
+                    <div class="overflow-x-auto">
+                      <table class="w-full text-left border-collapse text-[11px]">
+                        <thead>
+                          <tr class="border-b border-[#EBECE5] text-[#746E68]">
+                            <th class="py-1.5 px-2 font-semibold">Typ</th>
+                            <th class="py-1.5 px-2 font-semibold">Host</th>
+                            <th class="py-1.5 px-2 font-semibold">Wert</th>
+                            <th class="py-1.5 px-2 font-semibold text-right">Status</th>
+                          </tr>
+                        </thead>
+                        <tbody class="divide-y divide-[#EBECE5]/60 font-mono text-[10px]">
+                          <tr class="hover:bg-[#FAF8F5]">
+                            <td class="py-2 px-2 font-bold text-[#789340]">A</td>
+                            <td class="py-2 px-2 text-[#34312D]">@</td>
+                            <td class="py-2 px-2 text-[#746E68]">185.199.108.153</td>
+                            <td class="py-2 px-2 text-right"><span class="bg-emerald-50 text-emerald-800 px-1.5 py-0.5 rounded text-[9px] font-sans font-medium border border-emerald-200 inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>Aktiv</span></td>
+                          </tr>
+                          <tr class="hover:bg-[#FAF8F5]">
+                            <td class="py-2 px-2 font-bold text-[#789340]">AAAA</td>
+                            <td class="py-2 px-2 text-[#34312D]">@</td>
+                            <td class="py-2 px-2 text-[#746E68]">2a04:4e42::644</td>
+                            <td class="py-2 px-2 text-right"><span class="bg-emerald-50 text-emerald-800 px-1.5 py-0.5 rounded text-[9px] font-sans font-medium border border-emerald-200 inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>Aktiv</span></td>
+                          </tr>
+                          <tr class="hover:bg-[#FAF8F5]">
+                            <td class="py-2 px-2 font-bold text-[#789340]">MX</td>
+                            <td class="py-2 px-2 text-[#34312D]">@</td>
+                            <td class="py-2 px-2 text-[#746E68]">10 mail.bamboo-bjoern.eu</td>
+                            <td class="py-2 px-2 text-right"><span class="bg-emerald-50 text-emerald-800 px-1.5 py-0.5 rounded text-[9px] font-sans font-medium border border-emerald-200 inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>Aktiv</span></td>
+                          </tr>
+                          <tr class="hover:bg-[#FAF8F5]">
+                            <td class="py-2 px-2 font-bold text-[#789340]">TXT</td>
+                            <td class="py-2 px-2 text-[#34312D]">_spf</td>
+                            <td class="py-2 px-2 text-[#746E68]">v=spf1 include:_spf.bamboo-bjoern.eu ~all</td>
+                            <td class="py-2 px-2 text-right"><span class="bg-emerald-50 text-emerald-800 px-1.5 py-0.5 rounded text-[9px] font-sans font-medium border border-emerald-200 inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>Aktiv</span></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-[#EBECE5]">
+                      <button onclick="requestDnsChangeHtml('bamboo-bjoern.eu')" class="flex-1 sm:flex-none min-h-[36px] px-3.5 py-2 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-xl shadow-xs transition-all cursor-pointer flex items-center justify-center gap-1.5">
+                        <span>DNS-Zone speichern</span>
+                      </button>
+                      <button onclick="showDnsCardHtml()" class="flex-1 sm:flex-none min-h-[36px] px-3.5 py-2 bg-emerald-50 border border-emerald-200 text-emerald-800 hover:bg-emerald-100 text-xs font-medium rounded-xl transition-all cursor-pointer flex items-center justify-center gap-1.5">
+                        <span>DNS-Prüfung</span>
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                <div class="overflow-x-auto">
-                  <table class="w-full text-left border-collapse text-[11px]">
-                    <thead>
-                      <tr class="border-b border-[#EBECE5] text-[#746E68]">
-                        <th class="py-1.5 px-2 font-semibold">Typ</th>
-                        <th class="py-1.5 px-2 font-semibold">Host</th>
-                        <th class="py-1.5 px-2 font-semibold">Wert</th>
-                        <th class="py-1.5 px-2 font-semibold text-right">Status</th>
-                      </tr>
-                    </thead>
-                    <tbody class="divide-y divide-[#EBECE5]/60 font-mono text-[10px]">
-                      <tr class="hover:bg-[#FAF8F5]">
-                        <td class="py-2 px-2 font-bold text-[#789340]">A</td>
-                        <td class="py-2 px-2 text-[#34312D]">@</td>
-                        <td class="py-2 px-2 text-[#746E68]">185.199.108.153</td>
-                        <td class="py-2 px-2 text-right"><span class="bg-emerald-50 text-emerald-800 px-1.5 py-0.5 rounded text-[9px] font-sans font-medium border border-emerald-200 inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>Aktiv</span></td>
-                      </tr>
-                      <tr class="hover:bg-[#FAF8F5]">
-                        <td class="py-2 px-2 font-bold text-[#789340]">AAAA</td>
-                        <td class="py-2 px-2 text-[#34312D]">@</td>
-                        <td class="py-2 px-2 text-[#746E68]">2a04:4e42::644</td>
-                        <td class="py-2 px-2 text-right"><span class="bg-emerald-50 text-emerald-800 px-1.5 py-0.5 rounded text-[9px] font-sans font-medium border border-emerald-200 inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>Aktiv</span></td>
-                      </tr>
-                      <tr class="hover:bg-[#FAF8F5]">
-                        <td class="py-2 px-2 font-bold text-[#789340]">MX</td>
-                        <td class="py-2 px-2 text-[#34312D]">@</td>
-                        <td class="py-2 px-2 text-[#746E68]">10 mail.bamboo-bjoern.eu</td>
-                        <td class="py-2 px-2 text-right"><span class="bg-emerald-50 text-emerald-800 px-1.5 py-0.5 rounded text-[9px] font-sans font-medium border border-emerald-200 inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>Aktiv</span></td>
-                      </tr>
-                      <tr class="hover:bg-[#FAF8F5]">
-                        <td class="py-2 px-2 font-bold text-[#789340]">TXT</td>
-                        <td class="py-2 px-2 text-[#34312D]">_spf</td>
-                        <td class="py-2 px-2 text-[#746E68]">v=spf1 include:_spf.bamboo-bjoern.eu ~all</td>
-                        <td class="py-2 px-2 text-right"><span class="bg-emerald-50 text-emerald-800 px-1.5 py-0.5 rounded text-[9px] font-sans font-medium border border-emerald-200 inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>Aktiv</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-[#EBECE5]">
-                  <button onclick="requestDnsChangeHtml('bamboo-bjoern.eu')" class="flex-1 sm:flex-none min-h-[36px] px-3.5 py-2 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-xl shadow-xs transition-all cursor-pointer flex items-center justify-center gap-1.5">
-                    <span>DNS-Zone speichern</span>
-                  </button>
-                  <button onclick="showDnsCardHtml()" class="flex-1 sm:flex-none min-h-[36px] px-3.5 py-2 bg-emerald-50 border border-emerald-200 text-emerald-800 hover:bg-emerald-100 text-xs font-medium rounded-xl transition-all cursor-pointer flex items-center justify-center gap-1.5">
-                    <span>DNS-Prüfung</span>
-                  </button>
+
+                <!-- Avatar HackerPanda grande en el lateral derecho -->
+                <div class="self-center sm:self-start pt-2 flex-shrink-0">
+                  <img src="assets/HackerPanda_transparent.png" alt="HackerPanda DNSSEC Security" class="w-40 h-40 sm:w-52 sm:h-52 object-contain panda-avatar drop-shadow-lg hover:scale-110 hover:-translate-y-2 cursor-pointer transition-all duration-300">
                 </div>
               </div>
             </div>
@@ -859,7 +873,7 @@
         removeTypingIndicator();
         const telemetryCardHtml = `
           <div class="flex items-start max-w-2xl animate-fade-in">
-            <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-xs sm:text-sm leading-relaxed shadow-xs space-y-3 w-full max-w-xl">
+            <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-xs sm:text-sm leading-relaxed shadow-xs space-y-3 w-full font-['Space_Grotesk',sans-serif]">
               <div class="text-[11px] font-semibold text-[#789340] mb-1 flex items-center gap-1.5">
                 <span>Bjørn</span>
                 <span class="text-[9px] text-[#746E68] font-normal">• KI-Assistent</span>
@@ -877,7 +891,7 @@
                     </h4>
                     <p class="text-[10px] text-[#746E68]">Echtzeit-Daten vom Grünen Rechenzentrum Frankfurt</p>
                   </div>
-                  <span class="text-[10px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-medium border border-emerald-200 flex items-center gap-1">
+                  <span class="text-[10px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-medium border border-emerald-200 flex items-center gap-1 flex-shrink-0">
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span> Live
                   </span>
                 </div>
@@ -1405,64 +1419,73 @@
         tempKvmSpecs = { ...currentKvmSpecs };
         const panelHtml = `
           <div class="flex items-start max-w-2xl animate-fade-in" id="kvm-config-panel-container">
-            <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-xs sm:text-sm leading-relaxed shadow-xs space-y-3.5 w-full max-w-md font-['Space_Grotesk',sans-serif]">
-              <div class="flex items-center justify-between border-b border-[#EBECE5] pb-2.5">
-                <div>
-                  <h4 class="font-semibold text-xs sm:text-sm text-[#34312D]">
-                    ${serverName} Konfiguration
-                  </h4>
-                  <p class="text-[10px] text-[#746E68] mt-0.5">Skalierung der Ressourcen für den Server Frankfurt - Solar Powered</p>
-                </div>
-                <span class="text-[10px] bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2 py-0.5 rounded font-medium flex items-center gap-1.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                  <span>Hot-Plug Aktiv</span>
-                </span>
-              </div>
+            <div class="bg-[#FAF8F5] border border-[#EBECE5] text-[#34312D] p-5 sm:p-6 rounded-3xl rounded-tl-xs text-xs sm:text-sm leading-relaxed shadow-xs w-full font-['Space_Grotesk',sans-serif]">
+              <div class="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4">
+                <div class="flex-1 space-y-3.5 w-full">
+                  <div class="flex items-center justify-between border-b border-[#EBECE5] pb-2.5">
+                    <div>
+                      <h4 class="font-semibold text-xs sm:text-sm text-[#34312D]">
+                        ${serverName} Konfiguration
+                      </h4>
+                      <p class="text-[10px] text-[#746E68] mt-0.5">Skalierung der Ressourcen für den Server Frankfurt - Solar Powered</p>
+                    </div>
+                    <span class="text-[10px] bg-emerald-50 text-emerald-800 border border-emerald-200/80 px-2 py-0.5 rounded font-medium flex items-center gap-1.5 flex-shrink-0">
+                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                      <span>Hot-Plug Aktiv</span>
+                    </span>
+                  </div>
 
-              <!-- Selector vCPU -->
-              <div class="space-y-1.5">
-                <label class="text-[11px] font-semibold text-[#746E68] block">vCPU Prozessor</label>
-                <div class="grid grid-cols-4 gap-1.5" id="vcpu-options">
-                  ${['2 vCPU', '4 vCPU', '8 vCPU', '16 vCPU'].map(opt => `
-                    <button type="button" onclick="selectKvmOptionHtml('vcpu', '${opt}')" id="btn-vcpu-${opt.replace(/\s+/g, '')}" class="py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer text-center ${tempKvmSpecs.vcpu === opt ? 'bg-[#789340] text-white border-[#789340]' : 'bg-white text-[#34312D] border-[#EBECE5] hover:border-[#789340]/40'}">
-                      ${opt}
+                  <!-- Selector vCPU -->
+                  <div class="space-y-1.5">
+                    <label class="text-[11px] font-semibold text-[#746E68] block">vCPU Prozessor</label>
+                    <div class="grid grid-cols-4 gap-1.5" id="vcpu-options">
+                      ${['2 vCPU', '4 vCPU', '8 vCPU', '16 vCPU'].map(opt => `
+                        <button type="button" onclick="selectKvmOptionHtml('vcpu', '${opt}')" id="btn-vcpu-${opt.replace(/\s+/g, '')}" class="py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer text-center ${tempKvmSpecs.vcpu === opt ? 'bg-[#789340] text-white border-[#789340]' : 'bg-white text-[#34312D] border-[#EBECE5] hover:border-[#789340]/40'}">
+                          ${opt}
+                        </button>
+                      `).join('')}
+                    </div>
+                  </div>
+
+                  <!-- Selector RAM -->
+                  <div class="space-y-1.5">
+                    <label class="text-[11px] font-semibold text-[#746E68] block">Arbeitsspeicher (RAM)</label>
+                    <div class="grid grid-cols-4 gap-1.5" id="ram-options">
+                      ${['4 GB RAM', '8 GB RAM', '16 GB RAM', '32 GB RAM'].map(opt => `
+                        <button type="button" onclick="selectKvmOptionHtml('ram', '${opt}')" id="btn-ram-${opt.replace(/\s+/g, '')}" class="py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer text-center ${tempKvmSpecs.ram === opt ? 'bg-[#789340] text-white border-[#789340]' : 'bg-white text-[#34312D] border-[#EBECE5] hover:border-[#789340]/40'}">
+                          ${opt}
+                        </button>
+                      `).join('')}
+                    </div>
+                  </div>
+
+                  <!-- Selector NVMe -->
+                  <div class="space-y-1.5">
+                    <label class="text-[11px] font-semibold text-[#746E68] block">NVMe-Speicher</label>
+                    <div class="grid grid-cols-4 gap-1.5" id="nvme-options">
+                      ${['100 GB NVMe', '160 GB NVMe', '320 GB NVMe', '640 GB NVMe'].map(opt => `
+                        <button type="button" onclick="selectKvmOptionHtml('nvme', '${opt}')" id="btn-nvme-${opt.replace(/\s+/g, '')}" class="py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer text-center ${tempKvmSpecs.nvme === opt ? 'bg-[#789340] text-white border-[#789340]' : 'bg-white text-[#34312D] border-[#EBECE5] hover:border-[#789340]/40'}">
+                          ${opt}
+                        </button>
+                      `).join('')}
+                    </div>
+                  </div>
+
+                  <!-- Acciones del formulario -->
+                  <div class="flex items-center gap-2 pt-2 border-t border-[#EBECE5]">
+                    <button onclick="saveKvmConfigHtml('${serverName}')" class="flex-1 min-h-[38px] px-4 py-2 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-xl shadow-xs transition-all cursor-pointer flex items-center justify-center gap-1.5">
+                      <span>Konfiguration speichern</span>
                     </button>
-                  `).join('')}
-                </div>
-              </div>
-
-              <!-- Selector RAM -->
-              <div class="space-y-1.5">
-                <label class="text-[11px] font-semibold text-[#746E68] block">Arbeitsspeicher (RAM)</label>
-                <div class="grid grid-cols-4 gap-1.5" id="ram-options">
-                  ${['4 GB RAM', '8 GB RAM', '16 GB RAM', '32 GB RAM'].map(opt => `
-                    <button type="button" onclick="selectKvmOptionHtml('ram', '${opt}')" id="btn-ram-${opt.replace(/\s+/g, '')}" class="py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer text-center ${tempKvmSpecs.ram === opt ? 'bg-[#789340] text-white border-[#789340]' : 'bg-white text-[#34312D] border-[#EBECE5] hover:border-[#789340]/40'}">
-                      ${opt}
+                    <button onclick="cancelKvmConfigHtml()" class="min-h-[38px] px-4 py-2 bg-gray-100 hover:bg-gray-200 text-[#746E68] text-xs font-medium rounded-xl transition-all cursor-pointer">
+                      Abbrechen
                     </button>
-                  `).join('')}
+                  </div>
                 </div>
-              </div>
 
-              <!-- Selector NVMe -->
-              <div class="space-y-1.5">
-                <label class="text-[11px] font-semibold text-[#746E68] block">NVMe-Speicher</label>
-                <div class="grid grid-cols-4 gap-1.5" id="nvme-options">
-                  ${['100 GB NVMe', '160 GB NVMe', '320 GB NVMe', '640 GB NVMe'].map(opt => `
-                    <button type="button" onclick="selectKvmOptionHtml('nvme', '${opt}')" id="btn-nvme-${opt.replace(/\s+/g, '')}" class="py-1.5 px-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer text-center ${tempKvmSpecs.nvme === opt ? 'bg-[#789340] text-white border-[#789340]' : 'bg-white text-[#34312D] border-[#EBECE5] hover:border-[#789340]/40'}">
-                      ${opt}
-                    </button>
-                  `).join('')}
+                <!-- Avatar AdminPanda grande en el lateral derecho -->
+                <div class="self-center sm:self-start pt-2 flex-shrink-0">
+                  <img src="assets/AdminPanda_transparent.png" alt="AdminPanda KVM Konfiguration" class="w-40 h-40 sm:w-52 sm:h-52 object-contain panda-avatar drop-shadow-lg hover:scale-110 hover:-translate-y-2 cursor-pointer transition-all duration-300">
                 </div>
-              </div>
-
-              <!-- Acciones del formulario -->
-              <div class="flex items-center gap-2 pt-2 border-t border-[#EBECE5]">
-                <button onclick="saveKvmConfigHtml('${serverName}')" class="flex-1 min-h-[38px] px-4 py-2 bg-[linear-gradient(55deg,#789340_38%,#CF614A_82%)] hover:brightness-108 text-white text-xs font-semibold rounded-xl shadow-xs transition-all cursor-pointer flex items-center justify-center gap-1.5">
-                  <span>Konfiguration speichern</span>
-                </button>
-                <button onclick="cancelKvmConfigHtml()" class="min-h-[38px] px-4 py-2 bg-gray-100 hover:bg-gray-200 text-[#746E68] text-xs font-medium rounded-xl transition-all cursor-pointer">
-                  Abbrechen
-                </button>
               </div>
             </div>
           </div>
