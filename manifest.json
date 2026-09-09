@@ -8,7 +8,7 @@
   "theme_color": "#789340",
   "icons": [
     {
-      "src": "assets/bambusbjørn-logo.png",
+      "src": "assets/bambulogo_clean.png",
       "sizes": "1024x1024",
       "type": "image/png",
       "purpose": "any maskable"
