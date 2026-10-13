@@ -14,13 +14,14 @@ export default function BjornAvatar({
   animationType = 'float'
 }) {
   const poseMap = {
-    admin: 'assets/AdminPanda_transparent.png',
+    admin: 'assets/pandasmart.webm',
     pathfinder: 'assets/PathfinderAdmin_transparent.png',
-    hacker: 'assets/HackerPanda_transparent.png',
+    hacker: 'assets/panda-hack.webm',
     laptop: 'assets/LaptopPanda_transparent.png',
   };
 
-  const imageSrc = poseMap[pose] || pose;
+  const mediaSrc = poseMap[pose] || pose;
+  const isVideo = typeof mediaSrc === 'string' && (mediaSrc.endsWith('.webm') || mediaSrc.endsWith('.mp4'));
 
   const animationClasses = {
     float: 'panda-avatar hover:scale-110 hover:-translate-y-2 transition-all duration-300 drop-shadow-lg cursor-pointer',
@@ -30,11 +31,22 @@ export default function BjornAvatar({
 
   return (
     <div className="relative inline-flex items-center justify-center group flex-shrink-0">
-      <img
-        src={imageSrc}
-        alt={altText}
-        className={`${className} object-contain ${animationClasses[animationType] || animationClasses.float}`}
-      />
+      {isVideo ? (
+        <video
+          src={mediaSrc}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className={`${className} object-contain ${animationClasses[animationType] || animationClasses.float}`}
+        />
+      ) : (
+        <img
+          src={mediaSrc}
+          alt={altText}
+          className={`${className} object-contain ${animationClasses[animationType] || animationClasses.float}`}
+        />
+      )}
     </div>
   );
 }
